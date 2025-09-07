@@ -12,21 +12,21 @@
     <title>Create CloudFront for Frontend (S3) :: AWS System Manager</title>
 
     
-    <link href="/css/nucleus.css?1757247351" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1757247351" rel="stylesheet">
-    <link href="/css/hybrid.css?1757247351" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1757247351" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1757247351" rel="stylesheet">
-    <link href="/css/auto-complete.css?1757247351" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1757247351" rel="stylesheet">
-    <link href="/css/theme.css?1757247351" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1757247351" rel="stylesheet">
+    <link href="/css/nucleus.css?1757251332" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1757251332" rel="stylesheet">
+    <link href="/css/hybrid.css?1757251332" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1757251332" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1757251332" rel="stylesheet">
+    <link href="/css/auto-complete.css?1757251332" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1757251332" rel="stylesheet">
+    <link href="/css/theme.css?1757251332" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1757251332" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1757247351" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1757251332" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1757247351"></script>
+    <script src="/js/jquery-3.3.1.min.js?1757251332"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,12 +57,12 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1757247351"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1757247351"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1757251332"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1757251332"></script>
 <script type="text/javascript">
     var baseurl = "http:\/\/localhost:1313\/en";
 </script>
-<script type="text/javascript" src="/js/search.js?1757247351"></script>
+<script type="text/javascript" src="/js/search.js?1757251332"></script>
 
     
   </div>
@@ -80,13 +80,13 @@
  
   
     
-    <li data-nav-id="/1-introduce/" title="Introduction and Architecture Overview" class="dd-item 
+    <li data-nav-id="/1-introduce/" title="Introduction and Architectural Overview" class="dd-item 
         
         
         
         ">
       <a href="/1-introduce/">
-           <b> 1. </b> Introduction and Architecture Overview
+           <b> 1. </b> Introduction and Architectural Overview
           
             <i class="fas fa-check read-icon"></i>
           
@@ -106,13 +106,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/" title="Preparation Steps" class="dd-item 
+    <li data-nav-id="/2-prerequiste/" title="Prerequisites and Infrastructure Setup" class="dd-item 
         parent
         
         
         ">
       <a href="/2-prerequiste/">
-           <b> 2. </b> Preparation Steps
+           <b> 2. </b> Prerequisites and Infrastructure Setup
           
             <i class="fas fa-check read-icon"></i>
           
@@ -137,13 +137,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.1-createvpc/" title="Create VPC" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.1-createvpc/" title="Create VPC and Subnets" class="dd-item 
         
         
         
         ">
       <a href="/2-prerequiste/2.1-createvpc/">
-           <b> 2.1 </b> Create VPC
+           <b> 2.1 </b> Create VPC and Subnets
           
             <i class="fas fa-check read-icon"></i>
           
@@ -165,13 +165,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.2-modifysubnet/" title="Edit Subnets" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.2-modifysubnet/" title="Modify Public Subnet" class="dd-item 
         
         
         
         ">
       <a href="/2-prerequiste/2.2-modifysubnet/">
-           <b> 2.2 </b> Edit Subnets
+           <b> 2.2 </b> Modify Public Subnet
           
             <i class="fas fa-check read-icon"></i>
           
@@ -193,13 +193,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.3-createsg/" title="Create Security Groups for Components" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.3-createsg/" title="Create Security Groups" class="dd-item 
         
         
         
         ">
       <a href="/2-prerequiste/2.3-createsg/">
-           <b> 2.3 </b> Create Security Groups for Components
+           <b> 2.3 </b> Create Security Groups
           
             <i class="fas fa-check read-icon"></i>
           
@@ -221,13 +221,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.4-createec2/" title="Create EC2 Instances for Bastion Host and Backend" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.4-createec2/" title="Create the Initial EC2 Instance" class="dd-item 
         
         
         
         ">
       <a href="/2-prerequiste/2.4-createec2/">
-           <b> 2.4 </b> Create EC2 Instances for Bastion Host and Backend
+           <b> 2.4 </b> Create the Initial EC2 Instance
           
             <i class="fas fa-check read-icon"></i>
           
@@ -249,13 +249,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.5-createrds/" title="Create EC2 Instances for Bastion Host and Backend" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.5-createrds/" title="Create RDS MySQL Database" class="dd-item 
         
         
         
         ">
       <a href="/2-prerequiste/2.5-createrds/">
-           <b> 2.4 </b> Create EC2 Instances for Bastion Host and Backend
+           <b> 2.5 </b> Create RDS MySQL Database
           
             <i class="fas fa-check read-icon"></i>
           
@@ -283,7 +283,7 @@
         
         ">
       <a href="/2-prerequiste/2.6-createami/">
-           <b> 2.5 </b> Create Amazon Machine Image (AMI)
+           <b> 2.6 </b> Create Amazon Machine Image (AMI)
           
             <i class="fas fa-check read-icon"></i>
           
@@ -305,13 +305,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.7-createlaunchtemplate/" title="Create Launch Template for Auto Scaling" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.7-createlaunchtemplate/" title="Create Launch Template" class="dd-item 
         
         
         
         ">
       <a href="/2-prerequiste/2.7-createlaunchtemplate/">
-           <b> 2.6 </b> Create Launch Template for Auto Scaling
+           <b> 2.7 </b> Create Launch Template
           
             <i class="fas fa-check read-icon"></i>
           
@@ -339,7 +339,7 @@
         
         ">
       <a href="/2-prerequiste/2.8-createtargetgroup/">
-           <b> 2.7 </b> Create Target Group
+           <b> 2.8 </b> Create Target Group
           
             <i class="fas fa-check read-icon"></i>
           
@@ -367,7 +367,7 @@
         
         ">
       <a href="/2-prerequiste/2.9-createalb/">
-           <b> 2.8 </b> Create Application Load Balancer (ALB)
+           <b> 2.9 </b> Create Application Load Balancer (ALB)
           
             <i class="fas fa-check read-icon"></i>
           
@@ -389,13 +389,41 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.10-createasg/" title="Create Auto Scaling Group" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.10-createasg/" title="Create Auto Scaling Group (ASG)" class="dd-item 
         
         
         
         ">
       <a href="/2-prerequiste/2.10-createasg/">
-           <b> 2.9 </b> Create Auto Scaling Group
+           <b> 2.10 </b> Create Auto Scaling Group (ASG)
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-prerequiste/2.11-creates3/" title="Create S3 Bucket for Frontend" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-prerequiste/2.11-creates3/">
+           <b> 2.11 </b> Create S3 Bucket for Frontend
           
             <i class="fas fa-check read-icon"></i>
           
@@ -423,35 +451,7 @@
         
         ">
       <a href="/2-prerequiste/2.12-createcloudfrontbe/">
-           <b> 2.10 </b> Create CloudFront for Backend (ALB)
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.11-creates3/" title="Create S3 Bucket and Configure Static Website Hosting" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.11-creates3/">
-           <b> 2.11 </b> Create S3 Bucket and Configure Static Website Hosting
+           <b> 2.12 </b> Create CloudFront for Backend (ALB)
           
             <i class="fas fa-check read-icon"></i>
           
@@ -479,7 +479,7 @@
         
         ">
       <a href="/2-prerequiste/2.13-createcloudfrontfe/">
-           <b> 2.12 </b> Create CloudFront for Frontend (S3)
+           <b> 2.13 </b> Create CloudFront for Frontend (S3)
           
             <i class="fas fa-check read-icon"></i>
           
@@ -508,13 +508,13 @@
  
   
     
-    <li data-nav-id="/3-accessibilitytoinstances/" title="Connecting to the EC2 Instance" class="dd-item 
+    <li data-nav-id="/3-accessibilitytoinstances/" title="Connecting and Deploying the Application" class="dd-item 
         
         
         
         ">
       <a href="/3-accessibilitytoinstances/">
-           <b> 3. </b> Connecting to the EC2 Instance
+           <b> 3. </b> Connecting and Deploying the Application
           
             <i class="fas fa-check read-icon"></i>
           
@@ -539,13 +539,13 @@
  
   
     
-    <li data-nav-id="/3-accessibilitytoinstances/3.1-public-instance/" title="Connecting to the Server" class="dd-item 
+    <li data-nav-id="/3-accessibilitytoinstances/3.1-public-instance/" title="Connect, Install, and Deploy" class="dd-item 
         
         
         
         ">
       <a href="/3-accessibilitytoinstances/3.1-public-instance/">
-           <b> 3.1. </b> Connecting to the Server
+           <b> 3.1. </b> Connect, Install, and Deploy
           
             <i class="fas fa-check read-icon"></i>
           
@@ -574,13 +574,13 @@
  
   
     
-    <li data-nav-id="/4-cleanup/" title="Cleaning Up Resources" class="dd-item 
+    <li data-nav-id="/4-cleanup/" title="Clean Up Resources" class="dd-item 
         
         
         
         ">
       <a href="/4-cleanup/">
-           <b> 4. </b> Cleaning Up Resources
+           <b> 4. </b> Clean Up Resources
           
             <i class="fas fa-check read-icon"></i>
           
@@ -759,7 +759,7 @@
             
           
           
-            <a href='/'>Weather Application Project</a> > <a href='/2-prerequiste/'>Preparation Steps</a> > Create CloudFront for Frontend (S3)
+            <a href='/'>Deploying an Online Restaurant Project on AWS</a> > <a href='/2-prerequiste/'>Prerequisites and Infrastructure Setup</a> > Create CloudFront for Frontend (S3)
           
         
           
@@ -776,7 +776,7 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#initialize-cloudfront-distribution-for-frontend-s3">Initialize CloudFront Distribution for Frontend (S3)</a></li>
+        <li><a href="#create-a-cloudfront-distribution-for-the-frontend-s3">Create a CloudFront Distribution for the Frontend (S3)</a></li>
       </ul>
     </li>
   </ul>
@@ -804,28 +804,28 @@
 
 
 
-	<h3 id="initialize-cloudfront-distribution-for-frontend-s3">Initialize CloudFront Distribution for Frontend (S3)</h3>
+	<h3 id="create-a-cloudfront-distribution-for-the-frontend-s3">Create a CloudFront Distribution for the Frontend (S3)</h3>
 <p>ℹ️ <strong>Objective</strong></p>
 <ul>
-<li>Create a second CloudFront Distribution, this time dedicated to distributing the static frontend files from the S3 bucket.</li>
-<li><strong>Improve page load speed:</strong> CloudFront will cache the frontend files at Edge Locations worldwide, helping users everywhere access the website with the lowest possible latency.</li>
-<li><strong>Enhance security:</strong> We will configure <strong>Origin Access Identity (OAI)</strong>, a special feature of CloudFront. OAI will lock down the S3 bucket, allowing only a single &ldquo;user&rdquo;—CloudFront—to read the files. End-users will no longer be able to access the S3 bucket directly, ensuring all access goes through CloudFront.</li>
+<li>Create a second CloudFront Distribution, this time specifically for serving the static frontend files from the S3 bucket.</li>
+<li><strong>Speed up page load times:</strong> CloudFront will cache the frontend files (HTML, CSS, JS, images) at its global Edge Locations, allowing users everywhere to access the website with the lowest possible latency.</li>
+<li><strong>Enhance security:</strong> We will configure an <strong>Origin Access Identity (OAI)</strong>. An OAI is a special virtual user created by CloudFront. We will grant this OAI permission to read files in our S3 bucket and then lock the bucket down, preventing any other public access. This ensures that all users must go through CloudFront to view your website.</li>
 </ul>
 <hr>
-<p>🔒 <strong>Execution Steps</strong></p>
+<p>🔒 <strong>Steps to Follow</strong></p>
 <h4 id="1-start-creating-the-distribution"><strong>1. Start Creating the Distribution</strong></h4>
 <ul>
 <li>In the <strong>AWS Management Console</strong>, return to the <strong>CloudFront</strong> service.</li>
 <li>Click on <strong>Create distribution</strong>.</li>
 </ul>
-<figure><img src="/images/2.prerequisite/2.10-createcloudfrontbe/create-cf-button.png"><figcaption>
-      <h4>Starting to create a new CloudFront Distribution</h4>
+<figure><img src="/images/2.prerequisite/2.13-createcloudfrontfe/cf-dashboard.png"><figcaption>
+      <h4>Start creating a new CloudFront Distribution</h4>
     </figcaption>
 </figure>
 
 <h4 id="2-configure-the-origin"><strong>2. Configure the Origin</strong></h4>
 <ul>
-<li><strong>Origin domain:</strong> Click on this field and select your S3 bucket from the list, for example: <code>project-frontend-030925.s3.ap-southeast-1.amazonaws.com</code>.</li>
+<li><strong>Origin domain:</strong> Click in this box and select your S3 bucket from the list: <code>ors-fe.s3.ap-southeast-1.amazonaws.com</code>.</li>
 <li><strong>Origin access:</strong> This is the most critical security configuration step.
 <ul>
 <li>Select <code>Legacy access identities</code>.</li>
@@ -835,43 +835,44 @@
 </ul>
 </li>
 </ul>
-<figure><img src="/images/2.prerequisite/2.12-createcloudfrontfe/cf-s3-origin-oai.png"><figcaption>
-      <h4>Configuring the Origin as an S3 Bucket and creating an OAI</h4>
+<figure><img src="/images/2.prerequisite/2.13-createcloudfrontfe/cf-s3-oai-config.png"><figcaption>
+      <h4>Configure the Origin as an S3 Bucket and create an OAI</h4>
     </figcaption>
 </figure>
 
-<h4 id="3-configure-the-remaining-settings"><strong>3. Configure the Remaining Settings</strong></h4>
+<h4 id="3-configure-remaining-settings"><strong>3. Configure Remaining Settings</strong></h4>
 <ul>
 <li><strong>Web Application Firewall (WAF):</strong> Select <code>Do not enable security protections</code>.</li>
+<li><strong>Settings - Price Class:</strong> Select <code>Use North America, Europe, Asia, Middle East, and Africa</code> to optimize cost and performance.</li>
 <li><strong>Settings - Default root object:</strong>
 <ul>
 <li>Type <code>index.html</code>.
 
-<div class="notices info" ><pre><code>This is a required setting. It tells CloudFront which file to return when a user accesses the root domain (e.g., `https://d...cloudfront.net/`) without specifying a particular file.
+<div class="notices info" ><pre><code>This is a mandatory setting. It tells CloudFront which file to return when a user accesses the root domain (e.g., `https://d...cloudfront.net/`) without specifying a particular file.
 </code></pre>
 </div>
 </li>
 </ul>
 </li>
 </ul>
-<figure><img src="/images/2.prerequisite/2.12-createcloudfrontfe/cf-s3-default-root-object.png"><figcaption>
-      <h4>Setting the Default Root Object</h4>
+<figure><img src="/images/2.prerequisite/2.13-createcloudfrontfe/cf-s3-settings.png"><figcaption>
+      <h4>Set up additional settings</h4>
     </figcaption>
 </figure>
 
-<h4 id="4-finalize-and-test"><strong>4. Finalize and Test</strong></h4>
+<h4 id="4-finalize-deploy-and-test"><strong>4. Finalize, Deploy, and Test</strong></h4>
 <ul>
 <li>Scroll to the bottom and click <strong>Create distribution</strong>.</li>
-<li>Similar to before, the deployment process will take a few minutes. Wait until the status is no longer <code>Deploying</code>.</li>
+<li>As before, the deployment process will take a few minutes. Please wait until the status is no longer <code>Deploying</code>.</li>
 <li>Copy the <strong>Distribution domain name</strong> value.</li>
 </ul>
-<figure><img src="/images/2.prerequisite/2.12-createcloudfrontfe/cf-s3-copy-domain.png"><figcaption>
-      <h4>Copying the Domain Name of the Frontend Distribution</h4>
+<figure><img src="/images/2.prerequisite/2.13-createcloudfrontfe/cf-s3-copy-domain.png"><figcaption>
+      <h4>Copy the Domain Name of the Frontend Distribution</h4>
     </figcaption>
 </figure>
 
 <ul>
-<li>Paste this domain name into your browser. You should see your frontend application load successfully.</li>
+<li>Paste this domain name into your browser. You will see your frontend application load successfully, quickly, and securely through the CloudFront network!</li>
 </ul>
 
 
@@ -1236,10 +1237,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/2-prerequiste/2.11-creates3/" title="Create S3 Bucket and Configure Static Website Hosting"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/2-prerequiste/2.12-createcloudfrontbe/" title="Create CloudFront for Backend (ALB)"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/3-accessibilitytoinstances/" title="Connecting to the EC2 Instance" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/3-accessibilitytoinstances/" title="Connecting and Deploying the Application" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1249,19 +1250,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1757247351"></script>
-    <script src="/js/perfect-scrollbar.min.js?1757247351"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1757247351"></script>
-    <script src="/js/jquery.sticky.js?1757247351"></script>
-    <script src="/js/featherlight.min.js?1757247351"></script>
-    <script src="/js/highlight.pack.js?1757247351"></script>
+    <script src="/js/clipboard.min.js?1757251332"></script>
+    <script src="/js/perfect-scrollbar.min.js?1757251332"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1757251332"></script>
+    <script src="/js/jquery.sticky.js?1757251332"></script>
+    <script src="/js/featherlight.min.js?1757251332"></script>
+    <script src="/js/highlight.pack.js?1757251332"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1757247351"></script>
-    <script src="/js/learn.js?1757247351"></script>
-    <script src="/js/hugo-learn.js?1757247351"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1757251332"></script>
+    <script src="/js/learn.js?1757251332"></script>
+    <script src="/js/hugo-learn.js?1757251332"></script>
 
-    <link href="/mermaid/mermaid.css?1757247351" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1757247351"></script>
+    <link href="/mermaid/mermaid.css?1757251332" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1757251332"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

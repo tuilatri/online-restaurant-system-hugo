@@ -1,122 +1,87 @@
 ---
-title : "Create Security Groups for Components"
-date : "2025-09-04" 
+title : "Create Security Groups"
+date : "2025-09-06" 
 weight : 3 
 chapter : false
 pre : " <b> 2.3 </b> "
 ---
 
-### Create Security Groups in Amazon VPC
+### Create Security Layers (Security Group)
 
 ℹ️ **Objective**
 
 *   A **Security Group** acts as a virtual firewall at the instance level to control inbound and outbound traffic.
-*   In this section, we will create 3 separate Security Groups for each component in our architecture:
-    1.  **Bastion Host:** Allows secure SSH access from the outside.
-    2.  **Backend:** Receives traffic from the Load Balancer and allows administration from the Bastion Host.
-    3.  **Application Load Balancer (ALB):** Receives public traffic from users.
+*   In this section, we will create 2 separate Security Groups for the two core components in our architecture:
+    1.  **Web Server (`ors-sg`):** Receives traffic from users and allows administrators to connect.
+    2.  **Database (`ors-db-sg`):** Only allows connections from the Web Server and administrators, ensuring absolute data security.
 
 ---
 
-🔒 **Execution Steps**
+🔒 **Steps to Follow**
 
-#### **1. Create Security Group for the Bastion Host (`project-bastion-host-sg`)**
+#### **1. Create Security Group for the Web Server (`ors-sg`)**
 
-This is the protection layer for the Bastion Host, allowing us to connect to it securely from the Internet.
+This is the security layer for the EC2 instances that will run the Node.js backend application.
 
-*   **Step 1: Start Creating the Security Group**
-    *   From the **VPC Dashboard**, select **Security Groups** from the left menu.
+*   **Step 1: Start creating a Security Group**
+    *   From the **VPC Dashboard** interface, select **Security Groups** from the left menu.
     *   Click on **Create security group**.
 
     {{< figure src="/images/2.prerequisite/2.3-createsg/sg-create.png" title="Create a new Security Group" >}}
 
-*   **Step 2: Configure Basic Information**
-    *   **Security group name:** `project-bastion-host-sg`
-    *   **Description:** `Allow access to Bastion Host`
-    *   **VPC:** Select the `project-vpc` created in the previous step.
+*   **Step 2: Configure basic information**
+    *   **Security group name:** `ors-sg`
+    *   **Description:** `Security group for Online Restaurant Web Server`
+    *   **VPC:** Select the `ors-vpc` VPC created in the previous step.
 
-    {{< figure src="/images/2.prerequisite/2.3-createsg/sg-bh-des.png"  title="Basic information for the Bastion Host SG" >}}
+    {{< figure src="/images/2.prerequisite/2.3-createsg/sg-webserver-config.png"  title="Basic information for the Web Server SG" >}}
 
 *   **Step 3: Set up Inbound Rules**
-    *   Click **Add rule** and configure the following rules:
+    *   In the **Inbound rules** section, click **Add rule** and configure the following 4 rules:
 
 | Type | Protocol | Port range | Source | Description |
 | :--- | :--- | :--- | :--- | :--- |
-| SSH | TCP | 22 | My IP | Allows you to connect via SSH from your current IP. |
-| HTTP | TCP | 80 | Anywhere-IPv4 | Allows HTTP access from anywhere. |
-| HTTPS | TCP | 443 | Anywhere-IPv4 | Allows HTTPS access from anywhere. |
-| All ICMP-IPv4 | All | All | Anywhere-IPv4 | Allows `ping` to check connectivity. |
+| SSH | TCP | 22 | My IP | Allows **you** to connect via SSH from your current IP to manage the server. |
+| HTTP | TCP | 80 | Anywhere-IPv4 | Allows users to access the web server via HTTP. |
+| HTTPS | TCP | 443 | Anywhere-IPv4 | Allows users to access securely via HTTPS. |
+| Custom TCP | TCP | 5000 | Anywhere-IPv4 | Opens the port for the Node.js application (for testing and load balancing). |
 
-    {{< figure src="/images/2.prerequisite/2.3-createsg/sg-bh-ib.png" title="Configuring Inbound Rules for the Bastion Host SG" >}}
+    {{< figure src="/images/2.prerequisite/2.3-createsg/sg-webserver-inbound.png" title="Configure Inbound Rules for the Web Server SG" >}}
 
-*   **Step 4:** Scroll down and click **Create security group**.
+{{% notice info %}}
+When selecting **My IP** as the **Source**, AWS will automatically fill in your public IP address. This enhances security by only allowing administrators to access from a trusted location.
+{{% /notice %}}
+
+*   **Step 4:** Scroll to the bottom and click **Create security group**.
 
 ---
 
-#### **2. Create Security Group for the Backend (`project-backend-sg`)**
+#### **2. Create Security Group for the Database (`ors-db-sg`)**
 
-This protection layer only allows access from the Application Load Balancer and the Bastion Host, ensuring the backend servers are not directly accessible from the Internet.
+This security layer is designed to "lock down" the database, allowing only absolutely necessary connections.
 
-*   **Step 1: Configure Basic Information**
+*   **Step 1: Configure basic information**
     *   Click **Create security group** again.
-    *   **Security group name:** `project-backend-sg`
-    *   **Description:** `Allow access from ALB and Bastion Host`
-    *   **VPC:** Select the `project-vpc`.
+    *   **Security group name:** `ors-db-sg`
+    *   **Description:** `Security group for Online Restaurant Database`
+    *   **VPC:** Select the `ors-vpc` VPC.
 
-    {{< figure src="/images/2.prerequisite/2.3-createsg/sg-be-des.png" title="Basic information for the Backend SG" >}}
+    {{< figure src="/images/2.prerequisite/2.3-createsg/sg-db-config.png" title="Basic information for the Database SG" >}}
 
 *   **Step 2: Set up Inbound Rules**
-    *   Click **Add rule** and configure the following rules:
+    *   Click **Add rule** and configure the following 2 rules:
 
 | Type | Protocol | Port range | Source | Description |
 | :--- | :--- | :--- | :--- | :--- |
-| Custom TCP | TCP | 3000 | Custom -> `project-alb-sg` | Allows the ALB to send traffic to the backend application. |
-| SSH | TCP | 22 | Custom -> `project-bastion-host-sg` | Allows SSH connection from the Bastion Host for administration. |
-| All ICMP-IPv4 | All | All | Anywhere-IPv4 | Allows `ping` to check connectivity. |
+| MYSQL/Aurora | TCP | 3306 | Custom -> `ors-sg` | **Important:** Only allows web servers (belonging to `ors-sg`) to connect to the DB. |
+| MYSQL/Aurora | TCP | 3306 | My IP | Allows **you** to connect to the DB from your personal machine for management (e.g., using MySQL Workbench). |
 
-{{% notice info %}}
-When selecting the **Source**, type `sg-` into the search box, and AWS will display a list of available Security Groups for you to choose from.
+{{% notice success %}}
+**Important Security Principle:** By selecting another Security Group (`ors-sg`) as the **Source**, we create a dynamic rule. Any server belonging to `ors-sg` can connect to the database without needing to specify a particular IP address. This is the best practice for security in a cloud environment.
 {{% /notice %}}
 
-    {{< figure src="/images/2.prerequisite/2.3-createsg/sg-be-ib.png" title="Configuring Inbound Rules for the Backend SG" >}}
+    {{< figure src="/images/2.prerequisite/2.3-createsg/sg-db-inbound.png" title="Configure Inbound Rules for the Database SG" >}}
 
 *   **Step 3:** Click **Create security group**.
 
----
-
-#### **3. Create Security Group for the Application Load Balancer (`project-alb-sg`)**
-
-This protection layer allows users from the Internet to access our application through the ALB.
-
-*   **Step 1: Configure Basic Information**
-    *   Click **Create security group**.
-    *   **Security group name:** `project-alb-sg`
-    *   **Description:** `Allow public traffic to ALB`
-    *   **VPC:** Select the `project-vpc`.
-
-    {{< figure src="/images/2.prerequisite/2.3-createsg/sg-alb-des.png" title="Basic information for the ALB SG" >}}
-
-*   **Step 2: Set up Inbound Rules**
-    *   Click **Add rule** and configure the following rules:
-
-| Type  | Protocol | Port range | Source        | Description |
-| :---  | :---     | :---       | :---          | :---        |
-| HTTP  | TCP      | 80         | Anywhere-IPv4 | Allows users to access via HTTP. |
-| HTTPS | TCP      | 443        | Anywhere-IPv4 | Allows users to access via HTTPS. |
-
-    {{< figure src="/images/2.prerequisite/2.3-createsg/sg-alb-ib.png" title="Configuring Inbound Rules for the ALB SG" >}}
-
-*   **Step 3: Set up Outbound Rules**
-    *   The ALB needs to send traffic to the backend on port 3000. By default, Outbound Rules allow all traffic out, but for better security, we should restrict this.
-    *   Select the **Outbound rules** tab -> **Edit outbound rules**.
-    *   Delete the default rule and **Add rule** with the following:
-
-| Type | Protocol | Port range | Destination | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| Custom TCP | TCP | 3000 | Custom -> `project-backend-sg` | Allows the ALB to send traffic to the backend servers. |
-
-    {{< figure src="/images/2.prerequisite/2.3-createsg/sg-alb-ob.png" title="Configuring Outbound Rules for the ALB SG" >}}
-
-*   **Step 4:** Click **Save rules**, then click **Create security group**.
-
-After completion, you will have 3 Security Groups ready to be assigned to their corresponding resources.
+After completion, you will have 2 correctly configured Security Groups ready to protect your project's resources.

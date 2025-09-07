@@ -1,80 +1,97 @@
 ---
-title : "Cleaning Up Resources"
-date : "2025-09-04" 
+title : "Clean up Resources"
+date : "2025-09-06"
 weight : 4
 chapter : false
-pre : " <b> 4. </b> "
+pre : "<b> 4. </b>"
 ---
+
+To avoid incurring unwanted costs, it's important to delete all the AWS resources that were created during this workshop.
 
 {{% notice warning %}}
-**EXTREMELY IMPORTANT:** This is a mandatory step after you complete the workshop. Failing to clean up resources will cause your AWS account to continue incurring costs, especially for services like NAT Gateway, Application Load Balancer, and EC2.
+**The deletion order is very important!**
+Please follow the steps below sequentially. Deleting resources in the wrong order (e.g., deleting the VPC before the ALB) will cause errors because the resources are still dependent on each other.
 {{% /notice %}}
 
-To ensure nothing is missed, we must delete the resources in the reverse order of their creation.
+#### **1. Delete the Auto Scaling Group (`ors-asg`)**
 
----
-
-🔒 **Execution Steps**
-
-#### **1. Delete CloudFront Distributions**
-You need to delete both distributions created for the Frontend (S3) and Backend (ALB).
-
-*   Navigate to the **CloudFront** service.
-*   Select a distribution, click **Disable**, and confirm.
-*   After the distribution is disabled, select it again and click **Delete**.
-*   Repeat the process for the remaining distribution.
-
-#### **2. Delete the Auto Scaling Group**
-This action will also automatically terminate the EC2 instances managed by the ASG.
+This is the **most important** first step. Otherwise, the ASG will automatically recreate the EC2 instances after you delete them.
 
 *   Navigate to the **EC2** service -> **Auto Scaling Groups**.
-*   Select `project-backend-asg` and click **Delete**.
-*   Type `delete` to confirm and complete the action.
+*   Select `ors-asg`.
+*   Click **Delete**.
+*   Type `delete` in the confirmation box and click **Delete**. This action will also automatically terminate the EC2 instances managed by the ASG.
 
-#### **3. Delete the Application Load Balancer**
-*   Navigate to **EC2** -> **Load Balancers**.
-*   Select `project-backend-alb`, go to **Actions**, and choose **Delete load balancer**.
-*   Type `confirm` to confirm.
+#### **2. Delete the Application Load Balancer (`ors-alb`)**
 
-#### **4. Delete the Target Group**
-*   Navigate to **EC2** -> **Target Groups**.
-*   Select `project-backend-target-group`, go to **Actions**, and choose **Delete**.
+*   In the **EC2 Dashboard**, go to **Load Balancers**.
+*   Select `ors-alb`.
+*   Click **Actions** -> **Delete load balancer**.
+*   Type `confirm` in the confirmation box and click **Delete**.
 
-#### **5. Terminate Remaining EC2 Instances**
-Instances not managed by the ASG must be terminated manually.
+#### **3. Delete the Target Group (`ors-target-group`)**
 
-*   Navigate to **EC2** -> **Instances**.
-*   Select the `project-bastion-host-ec2` and `project-backend-ec2` instances (if the latter wasn't already terminated by the ASG).
-*   Select **Instance state** -> **Terminate instance**.
+*   In the **EC2 Dashboard**, go to **Target Groups**.
+*   Select `ors-target-group`.
+*   Click **Actions** -> **Delete**.
+*   Confirm the deletion.
 
-#### **6. Delete the Launch Template**
-*   Navigate to **EC2** -> **Launch Templates**.
-*   Select `project-backend-lauch-template`, go to **Actions**, and choose **Delete template**.
+#### **4. Delete the EC2 Instance and related resources**
 
-#### **7. Delete the AMI and Related Snapshot**
-*   **Step 1: Deregister the AMI**
-    *   Navigate to **EC2** -> **AMIs**.
-    *   Select `project-backend-ec2-ami`, go to **Actions**, and choose **Deregister AMI**.
-*   **Step 2: Delete the Snapshot**
-    *   Navigate to **EC2** -> **Snapshots**.
-    *   Find the Snapshot created by the AMI (the description usually contains the AMI ID), select it, and go to **Actions** -> **Delete snapshot**.
+*   **Manually Terminate EC2 Instance:**
+    *   Go to **Instances**.
+    *   Select `ors-ec2` (the instance you created initially).
+    *   Click **Instance state** -> **Terminate instance**.
+*   **Deregister AMI:**
+    *   Go to **AMIs** (under the Images section).
+    *   Select `ors-ami`.
+    *   Click **Actions** -> **Deregister AMI**.
+*   **Delete Launch Template:**
+    *   Go to **Launch Templates**.
+    *   Select `ors-launch-template`.
+    *   Click **Actions** -> **Delete template**.
+*   **Delete Key Pair:**
+    *   Go to **Key Pairs** (under the Network & Security section).
+    *   Select `ors-keypair`.
+    *   Click **Actions** -> **Delete**.
 
-#### **8. Delete the S3 Bucket**
-You must first delete all objects inside the bucket.
+#### **5. Delete the RDS Database (`ors-db`)**
+
+*   Navigate to the **RDS** service -> **Databases**.
+*   Select `ors-db`.
+*   Click **Actions** -> **Delete**.
+*   **Uncheck** the `Create final snapshot?` box.
+*   **Check** the `I acknowledge...` box.
+*   Type `delete me` in the confirmation box and click **Delete**.
+
+{{% notice info %}}
+The RDS database deletion process may take a few minutes.
+{{% /notice %}}
+
+#### **6. Delete CloudFront Distributions**
+
+You need to repeat this process for **both** distributions you created (one for the backend and one for the frontend).
+
+*   Navigate to the **CloudFront** service.
+*   Select a distribution.
+*   Click **Disable**. Wait a few minutes until the status updates (the Last modified column shows a value).
+*   Once it is disabled, select the distribution again and click **Delete**.
+
+#### **7. Delete the S3 Bucket (`ors-fe`)**
 
 *   Navigate to the **S3** service.
-*   Go into the `project-frontend-030925` bucket.
-*   Select all files and click **Delete**.
-*   Once the bucket is empty, go back, select the bucket, and click **Delete**.
+*   Select the `ors-fe` bucket.
+*   Click the **Empty** button.
+*   Type `permanently delete` in the confirmation box and click **Empty**.
+*   After the bucket is empty, go back to the bucket list, select `ors-fe` again, and click **Delete**.
+*   Type the bucket name in the confirmation box and click **Delete bucket**.
 
-#### **9. Delete the VPC**
-This is the final step, which will delete the VPC and its associated resources like Subnets, Route Tables, Internet Gateway, and most importantly, the **NAT Gateway**.
+#### **8. Delete the VPC (`ors-vpc`)**
 
-*   Navigate to the **VPC** service.
-*   Select **Your VPCs**, and choose `project-vpc`.
+This is the final step, which deletes the entire network environment.
+
+*   Navigate to the **VPC** service -> **Your VPCs**.
+*   Select `ors-vpc`.
 *   Click **Actions** -> **Delete VPC**.
-*   A window will appear listing the resources to be deleted. Type `delete` and confirm.
-
-#### **10. Delete the Key Pair**
-*   Navigate to **EC2** -> **Key Pairs**.
-*   Select `project-keypair`, go to **Actions**, and choose **Delete**.
+*   A window will appear, listing all related resources that will be deleted along with it (Subnets, Route Tables, Security Groups, etc.).
+*   Type `delete vpc` in the confirmation box and click **Delete**.

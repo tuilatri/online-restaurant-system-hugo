@@ -1,80 +1,97 @@
 ---
 title : "Dọn dẹp tài nguyên"
-date : "2025-09-04" 
+date : "2025-09-06"
 weight : 4
 chapter : false
-pre : " <b> 4. </b> "
+pre : "<b> 4. </b>"
 ---
+
+Để tránh phát sinh chi phí không mong muốn, điều quan trọng là phải xóa tất cả các tài nguyên AWS đã được tạo trong suốt workshop này.
 
 {{% notice warning %}}
-**CỰC KỲ QUAN TRỌNG:** Đây là bước bắt buộc sau khi bạn hoàn thành workshop. Việc không dọn dẹp tài nguyên sẽ khiến tài khoản AWS của bạn tiếp tục phát sinh chi phí, đặc biệt là với các dịch vụ như NAT Gateway, Application Load Balancer và EC2.
+**Thứ tự xóa là rất quan trọng!**
+Hãy thực hiện các bước dưới đây một cách tuần tự. Việc xóa sai thứ tự (ví dụ: xóa VPC trước khi xóa ALB) sẽ gây ra lỗi do các tài nguyên vẫn còn phụ thuộc lẫn nhau.
 {{% /notice %}}
 
-Để đảm bảo không bỏ sót, chúng ta phải xóa các tài nguyên theo thứ tự ngược lại với lúc tạo ra chúng.
+#### **1. Xóa Auto Scaling Group (`ors-asg`)**
 
----
-
-🔒 **Các bước thực hiện**
-
-#### **1. Xóa CloudFront Distributions**
-Bạn cần xóa cả 2 distribution đã tạo cho Frontend (S3) và Backend (ALB).
-
-*   Truy cập dịch vụ **CloudFront**.
-*   Chọn một distribution, nhấn **Disable** và xác nhận.
-*   Sau khi distribution đã được disable, chọn lại nó và nhấn **Delete**.
-*   Lặp lại quá trình cho distribution còn lại.
-
-#### **2. Xóa Auto Scaling Group**
-Thao tác này sẽ tự động xóa luôn EC2 instance do ASG quản lý.
+Đây là bước **quan trọng nhất** cần làm đầu tiên. Nếu không, ASG sẽ tự động tạo lại EC2 instance sau khi bạn xóa chúng.
 
 *   Truy cập dịch vụ **EC2** -> **Auto Scaling Groups**.
-*   Chọn `project-backend-asg` và nhấn **Delete**.
-*   Nhập `delete` để xác nhận và hoàn tất.
+*   Chọn `ors-asg`.
+*   Nhấn **Delete**.
+*   Nhập `delete` vào ô xác nhận và nhấn **Delete**. Thao tác này sẽ tự động xóa cả EC2 instance mà ASG đang quản lý.
 
-#### **3. Xóa Application Load Balancer**
-*   Truy cập **EC2** -> **Load Balancers**.
-*   Chọn `project-backend-alb`, vào **Actions** và chọn **Delete load balancer**.
-*   Nhập `confirm` để xác nhận.
+#### **2. Xóa Application Load Balancer (`ors-alb`)**
 
-#### **4. Xóa Target Group**
-*   Truy cập **EC2** -> **Target Groups**.
-*   Chọn `project-backend-target-group`, vào **Actions** và chọn **Delete**.
+*   Trong **EC2 Dashboard**, đi đến **Load Balancers**.
+*   Chọn `ors-alb`.
+*   Nhấn **Actions** -> **Delete load balancer**.
+*   Nhập `confirm` vào ô xác nhận và nhấn **Delete**.
 
-#### **5. Chấm dứt (Terminate) các EC2 Instance còn lại**
-Cần xóa thủ công các instance không thuộc ASG.
+#### **3. Xóa Target Group (`ors-target-group`)**
 
-*   Truy cập **EC2** -> **Instances**.
-*   Chọn các instance `project-bastion-host-ec2` và `project-backend-ec2` (nếu nó chưa bị ASG xóa).
-*   Chọn **Instance state** -> **Terminate instance**.
+*   Trong **EC2 Dashboard**, đi đến **Target Groups**.
+*   Chọn `ors-target-group`.
+*   Nhấn **Actions** -> **Delete**.
+*   Xác nhận xóa.
 
-#### **6. Xóa Launch Template**
-*   Truy cập **EC2** -> **Launch Templates**.
-*   Chọn `project-backend-lauch-template`, vào **Actions** và chọn **Delete template**.
+#### **4. Xóa EC2 Instance và các tài nguyên liên quan**
 
-#### **7. Xóa AMI và Snapshot liên quan**
-*   **Bước 1: Hủy đăng ký AMI**
-    *   Truy cập **EC2** -> **AMIs**.
-    *   Chọn `project-backend-ec2-ami`, vào **Actions** và chọn **Deregister AMI**.
-*   **Bước 2: Xóa Snapshot**
-    *   Truy cập **EC2** -> **Snapshots**.
-    *   Tìm Snapshot được tạo bởi AMI (thường có mô tả chứa ID của AMI), chọn nó và nhấn **Actions** -> **Delete snapshot**.
+*   **Terminate EC2 Instance thủ công:**
+    *   Đi đến **Instances**.
+    *   Chọn `ors-ec2` (instance bạn đã tạo ban đầu).
+    *   Nhấn **Instance state** -> **Terminate instance**.
+*   **Deregister AMI:**
+    *   Đi đến **AMIs** (dưới mục Images).
+    *   Chọn `ors-ami`.
+    *   Nhấn **Actions** -> **Deregister AMI**.
+*   **Xóa Launch Template:**
+    *   Đi đến **Launch Templates**.
+    *   Chọn `ors-launch-template`.
+    *   Nhấn **Actions** -> **Delete template**.
+*   **Xóa Key Pair:**
+    *   Đi đến **Key Pairs** (dưới mục Network & Security).
+    *   Chọn `ors-keypair`.
+    *   Nhấn **Actions** -> **Delete**.
 
-#### **8. Xóa S3 Bucket**
-Bạn phải xóa hết các đối tượng bên trong bucket trước.
+#### **5. Xóa RDS Database (`ors-db`)**
+
+*   Truy cập dịch vụ **RDS** -> **Databases**.
+*   Chọn `ors-db`.
+*   Nhấn **Actions** -> **Delete**.
+*   **Bỏ tích** ở ô `Create final snapshot?`.
+*   **Tích** vào ô `I acknowledge...`.
+*   Nhập `delete me` vào ô xác nhận và nhấn **Delete**.
+
+{{% notice info %}}
+Quá trình xóa RDS database có thể mất vài phút.
+{{% /notice %}}
+
+#### **6. Xóa CloudFront Distributions**
+
+Bạn cần lặp lại quy trình này cho **cả hai** distribution đã tạo (một cho backend, một cho frontend).
+
+*   Truy cập dịch vụ **CloudFront**.
+*   Chọn một distribution.
+*   Nhấn **Disable**. Đợi vài phút cho đến khi trạng thái cập nhật (cột Last modified có giá trị).
+*   Sau khi đã Disable, chọn lại distribution đó và nhấn **Delete**.
+
+#### **7. Xóa S3 Bucket (`ors-fe`)**
 
 *   Truy cập dịch vụ **S3**.
-*   Vào bucket `project-frontend-030925`.
-*   Chọn tất cả các file và nhấn **Delete**.
-*   Sau khi bucket đã trống, quay ra ngoài, chọn bucket và nhấn **Delete**.
+*   Chọn bucket `ors-fe`.
+*   Nhấn nút **Empty**.
+*   Nhập `permanently delete` vào ô xác nhận và nhấn **Empty**.
+*   Sau khi bucket đã trống, quay lại danh sách bucket, chọn `ors-fe` một lần nữa và nhấn **Delete**.
+*   Nhập tên bucket vào ô xác nhận và nhấn **Delete bucket**.
 
-#### **9. Xóa VPC**
-Đây là bước cuối cùng, sẽ xóa VPC và các tài nguyên con như Subnet, Route Table, Internet Gateway, và quan trọng nhất là **NAT Gateway**.
+#### **8. Xóa VPC (`ors-vpc`)**
 
-*   Truy cập dịch vụ **VPC**.
-*   Chọn **Your VPCs**, chọn `project-vpc`.
+Đây là bước cuối cùng, xóa toàn bộ môi trường mạng.
+
+*   Truy cập dịch vụ **VPC** -> **Your VPCs**.
+*   Chọn `ors-vpc`.
 *   Nhấn **Actions** -> **Delete VPC**.
-*   Một cửa sổ sẽ hiện ra liệt kê các tài nguyên sẽ bị xóa. Nhập `delete` và xác nhận.
-
-#### **10. Xóa Key Pair**
-*   Truy cập **EC2** -> **Key Pairs**.
-*   Chọn `project-keypair`, vào **Actions** và chọn **Delete**.
+*   Một cửa sổ sẽ hiện ra, liệt kê tất cả các tài nguyên liên quan sẽ bị xóa cùng (Subnets, Route Tables, Security Groups, etc.).
+*   Nhập `delete vpc` vào ô xác nhận và nhấn **Delete**.

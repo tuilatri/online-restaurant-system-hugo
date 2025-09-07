@@ -1,102 +1,89 @@
 ---
-title : "Create EC2 Instances for Bastion Host and Backend"
-date : "2025-09-04"
-weight : 4
+title : "Create RDS MySQL Database"
+date : "2025-09-06"
+weight : 5
 chapter : false
-pre : " <b> 2.4 </b> "
+pre : " <b> 2.5 </b> "
 ---
 
-### Initialize EC2 Instances
+### Initialize the Database with Amazon RDS
 
 ℹ️ **Objective**
 
-*   Initialize two separate virtual servers (EC2 Instances):
-    1.  **Bastion Host:** Placed in the Public Subnet to act as a "jump box," helping us securely connect to resources in the Private Subnet.
-    2.  **Backend Instance:** Placed in the Private Subnet to run the application, protected from direct access from the Internet.
+*   Create a managed **MySQL** database using the **Amazon RDS** service.
+*   Place this database within the created **VPC (`ors-vpc`)** network environment and protect it with a **Security Group (`ors-db-sg`)**.
+*   Use the **Free Tier** to save costs during this hands-on workshop.
 
 ---
 
-🔒 **Execution Steps**
+🔒 **Steps to Follow**
 
-First, we will initialize the EC2 Instance for the **Bastion Host**.
+#### **1. Access the RDS Service**
 
-#### **1. Create EC2 Instance for Bastion Host (`project-bastion-host-ec2`)**
+*   From the **AWS Management Console** interface, search for and select the **RDS** service.
 
-*   **Step 1: Start Launching the Instance**
-    *   In the **AWS Management Console**, find and select the **EC2** service.
-    *   From the **EC2 Dashboard**, click on **Launch instance**.
+{{< figure src="/images/2.prerequisite/2.5-createrds/rds-search.png" title="Search for the RDS service" >}}
 
-    {{< figure src="/images/2.prerequisite/2.4-createec2/launch-instance-dashboard.png" title="Start Launching Instance" >}}
+#### **2. Start Creating the Database**
 
-*   **Step 2: Set Name and Choose AMI**
-    *   **Name:** `project-bastion-host-ec2`
-    *   **Application and OS Images (Amazon Machine Image):** Select **Amazon Linux**.
+*   In the **RDS Dashboard**, click the **Create database** button.
 
-    {{< figure src="/images/2.prerequisite/2.4-createec2/bastion-name-ami.png" title="Setting the name and choosing the Amazon Machine Image" >}}
+{{< figure src="/images/2.prerequisite/2.5-createrds/rds-dashboard.png" title="Click Create database" >}}
 
-*   **Step 3: Choose Instance Type**
-    *   **Instance type:** Select `t2.micro` (part of the Free Tier).
+#### **3. Configure Engine and Template**
 
-*   **Step 4: Create a Key Pair for Access**
-    *   This is a crucial step to be able to SSH into the instance.
-    *   Click on **Create new key pair**.
-    *   **Key pair name:** `project-keypair`
-    *   **Key pair type:** `RSA`
-    *   **Private key file format:** `.pem`
-    *   Click **Create key pair**, and the browser will automatically download the `.pem` file.
+*   **Choose a database creation method:** Select **Standard create**.
+*   **Engine options:** Select **MySQL**.
+*   **Templates:** Select **Production**.
 
-    {{% notice warning %}}
-    **IMPORTANT:** Store this `.pem` file in a safe place. You will not be able to download it a second time. If you lose it, you will lose access to your EC2 instance.
-    {{% /notice %}}
+{{% notice info %}}
+Choosing **Free tier** will automatically limit the configuration options (e.g., you can only select a Single DB instance) to ensure you do not incur unexpected costs.
+{{% /notice %}}
 
-    {{< figure src="/images/2.prerequisite/2.4-createec2/create-key-pair.png" title="Creating a new Key Pair" >}}
+{{< figure src="/images/2.prerequisite/2.5-createrds/rds-engine-template.png" title="Select Standard create, MySQL, and Free Tier" >}}
 
-*   **Step 5: Configure Network Settings**
-    *   Click on **Edit** in the **Network settings** section.
-    *   **VPC:** Select the `project-vpc` you created.
-    *   **Subnet:** Select one of the two **Public Subnets** (e.g., `...public-subnet-ap-southeast-1a`).
-    *   **Auto-assign public IP:** `Enable`.
-    *   **Firewall (security groups):** Select **Select existing security group** and choose `project-bastion-host-sg`.
+#### **4. Configure Settings**
 
-    {{< figure src="/images/2.prerequisite/2.4-createec2/bastion-network-settings.png" title="Configuring network settings for the Bastion Host" >}}
+*   **DB instance identifier:** `ors-db`
+*   **Master username:** `admin`
+*   **Master password:** Enter your password (e.g., `0812-haminhtri`).
+*   **Confirm password:** Re-enter your password.
 
-*   **Step 6: Launch the Instance**
-    *   Review the information in the **Summary** panel.
-    *   Click **Launch instance**.
+{{< figure src="/images/2.prerequisite/2.5-createrds/rds-settings.png" title="Configure login credentials for the Database" >}}
 
----
+#### **5. Configure Connectivity**
 
-#### **2. Create EC2 Instance for Backend (`project-backend-ec2`)**
+This is a crucial step to place the database in the correct network environment.
 
-Next, we will repeat the process to create the Backend instance, with a few important changes in the Network Settings.
+*   **Virtual private cloud (VPC):** Select `ors-vpc`.
+*   **DB Subnet Group:** Leave the default; AWS will automatically create a new Subnet Group suitable for your VPC.
+*   **Public access:** Select **Yes**.
+*   **VPC security group (firewall):** Select **Choose existing**.
+*   **Existing VPC security groups:** Keep the `default` Security Group and select `ors-db-sg`.
 
-*   **Step 1: Start Launching the Instance**
-    *   From the **EC2 Dashboard**, click **Launch instance** again.
+<!-- {{% notice warning %}}
+**Reason for choosing Public access = Yes:**
+In this workshop, we need to connect to the database from our personal computer (using MySQL Workbench) to import initial data. This is secured by the **Security Group `ors-db-sg`**, which only allows access from your IP (the **My IP** rule created in step 2.3). In a real Production environment, you should select **No** and access via a Bastion Host.
+{{% /notice %}} -->
 
-*   **Step 2: Set Name and Choose AMI**
-    *   **Name:** `project-backend-ec2`
-    *   **AMI:** Select **Amazon Linux**.
+{{< figure src="/images/2.prerequisite/2.5-createrds/rds-connectivity.png" title="Configure network connectivity for RDS" >}}
 
-*   **Step 3: Choose Instance Type**
-    *   **Instance type:** Select `t2.micro`.
+#### **6. Configure Additional Configuration**
 
-*   **Step 4: Select the Existing Key Pair**
-    *   In the **Key pair (login)** section, select the `project-keypair` created earlier.
+*   Expand the **Additional configuration** section.
+*   **Initial database name:** `ors`
+*   This is the initial schema name that the application will use.
 
-    {{< figure src="/images/2.prerequisite/2.4-createec2/backend-select-key-pair.png" title="Selecting the existing Key Pair" >}}
+{{< figure src="/images/2.prerequisite/2.5-createrds/rds-additional-config.png" title="Set the initial schema name" >}}
 
-*   **Step 5: Configure Network Settings**
-    *   Click on **Edit** in the **Network settings** section.
-    *   **VPC:** Select `project-vpc`.
-    *   **Subnet:** Select one of the two **Private Subnets** (e.g., `...private-subnet-ap-southeast-1b`).
-    *   **Auto-assign public IP:** `Disable`. This is a key difference to protect the backend server.
-    *   **Firewall (security groups):** Select **Select existing security group** and choose `project-backend-sg`.
+#### **7. Finalize, Create, and Check**
 
-    {{< figure src="/images/2.prerequisite/2.4-createec2/backend-network-settings.png" title="Configuring network settings for the Backend Instance" >}}
+*   Scroll to the bottom and click **Create database**.
+*   The database initialization process can take 5 to 10 minutes. Please wait until the **Status** column changes to **Available**.
 
-*   **Step 6: Launch the Instance**
-    *   Review the information and click **Launch instance**.
+{{< figure src="/images/2.prerequisite/2.5-createrds/rds-creating.png" title="Wait for the Database to be created" >}}
 
-After completing, you can click **View all instances** to see both newly created servers in the `Running` state.
+*   Once completed, click on the newly created `ors-db` instance.
+*   In the **Connectivity & security** tab, find and copy the **Endpoint** value. This is the address used to connect to your database.
 
-{{< figure src="/images/2.prerequisite/2.4-createec2/view-all-instances.png" title="List of created EC2 Instances" >}}
+{{< figure src="/images/2.prerequisite/2.5-createrds/rds-endpoint.png" title="Get the Endpoint information for connection" >}}

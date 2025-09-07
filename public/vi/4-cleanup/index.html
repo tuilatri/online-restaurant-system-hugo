@@ -12,21 +12,21 @@
     <title>Dọn dẹp tài nguyên :: AWS System Manager</title>
 
     
-    <link href="/css/nucleus.css?1757247398" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1757247398" rel="stylesheet">
-    <link href="/css/hybrid.css?1757247398" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1757247398" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1757247398" rel="stylesheet">
-    <link href="/css/auto-complete.css?1757247398" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1757247398" rel="stylesheet">
-    <link href="/css/theme.css?1757247398" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1757247398" rel="stylesheet">
+    <link href="/css/nucleus.css?1757251938" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1757251938" rel="stylesheet">
+    <link href="/css/hybrid.css?1757251938" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1757251938" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1757251938" rel="stylesheet">
+    <link href="/css/auto-complete.css?1757251938" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1757251938" rel="stylesheet">
+    <link href="/css/theme.css?1757251938" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1757251938" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1757247398" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1757251938" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1757247398"></script>
+    <script src="/js/jquery-3.3.1.min.js?1757251938"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,12 +57,12 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1757247398"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1757247398"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1757251938"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1757251938"></script>
 <script type="text/javascript">
     var baseurl = "http:\/\/localhost:1313\/vi";
 </script>
-<script type="text/javascript" src="/js/search.js?1757247398"></script>
+<script type="text/javascript" src="/js/search.js?1757251938"></script>
 
     
   </div>
@@ -580,7 +580,7 @@
         
         ">
       <a href="/vi/4-cleanup/">
-           <b> 4. </b> Dọn dẹp tài nguyên
+          <b> 4. </b>Dọn dẹp tài nguyên
           
             <i class="fas fa-check read-icon"></i>
           
@@ -798,86 +798,103 @@
 
 
 
-	
-<div class="notices warning" ><p><strong>CỰC KỲ QUAN TRỌNG:</strong> Đây là bước bắt buộc sau khi bạn hoàn thành workshop. Việc không dọn dẹp tài nguyên sẽ khiến tài khoản AWS của bạn tiếp tục phát sinh chi phí, đặc biệt là với các dịch vụ như NAT Gateway, Application Load Balancer và EC2.</p>
+	<p>Để tránh phát sinh chi phí không mong muốn, điều quan trọng là phải xóa tất cả các tài nguyên AWS đã được tạo trong suốt workshop này.</p>
+
+<div class="notices warning" ><p><strong>Thứ tự xóa là rất quan trọng!</strong>
+Hãy thực hiện các bước dưới đây một cách tuần tự. Việc xóa sai thứ tự (ví dụ: xóa VPC trước khi xóa ALB) sẽ gây ra lỗi do các tài nguyên vẫn còn phụ thuộc lẫn nhau.</p>
 </div>
 
-<p>Để đảm bảo không bỏ sót, chúng ta phải xóa các tài nguyên theo thứ tự ngược lại với lúc tạo ra chúng.</p>
-<hr>
-<p>🔒 <strong>Các bước thực hiện</strong></p>
-<h4 id="1-xóa-cloudfront-distributions"><strong>1. Xóa CloudFront Distributions</strong></h4>
-<p>Bạn cần xóa cả 2 distribution đã tạo cho Frontend (S3) và Backend (ALB).</p>
-<ul>
-<li>Truy cập dịch vụ <strong>CloudFront</strong>.</li>
-<li>Chọn một distribution, nhấn <strong>Disable</strong> và xác nhận.</li>
-<li>Sau khi distribution đã được disable, chọn lại nó và nhấn <strong>Delete</strong>.</li>
-<li>Lặp lại quá trình cho distribution còn lại.</li>
-</ul>
-<h4 id="2-xóa-auto-scaling-group"><strong>2. Xóa Auto Scaling Group</strong></h4>
-<p>Thao tác này sẽ tự động xóa luôn EC2 instance do ASG quản lý.</p>
+<h4 id="1-xóa-auto-scaling-group-"><strong>1. Xóa Auto Scaling Group (<code>ors-asg</code>)</strong></h4>
+<p>Đây là bước <strong>quan trọng nhất</strong> cần làm đầu tiên. Nếu không, ASG sẽ tự động tạo lại EC2 instance sau khi bạn xóa chúng.</p>
 <ul>
 <li>Truy cập dịch vụ <strong>EC2</strong> -&gt; <strong>Auto Scaling Groups</strong>.</li>
-<li>Chọn <code>project-backend-asg</code> và nhấn <strong>Delete</strong>.</li>
-<li>Nhập <code>delete</code> để xác nhận và hoàn tất.</li>
+<li>Chọn <code>ors-asg</code>.</li>
+<li>Nhấn <strong>Delete</strong>.</li>
+<li>Nhập <code>delete</code> vào ô xác nhận và nhấn <strong>Delete</strong>. Thao tác này sẽ tự động xóa cả EC2 instance mà ASG đang quản lý.</li>
 </ul>
-<h4 id="3-xóa-application-load-balancer"><strong>3. Xóa Application Load Balancer</strong></h4>
+<h4 id="2-xóa-application-load-balancer-"><strong>2. Xóa Application Load Balancer (<code>ors-alb</code>)</strong></h4>
 <ul>
-<li>Truy cập <strong>EC2</strong> -&gt; <strong>Load Balancers</strong>.</li>
-<li>Chọn <code>project-backend-alb</code>, vào <strong>Actions</strong> và chọn <strong>Delete load balancer</strong>.</li>
-<li>Nhập <code>confirm</code> để xác nhận.</li>
+<li>Trong <strong>EC2 Dashboard</strong>, đi đến <strong>Load Balancers</strong>.</li>
+<li>Chọn <code>ors-alb</code>.</li>
+<li>Nhấn <strong>Actions</strong> -&gt; <strong>Delete load balancer</strong>.</li>
+<li>Nhập <code>confirm</code> vào ô xác nhận và nhấn <strong>Delete</strong>.</li>
 </ul>
-<h4 id="4-xóa-target-group"><strong>4. Xóa Target Group</strong></h4>
+<h4 id="3-xóa-target-group-"><strong>3. Xóa Target Group (<code>ors-target-group</code>)</strong></h4>
 <ul>
-<li>Truy cập <strong>EC2</strong> -&gt; <strong>Target Groups</strong>.</li>
-<li>Chọn <code>project-backend-target-group</code>, vào <strong>Actions</strong> và chọn <strong>Delete</strong>.</li>
+<li>Trong <strong>EC2 Dashboard</strong>, đi đến <strong>Target Groups</strong>.</li>
+<li>Chọn <code>ors-target-group</code>.</li>
+<li>Nhấn <strong>Actions</strong> -&gt; <strong>Delete</strong>.</li>
+<li>Xác nhận xóa.</li>
 </ul>
-<h4 id="5-chấm-dứt-terminate-các-ec2-instance-còn-lại"><strong>5. Chấm dứt (Terminate) các EC2 Instance còn lại</strong></h4>
-<p>Cần xóa thủ công các instance không thuộc ASG.</p>
+<h4 id="4-xóa-ec2-instance-và-các-tài-nguyên-liên-quan"><strong>4. Xóa EC2 Instance và các tài nguyên liên quan</strong></h4>
 <ul>
-<li>Truy cập <strong>EC2</strong> -&gt; <strong>Instances</strong>.</li>
-<li>Chọn các instance <code>project-bastion-host-ec2</code> và <code>project-backend-ec2</code> (nếu nó chưa bị ASG xóa).</li>
-<li>Chọn <strong>Instance state</strong> -&gt; <strong>Terminate instance</strong>.</li>
-</ul>
-<h4 id="6-xóa-launch-template"><strong>6. Xóa Launch Template</strong></h4>
+<li><strong>Terminate EC2 Instance thủ công:</strong>
 <ul>
-<li>Truy cập <strong>EC2</strong> -&gt; <strong>Launch Templates</strong>.</li>
-<li>Chọn <code>project-backend-lauch-template</code>, vào <strong>Actions</strong> và chọn <strong>Delete template</strong>.</li>
-</ul>
-<h4 id="7-xóa-ami-và-snapshot-liên-quan"><strong>7. Xóa AMI và Snapshot liên quan</strong></h4>
-<ul>
-<li><strong>Bước 1: Hủy đăng ký AMI</strong>
-<ul>
-<li>Truy cập <strong>EC2</strong> -&gt; <strong>AMIs</strong>.</li>
-<li>Chọn <code>project-backend-ec2-ami</code>, vào <strong>Actions</strong> và chọn <strong>Deregister AMI</strong>.</li>
+<li>Đi đến <strong>Instances</strong>.</li>
+<li>Chọn <code>ors-ec2</code> (instance bạn đã tạo ban đầu).</li>
+<li>Nhấn <strong>Instance state</strong> -&gt; <strong>Terminate instance</strong>.</li>
 </ul>
 </li>
-<li><strong>Bước 2: Xóa Snapshot</strong>
+<li><strong>Deregister AMI:</strong>
 <ul>
-<li>Truy cập <strong>EC2</strong> -&gt; <strong>Snapshots</strong>.</li>
-<li>Tìm Snapshot được tạo bởi AMI (thường có mô tả chứa ID của AMI), chọn nó và nhấn <strong>Actions</strong> -&gt; <strong>Delete snapshot</strong>.</li>
+<li>Đi đến <strong>AMIs</strong> (dưới mục Images).</li>
+<li>Chọn <code>ors-ami</code>.</li>
+<li>Nhấn <strong>Actions</strong> -&gt; <strong>Deregister AMI</strong>.</li>
+</ul>
+</li>
+<li><strong>Xóa Launch Template:</strong>
+<ul>
+<li>Đi đến <strong>Launch Templates</strong>.</li>
+<li>Chọn <code>ors-launch-template</code>.</li>
+<li>Nhấn <strong>Actions</strong> -&gt; <strong>Delete template</strong>.</li>
+</ul>
+</li>
+<li><strong>Xóa Key Pair:</strong>
+<ul>
+<li>Đi đến <strong>Key Pairs</strong> (dưới mục Network &amp; Security).</li>
+<li>Chọn <code>ors-keypair</code>.</li>
+<li>Nhấn <strong>Actions</strong> -&gt; <strong>Delete</strong>.</li>
 </ul>
 </li>
 </ul>
-<h4 id="8-xóa-s3-bucket"><strong>8. Xóa S3 Bucket</strong></h4>
-<p>Bạn phải xóa hết các đối tượng bên trong bucket trước.</p>
+<h4 id="5-xóa-rds-database-"><strong>5. Xóa RDS Database (<code>ors-db</code>)</strong></h4>
+<ul>
+<li>Truy cập dịch vụ <strong>RDS</strong> -&gt; <strong>Databases</strong>.</li>
+<li>Chọn <code>ors-db</code>.</li>
+<li>Nhấn <strong>Actions</strong> -&gt; <strong>Delete</strong>.</li>
+<li><strong>Bỏ tích</strong> ở ô <code>Create final snapshot?</code>.</li>
+<li><strong>Tích</strong> vào ô <code>I acknowledge...</code>.</li>
+<li>Nhập <code>delete me</code> vào ô xác nhận và nhấn <strong>Delete</strong>.</li>
+</ul>
+
+<div class="notices info" ><p>Quá trình xóa RDS database có thể mất vài phút.</p>
+</div>
+
+<h4 id="6-xóa-cloudfront-distributions"><strong>6. Xóa CloudFront Distributions</strong></h4>
+<p>Bạn cần lặp lại quy trình này cho <strong>cả hai</strong> distribution đã tạo (một cho backend, một cho frontend).</p>
+<ul>
+<li>Truy cập dịch vụ <strong>CloudFront</strong>.</li>
+<li>Chọn một distribution.</li>
+<li>Nhấn <strong>Disable</strong>. Đợi vài phút cho đến khi trạng thái cập nhật (cột Last modified có giá trị).</li>
+<li>Sau khi đã Disable, chọn lại distribution đó và nhấn <strong>Delete</strong>.</li>
+</ul>
+<h4 id="7-xóa-s3-bucket-"><strong>7. Xóa S3 Bucket (<code>ors-fe</code>)</strong></h4>
 <ul>
 <li>Truy cập dịch vụ <strong>S3</strong>.</li>
-<li>Vào bucket <code>project-frontend-030925</code>.</li>
-<li>Chọn tất cả các file và nhấn <strong>Delete</strong>.</li>
-<li>Sau khi bucket đã trống, quay ra ngoài, chọn bucket và nhấn <strong>Delete</strong>.</li>
+<li>Chọn bucket <code>ors-fe</code>.</li>
+<li>Nhấn nút <strong>Empty</strong>.</li>
+<li>Nhập <code>permanently delete</code> vào ô xác nhận và nhấn <strong>Empty</strong>.</li>
+<li>Sau khi bucket đã trống, quay lại danh sách bucket, chọn <code>ors-fe</code> một lần nữa và nhấn <strong>Delete</strong>.</li>
+<li>Nhập tên bucket vào ô xác nhận và nhấn <strong>Delete bucket</strong>.</li>
 </ul>
-<h4 id="9-xóa-vpc"><strong>9. Xóa VPC</strong></h4>
-<p>Đây là bước cuối cùng, sẽ xóa VPC và các tài nguyên con như Subnet, Route Table, Internet Gateway, và quan trọng nhất là <strong>NAT Gateway</strong>.</p>
+<h4 id="8-xóa-vpc-"><strong>8. Xóa VPC (<code>ors-vpc</code>)</strong></h4>
+<p>Đây là bước cuối cùng, xóa toàn bộ môi trường mạng.</p>
 <ul>
-<li>Truy cập dịch vụ <strong>VPC</strong>.</li>
-<li>Chọn <strong>Your VPCs</strong>, chọn <code>project-vpc</code>.</li>
+<li>Truy cập dịch vụ <strong>VPC</strong> -&gt; <strong>Your VPCs</strong>.</li>
+<li>Chọn <code>ors-vpc</code>.</li>
 <li>Nhấn <strong>Actions</strong> -&gt; <strong>Delete VPC</strong>.</li>
-<li>Một cửa sổ sẽ hiện ra liệt kê các tài nguyên sẽ bị xóa. Nhập <code>delete</code> và xác nhận.</li>
-</ul>
-<h4 id="10-xóa-key-pair"><strong>10. Xóa Key Pair</strong></h4>
-<ul>
-<li>Truy cập <strong>EC2</strong> -&gt; <strong>Key Pairs</strong>.</li>
-<li>Chọn <code>project-keypair</code>, vào <strong>Actions</strong> và chọn <strong>Delete</strong>.</li>
+<li>Một cửa sổ sẽ hiện ra, liệt kê tất cả các tài nguyên liên quan sẽ bị xóa cùng (Subnets, Route Tables, Security Groups, etc.).</li>
+<li>Nhập <code>delete vpc</code> vào ô xác nhận và nhấn <strong>Delete</strong>.</li>
 </ul>
 
 
@@ -1251,19 +1268,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1757247398"></script>
-    <script src="/js/perfect-scrollbar.min.js?1757247398"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1757247398"></script>
-    <script src="/js/jquery.sticky.js?1757247398"></script>
-    <script src="/js/featherlight.min.js?1757247398"></script>
-    <script src="/js/highlight.pack.js?1757247398"></script>
+    <script src="/js/clipboard.min.js?1757251938"></script>
+    <script src="/js/perfect-scrollbar.min.js?1757251938"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1757251938"></script>
+    <script src="/js/jquery.sticky.js?1757251938"></script>
+    <script src="/js/featherlight.min.js?1757251938"></script>
+    <script src="/js/highlight.pack.js?1757251938"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1757247398"></script>
-    <script src="/js/learn.js?1757247398"></script>
-    <script src="/js/hugo-learn.js?1757247398"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1757251938"></script>
+    <script src="/js/learn.js?1757251938"></script>
+    <script src="/js/hugo-learn.js?1757251938"></script>
 
-    <link href="/mermaid/mermaid.css?1757247398" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1757247398"></script>
+    <link href="/mermaid/mermaid.css?1757251938" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1757251938"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

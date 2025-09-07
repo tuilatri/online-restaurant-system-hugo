@@ -1,52 +1,47 @@
 ---
-title : "Weather Application Project"
-date : "2025-09-05" 
+title : "Deploying an Online Restaurant Project on AWS"
+date : "2025-09-06" 
 weight : 1 
 chapter : false
 ---
-# Building an Interactive Weather Application
+# Deploying a Full-Stack Online Restaurant Project on AWS
 
 ### Overview
 
-In this workshop, you will be guided step-by-step to build a complete and highly interactive weather application. The project uses JavaScript for the frontend to handle the user interface and interactions, along with a simple Node.js (Express) backend to securely communicate with an external weather API.
+In this workshop, you will be guided step-by-step to deploy a complete online restaurant application on the Amazon Web Services (AWS) platform. The project includes a frontend built with HTML, CSS, and JavaScript, along with a powerful backend using Node.js (Express) and a MySQL database (RDS), creating a scalable, secure, and high-performance system.
 
-![Weather App Preview](/images/ors-demo.png) 
+![Project Architecture on AWS](/images/ors-demo.png) 
 
-### Key Project Features
+### Technologies and Services Used
 
-ℹ️ This application not only displays basic weather information but also integrates many advanced features to provide the best user experience.
+ℹ️ The goal of the workshop is to build a professional cloud infrastructure that is fault-tolerant and auto-scaling to meet user traffic demands.
 
-💡 **Highlight Features:**
+💡 **The main AWS services used are:**
 
-*   **Detailed Weather Display:** Provides current weather information and a forecast for the next 7 days.
-*   **Smart Search:** Automatically suggests locations as the user types.
-*   **Geolocation:** Automatically fetches weather data based on the user's current location.
-*   **Multi-language Support:** Supports over 40 different languages, allowing users to choose their preferred display language.
-*   **Save Favorite Locations:** Uses `localStorage` to save locations that the user is interested in.
-*   **Unit Conversion:** Easily switch the temperature between Celsius (°C) and Fahrenheit (°F).
-*   **Advanced Metrics:** Displays important indices such as Air Quality (AQI), UV index, and chance of rain.
-*   **Dynamic UI:** Features randomly changing backgrounds and applies smooth transition effects.
+*   **VPC (Virtual Private Cloud):** Create a separate and secure network environment on AWS, including Public Subnets for resources that need internet access and Private Subnets to protect the database.
+*   **EC2 (Elastic Compute Cloud):** Where the Node.js backend application is deployed and run.
+*   **AMI & Launch Templates:** Create a "template" for the server, helping to automate the creation of new EC2 instances uniformly.
+*   **Application Load Balancer (ALB):** Distribute traffic to multiple EC2 instances, increasing the application's availability and load-handling capacity.
+*   **Auto Scaling Group (ASG):** Automatically adjust the number of EC2 instances based on traffic, ensuring stable performance and cost optimization.
+*   **RDS (Relational Database Service):** Provide a fully managed MySQL database, simplifying installation, operation, and backup.
+*   **S3 (Simple Storage Service):** Store and serve the frontend's static resources (HTML, CSS, JavaScript, images).
+*   **CloudFront:** A Content Delivery Network (CDN) service that helps speed up page load times for users globally and secures both the frontend and backend.
 
 ### Architecture and Scope
 
-ℹ️ The project is divided into two main parts: the **Frontend** (client-side) and the **Backend** (server-side), which communicate with each other via an API.
+ℹ️ The project is clearly separated into two parts: **Frontend** (user interface) and **Backend** (processing system), deployed independently but communicating closely with each other via API.
 
-**Frontend (Client-side)**
+**Backend (Server-side)**
 
-*   Responsible for displaying the entire user interface and handling interactions.
-*   **`main.js`**: The central file, managing the main flow and events (search, language selection, saving locations).
-*   **`ui.js`**: Manages updating and displaying data on the DOM (Document Object Model), including the loading skeleton effect.
-*   **`api.js`**: Sends `fetch` requests to the backend to get weather data and search suggestions.
-*   **`lang.js`**: Contains translation data and the logic to update static text according to the selected language.
-*   **`favorites.js`**: Provides functions to manage the list of favorite locations in `localStorage`.
-*   **`clock.js`**: Logic for both the analog and digital clocks displayed on the interface.
-*   **`animations.js`**: Contains functions for creating effects (e.g., the number counting animation for the temperature).
+*   The Node.js application is deployed on **EC2 instances** within an **Auto Scaling Group**.
+*   The **Application Load Balancer** will receive requests from users and forward them to the active EC2 instances.
+*   The **RDS MySQL** database is placed in a Private Subnet, only allowing access from EC2 instances to ensure maximum security.
+*   A **CloudFront distribution** is configured to point to the ALB, providing a layer of protection and acceleration for the API endpoints.
 
-🔒 **Backend (Server-side)**
+🔒 **Frontend (Client-side)**
 
-*   Acts as a secure proxy layer between the frontend and the WeatherAPI.
-*   **`server.js`**: Built with Node.js and Express, it creates endpoints for the frontend to call.
-    *   `/weather`: Receives requests from the frontend, then calls the WeatherAPI with the API key secured on the server to fetch weather data.
-    *   `/search`: Receives search requests, then calls the WeatherAPI to get a list of suggestions.
+*   The entire frontend source code (static files) is uploaded to an **S3 bucket**.
+*   This S3 bucket is configured to function as a static website.
+*   Another **CloudFront distribution** is set up to serve content from the S3 bucket. The use of **Origin Access Identity (OAI)** ensures that users can only access the frontend through CloudFront, preventing direct access to the S3 bucket.
 
-💡 **Let's start building this exciting project in the upcoming sections!**
+💡 **Let's start building a powerful and professional infrastructure for your application in the following sections!**

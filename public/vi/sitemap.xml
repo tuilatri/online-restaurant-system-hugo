@@ -106,6 +106,19 @@
                 href="http://localhost:1313/vi/2-prerequiste/2.3-createsg/"
                 />
   </url><url>
+    <loc>http://localhost:1313/vi/4-cleanup/</loc>
+    <lastmod>2025-09-06T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/4-cleanup/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/vi/4-cleanup/"
+                />
+  </url><url>
     <loc>http://localhost:1313/vi/2-prerequiste/2.4-createec2/</loc>
     <lastmod>2025-09-06T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -117,19 +130,6 @@
                 rel="alternate"
                 hreflang="vi"
                 href="http://localhost:1313/vi/2-prerequiste/2.4-createec2/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/vi/4-cleanup/</loc>
-    <lastmod>2025-09-04T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/4-cleanup/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="http://localhost:1313/vi/4-cleanup/"
                 />
   </url><url>
     <loc>http://localhost:1313/vi/5-conclusion/</loc>

@@ -1,47 +1,55 @@
 ---
-title : "Introduction and Architecture Overview"
-date : "2025-09-02" 
+title : "Introduction and Architectural Overview"
+date : "2025-09-06" 
 weight : 1 
 chapter : false
 pre : " <b> 1. </b> "
 ---
 
-### Architecture Overview
+### Architectural Overview
 
-In this workshop, we will deploy a complete weather forecast application onto the AWS environment. The architecture is designed to ensure High Availability, Scalability, and Security by using core AWS services.
+In this workshop, we will deploy a complete online restaurant application to the AWS environment. The architecture is designed to ensure **High Availability**, **Scalability**, and **Security** by using core AWS services.
 
-Below is the overall architecture diagram of the project we will be building:
+Below is the overall architectural diagram of the project we will build:
 
-![Project Architecture](/images/1.introduction/weather-application-architecture.png) 
+![Online Restaurant Project Architecture on AWS](/images/1.introduction/ors-architecture.png) 
 
 ### AWS Services Used
 
 Here is a list of the main services and their roles in this project:
 
-#### Networking and Security
+#### Networking & Security
 
-*   **Amazon VPC (Virtual Private Cloud)**: This is the networking foundation for the entire project. We use a VPC to create a separate and isolated network environment on AWS, allowing us to have complete control over network resources, including IP address ranges, subnets, and route tables.
+*   **Amazon VPC (Virtual Private Cloud)**: This is the networking foundation for the entire project. We will create a VPC named `ors-vpc` to establish an isolated network environment, allowing complete control over the IP range, subnets, and route tables.
 
 *   **Public & Private Subnets**:
-    *   **Public Subnets**: Used for resources that need direct access from the Internet, such as the Application Load Balancer and the Bastion Host.
-    *   **Private Subnets**: Used to host sensitive resources like the backend EC2 instances, preventing direct access from the Internet to enhance security.
+    *   **Public Subnets**: Used for resources that need to be accessed from the internet, such as the **Application Load Balancer**.
+    *   **Private Subnets**: Used to house sensitive resources like the backend **EC2** servers and the **RDS** database, preventing direct access from the internet to enhance security.
 
-*   **Security Groups**: They act as a virtual firewall for EC2 instances to control inbound and outbound traffic. In this project, we configure separate Security Groups for the Bastion Host, the Backend servers, and the Application Load Balancer to only allow necessary connections.
+*   **Security Groups**: Act as a virtual firewall to control inbound and outbound traffic.
+    *   `ors-sg`: For the Web Server, allowing traffic from the internet on ports **80 (HTTP)**, **443 (HTTPS)**, and **5000 (Node.js App)**, as well as port **22 (SSH)** from your IP for administration.
+    *   `ors-db-sg`: For the Database, only allowing connections from servers within the `ors-sg` Security Group on port **3306 (MySQL)**, ensuring the database is completely protected.
 
-#### Compute and Scaling
+#### Database
 
-*   **Amazon EC2 (Elastic Compute Cloud)**: Provides virtual servers to run the application.
-    *   **Backend Instances**: EC2 instances located in the private subnet, responsible for running the Node.js application to handle logic and communicate with the weather API.
-    *   **Bastion Host**: An EC2 instance placed in the public subnet, acting as a secure access gateway for administrators to SSH into and manage the backend servers in the private subnet.
+*   **Amazon RDS (Relational Database Service)**: Provides a fully managed **MySQL** database. We will create an instance named `ors-db` in a Private Subnet, which simplifies operations, backups, and ensures security.
 
-*   **Application Load Balancer (ALB)**: Automatically distributes incoming traffic from users to multiple backend EC2 instances. The ALB helps increase the application's availability and fault tolerance. It also performs health checks to ensure requests are only sent to healthy servers.
+#### Compute & Scalability
 
-*   **Auto Scaling Group (ASG)**: Automatically adjusts the number of backend EC2 instances based on the actual load. When traffic increases, the ASG automatically adds new servers and removes them when traffic decreases, helping to optimize costs and ensure performance.
+*   **Amazon EC2 (Elastic Compute Cloud)**: Provides virtual servers to run the **Node.js** backend application. These servers will be placed in a Private Subnet.
 
-#### Storage and Content Delivery
+*   **AMI (Amazon Machine Image) & Launch Template**:
+    *   We will configure a complete EC2 instance (installing Node.js, Git, etc.) and then create an AMI named `ors-ami`.
+    *   This AMI is then used in a **Launch Template** named `ors-launch-template` to serve as a "blueprint" for creating new servers automatically and consistently.
 
-*   **Amazon S3 (Simple Storage Service)**: A highly scalable object storage service. We use S3 to store the entire frontend source code (HTML, CSS, JavaScript) and configure it to function as a static website.
+*   **Application Load Balancer (ALB)**: Automatically distributes incoming traffic from users to multiple backend EC2 servers via a **Target Group** (`ors-target-group`). The ALB also performs health checks to ensure requests are only sent to healthy instances.
 
-*   **Amazon CloudFront**: A content delivery network (CDN) service that helps accelerate the loading of web pages and APIs for users worldwide.
-    *   **Frontend Distribution**: Distributes static content from S3, caching it at Edge Locations closest to the users, while also securing the S3 bucket using Origin Access Identity (OAI).
-    *   **Backend Distribution**: Provides a secure HTTPS endpoint for the API, forwarding requests to the Application Load Balancer.
+*   **Auto Scaling Group (ASG)**: Automatically adjusts the number of backend EC2 servers based on the actual load (e.g., number of requests per minute). When traffic increases, the ASG will automatically add new servers and will remove them when traffic decreases, helping to optimize costs and ensure performance.
+
+#### Storage & Content Delivery
+
+*   **Amazon S3 (Simple Storage Service)**: Used to store the entire frontend source code (HTML, CSS, JavaScript, images) in a bucket named `ors-fe`. This bucket will be configured to function as a static website.
+
+*   **Amazon CloudFront**: Is a Content Delivery Network (CDN) service that helps speed up and secure both the frontend and backend.
+    *   **Frontend Distribution**: Distributes static content from S3. We will use **Origin Access Identity (OAI)** to lock down the S3 bucket, forcing users to access the website through CloudFront, thereby enhancing security.
+    *   **Backend Distribution**: Provides a secure HTTPS endpoint for the API, acting as a proxy and forwarding requests to the **Application Load Balancer**.

@@ -2,21 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2025-09-05T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="http://localhost:1313/vi/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/"
-                />
-  </url><url>
     <loc>http://localhost:1313/3-accessibilitytoinstances/3.1-public-instance/</loc>
-    <lastmod>2025-09-04T00:00:00+00:00</lastmod>
+    <lastmod>2025-09-06T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
@@ -29,7 +16,7 @@
                 />
   </url><url>
     <loc>http://localhost:1313/2-prerequiste/2.1-createvpc/</loc>
-    <lastmod>2025-09-04T00:00:00+00:00</lastmod>
+    <lastmod>2025-09-06T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
@@ -41,8 +28,21 @@
                 href="http://localhost:1313/2-prerequiste/2.1-createvpc/"
                 />
   </url><url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2025-09-06T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/vi/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/"
+                />
+  </url><url>
     <loc>http://localhost:1313/1-introduce/</loc>
-    <lastmod>2025-09-02T00:00:00+00:00</lastmod>
+    <lastmod>2025-09-06T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
@@ -55,7 +55,7 @@
                 />
   </url><url>
     <loc>http://localhost:1313/2-prerequiste/2.2-modifysubnet/</loc>
-    <lastmod>2025-09-04T00:00:00+00:00</lastmod>
+    <lastmod>2025-09-06T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
@@ -68,7 +68,7 @@
                 />
   </url><url>
     <loc>http://localhost:1313/2-prerequiste/</loc>
-    <lastmod>2025-09-04T00:00:00+00:00</lastmod>
+    <lastmod>2025-09-06T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
@@ -81,7 +81,7 @@
                 />
   </url><url>
     <loc>http://localhost:1313/3-accessibilitytoinstances/</loc>
-    <lastmod>2025-09-04T00:00:00+00:00</lastmod>
+    <lastmod>2025-09-06T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
@@ -94,7 +94,7 @@
                 />
   </url><url>
     <loc>http://localhost:1313/2-prerequiste/2.3-createsg/</loc>
-    <lastmod>2025-09-04T00:00:00+00:00</lastmod>
+    <lastmod>2025-09-06T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
@@ -104,6 +104,19 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://localhost:1313/2-prerequiste/2.3-createsg/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/2-prerequiste/2.4-createec2/</loc>
+    <lastmod>2025-09-06T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/vi/2-prerequiste/2.4-createec2/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/2-prerequiste/2.4-createec2/"
                 />
   </url><url>
     <loc>http://localhost:1313/4-cleanup/</loc>
@@ -119,21 +132,8 @@
                 href="http://localhost:1313/4-cleanup/"
                 />
   </url><url>
-    <loc>http://localhost:1313/2-prerequiste/2.4-createec2/</loc>
-    <lastmod>2025-09-04T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="http://localhost:1313/vi/2-prerequiste/2.4-createec2/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/2-prerequiste/2.4-createec2/"
-                />
-  </url><url>
     <loc>http://localhost:1313/2-prerequiste/2.5-createrds/</loc>
-    <lastmod>2025-09-04T00:00:00+00:00</lastmod>
+    <lastmod>2025-09-06T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
@@ -159,7 +159,7 @@
                 />
   </url><url>
     <loc>http://localhost:1313/2-prerequiste/2.6-createami/</loc>
-    <lastmod>2025-09-04T00:00:00+00:00</lastmod>
+    <lastmod>2025-09-06T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
@@ -172,7 +172,7 @@
                 />
   </url><url>
     <loc>http://localhost:1313/2-prerequiste/2.7-createlaunchtemplate/</loc>
-    <lastmod>2025-09-04T00:00:00+00:00</lastmod>
+    <lastmod>2025-09-06T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
@@ -185,7 +185,7 @@
                 />
   </url><url>
     <loc>http://localhost:1313/2-prerequiste/2.8-createtargetgroup/</loc>
-    <lastmod>2025-09-04T00:00:00+00:00</lastmod>
+    <lastmod>2025-09-06T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
@@ -198,7 +198,7 @@
                 />
   </url><url>
     <loc>http://localhost:1313/2-prerequiste/2.9-createalb/</loc>
-    <lastmod>2025-09-04T00:00:00+00:00</lastmod>
+    <lastmod>2025-09-06T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
@@ -211,7 +211,7 @@
                 />
   </url><url>
     <loc>http://localhost:1313/2-prerequiste/2.10-createasg/</loc>
-    <lastmod>2025-09-04T00:00:00+00:00</lastmod>
+    <lastmod>2025-09-06T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
@@ -223,21 +223,8 @@
                 href="http://localhost:1313/2-prerequiste/2.10-createasg/"
                 />
   </url><url>
-    <loc>http://localhost:1313/2-prerequiste/2.12-createcloudfrontbe/</loc>
-    <lastmod>2025-09-04T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="http://localhost:1313/vi/2-prerequiste/2.12-createcloudfrontbe/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/2-prerequiste/2.12-createcloudfrontbe/"
-                />
-  </url><url>
     <loc>http://localhost:1313/2-prerequiste/2.11-creates3/</loc>
-    <lastmod>2025-09-04T00:00:00+00:00</lastmod>
+    <lastmod>2025-09-06T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
@@ -249,8 +236,21 @@
                 href="http://localhost:1313/2-prerequiste/2.11-creates3/"
                 />
   </url><url>
+    <loc>http://localhost:1313/2-prerequiste/2.12-createcloudfrontbe/</loc>
+    <lastmod>2025-09-06T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/vi/2-prerequiste/2.12-createcloudfrontbe/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/2-prerequiste/2.12-createcloudfrontbe/"
+                />
+  </url><url>
     <loc>http://localhost:1313/2-prerequiste/2.13-createcloudfrontfe/</loc>
-    <lastmod>2025-09-04T00:00:00+00:00</lastmod>
+    <lastmod>2025-09-06T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"

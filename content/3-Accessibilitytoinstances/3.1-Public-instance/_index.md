@@ -1,139 +1,125 @@
 ---
-title : "Connecting to the Server"
-date : "2025-09-04" 
+title : "Connect, Install, and Deploy"
+date : "2025-09-06" 
 weight : 1 
 chapter : false
 pre : " <b> 3.1. </b> "
 ---
 
-### Detailed Guide for MobaXterm Commands
+### Detailed Guide to Commands on MobaXterm
 
-In this section, you will execute commands to connect from your local machine to the Bastion Host, and then from the Bastion Host to the Backend server to install and run the application.
+In this section, you will execute commands to connect to the `ors-ec2` server, then install the environment and deploy the Node.js backend application.
 
 {{% notice info %}}
-**Note:** The commands should be executed sequentially. Ensure you have successfully connected in the previous step before proceeding to the next one.
+**Note:** The commands must be executed sequentially. Ensure you have completed the previous step before moving on to the next.
 {{% /notice %}}
 
-#### **1. Connect to the Bastion Host**
-This is the first step, connecting from your computer to the Bastion Host in the Public Subnet.
+#### **1. Connect to the EC2 Instance**
+This is the first step, connecting from your computer to the `ors-ec2` server in the Public Subnet.
 
-*   Open MobaXterm and create a new SSH session.
-*   **Remote host:** Enter the Public IPv4 address of `project-bastion-host-ec2`.
+*   Open MobaXterm and create a new **SSH** session.
+*   **Remote host:** Enter the **Public IPv4** address of `ors-ec2` (you can get this from the EC2 Dashboard).
 *   **Specify username:** `ec2-user`.
-*   **Use private key:** Select the `project-keypair.pem` file you downloaded when creating the EC2 instance.
-
-{{< figure src="/images/3.connect/3.1-connect/mobaxterm-session-setup.png" title="Setting up an SSH session in MobaXterm" >}}
-
-#### **2. Jump to the Backend Instance**
-Now that you are inside the Bastion Host, we need to prepare to connect to the Backend server.
-
-*   **Step 1: Recreate the key pair file on the Bastion Host.**
-    Open a text editor like `nano` and paste the content of the `.pem` file from your local machine.
+*   **Use private key:** Select the `ors-keypair.pem` file you downloaded.
+*   **Set permissions for the key file (if using Terminal on macOS/Linux):**
+    Before connecting, you need to run this command on your personal computer to secure the key file:
     ```bash
-    nano project-keypair.pem
+    chmod 400 ors-keypair.pem
     ```
-    {{< figure src="/images/3.connect/3.1-connect/nano-key-file.png" title="Pasting the key content into nano" >}}
 
-*   **Step 2: Set the correct permissions for the key file.**
-    SSH requires the key file to be protected; otherwise, it will refuse the connection.
-    ```bash
-    chmod 400 project-keypair.pem
-    ```
-    {{< figure src="/images/3.connect/3.1-connect/chmod-key.png" title="Setting permissions for the key file" >}}
+{{< figure src="/images/3.connect/3.1-deploy/mobaxterm-connect-01.png" title="Setting up the SSH session in MobaXterm" >}}
 
-*   **Step 3: SSH into the Backend.**
-    Use the **Private IPv4** address of `project-backend-ec2`.
-    ```bash
-    ssh -i project-keypair.pem ec2-user@<Private_IP_of_Backend_EC2>
-    ```
-    {{< figure src="/images/3.connect/3.1-connect/ssh-to-backend.png" title="Successfully connected to the Backend server" >}}
-
-#### **3. Set up the Environment and Application on the Backend**
-Once inside the Backend server, install the necessary tools.
+#### **2. Install the Environment on the Server**
+Once successfully connected to the server, install the necessary tools.
 
 *   **Update the system:**
     ```bash
     sudo yum update -y
     ```
-    {{< figure src="/images/3.connect/3.1-connect/yum-update.png" title="Updating system packages" >}}
+    {{< figure src="/images/3.connect/3.1-deploy/yum-update-01.png" title="Updating system packages" >}}
 
 *   **Install Git:**
     ```bash
     sudo yum install -y git
     ```
-    {{< figure src="/images/3.connect/3.1-connect/install-git.png" title="Installing Git" >}}
 
 *   **Clone the project source code from GitHub:**
     ```bash
-    git clone https://github.com/tuilatri/weather-application.git
+    git clone https://github.com/tuilatri/online-restaurant-system.git
     ```
-    {{< figure src="/images/3.connect/3.1-connect/git-clone.png" title="Cloning the project" >}}
+    {{< figure src="/images/3.connect/3.1-deploy/git-clone-01.png" title="Cloning the project" >}}
 
-*   **Navigate into the backend directory:**
+*   **Move into the backend directory:**
     ```bash
-    cd weather-application/backend
+    cd online-restaurant-system/backend
     ```
-    {{< figure src="/images/3.connect/3.1-connect/cd-backend.png" title="Changing to the backend directory" >}}
 
-*   **Install Node.js:**
+*   **Install Node.js and npm:**
     ```bash
     sudo dnf install -y nodejs
     ```
-    {{< figure src="/images/3.connect/3.1-connect/install-nodejs.png" title="Installing Node.js" >}}
+    {{< figure src="/images/3.connect/3.1-deploy/install-nodejs-01.png" title="Installing Node.js" >}}
 
-*   **Install project dependencies:**
+*   **Check the versions to confirm successful installation:**
+    ```bash
+    node -v
+    npm -v
+    ```
+
+#### **3. Install and Configure the Application**
+
+*   **Install the project's dependencies:**
     ```bash
     npm install
     ```
-    {{< figure src="/images/3.connect/3.1-connect/npm-install.png" title="Installing npm packages" >}}
+    {{< figure src="/images/3.connect/3.1-deploy/npm-install-01.png" title="Installing npm packages" >}}
 
-*   **Configure environment variables:**
+*   **Move into the `src` directory and create the environment variable configuration file:**
     ```bash
+    cd src
     nano .env
     ```
-    {{< figure src="/images/3.connect/3.1-connect/nano-env.png" title="Configuring the .env file" >}}
 
-#### **4. Start and Test the Backend**
+*   **Enter the database connection information:**
+    In the `nano` editor, paste the following content and replace it with your information.
+    ```env
+    DB_HOST='your-rds-endpoint'
+    DB_USER='admin'
+    DB_PASSWORD='your-db-password'
+    DB_DATABASE='ors'
+    DB_PORT=3306
+    ```
+    {{< figure src="/images/3.connect/3.1-deploy/nano-env-01-01.png" >}}
+    {{< figure src="/images/3.connect/3.1-deploy/nano-env-02-01.png" title="Configuring the .env file" >}}
 
-*   **Start the application:**
+*   **Save and exit `nano`:**
+    1.  Press `Ctrl + O`
+    2.  Press `Enter` to confirm the file name.
+    3.  Press `Ctrl + X` to exit.
+
+#### **4. Launch and Test the Backend**
+
+*   **Launch the application:**
     ```bash
-    npm run start
+    node createAdmin.js
+    node server.js
     ```
-    {{< figure src="/images/3.connect/3.1-connect/npm-start.png" title="Backend application is running" >}}
+    {{< figure src="/images/3.connect/3.1-deploy/npm-start-01.png" title="Backend application running on port 5000" >}}
 
-*   **Test the application directly on the server:**
-    Open another terminal window in MobaXterm, connect again, and then use the `curl` command to test.
+*   **Test the application's operation directly on the server:**
+    Open a **new** terminal window in MobaXterm and connect to the same EC2 instance again, then use the `curl` command to test.
     ```bash
-    curl http://localhost:3000/
+    curl http://127.0.0.1:5000/api
     ```
-    {{< figure src="/images/3.connect/3.1-connect/curl-test.png" title="Testing the backend with curl" >}}
+    If you receive the response `Welcome to Dining Verse Backend API!`, it means the application has started successfully!
 
-### **5. Update the Frontend with the Backend's CloudFront Address**
-After the Backend is operational, you need to get the Backend's CloudFront URL and update it in the Frontend's configuration file on S3.
+#### **5. Troubleshooting Guide**
+If you update the code on GitHub but the changes do not appear on the web, follow these steps on the server:
 
-*   **Step 1:** Get the Backend's CloudFront Distribution Domain Name.
-    Go to the CloudFront service in the AWS Console, find and copy the Domain Name of the distribution pointing to the backend.
-
-*   **Step 2:** Access the S3 bucket containing the Frontend source code.
-    Go to the S3 service and select the bucket that holds the frontend source code.
-
-*   **Step 3:** Open and edit the `api.js` file.
-    Find the `api.js` file (usually in a `js` folder or similar), select the file, and click **Edit**.
-
-*   **Step 4:** Update the API address.
-    In the file's content, find the line declaring the API variable and paste the Backend's CloudFront URL. Then click **Save changes**.
-    ```javascript
-    // Change the value of this variable
-    const API_URL = 'https://your-cloudfront-backend-domain.cloudfront.net';
+*   **Move into the backend directory:**
+    ```bash
+    cd online-restaurant-system/backend
     ```
-    {{< figure src="/images/3.connect/3.1-connect/modify-api.png" title="Pasting the CloudFront URL and saving" >}}
-
-*   **Step 5:** Wait for the Frontend's CloudFront to update.
-    After you save the `api.js` file, the CloudFront serving the Frontend will need a few minutes to clear the old cache and update to the new version of the file. Please wait about 5-10 minutes before checking the website again.
-    {{< figure src="/images/3.connect/3.1-connect/result.png" title="Waiting for CloudFront to update" >}}
-
-#### **6. Troubleshooting Guide**
-If you update the code on GitHub but the changes do not appear on the web, follow these steps on the Backend server:
 
 *   **Pull the latest code:**
     ```bash
@@ -147,7 +133,7 @@ If you update the code on GitHub but the changes do not appear on the web, follo
     ```bash
     kill -9 <PID>
     ```
-    *Real-world example:*
+    *Practical example:*
     ```
     [ec2-user@ip-10-0-144-101 backend]$ ps aux | grep node
     ec2-user    3117  0.0  6.6 1127836 64896 pts/1   Sl+   10:15   0:00 node server.js

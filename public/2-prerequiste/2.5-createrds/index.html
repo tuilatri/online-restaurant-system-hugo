@@ -9,24 +9,24 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Create EC2 Instances for Bastion Host and Backend :: AWS System Manager</title>
+    <title>Create RDS MySQL Database :: AWS System Manager</title>
 
     
-    <link href="/css/nucleus.css?1757247351" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1757247351" rel="stylesheet">
-    <link href="/css/hybrid.css?1757247351" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1757247351" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1757247351" rel="stylesheet">
-    <link href="/css/auto-complete.css?1757247351" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1757247351" rel="stylesheet">
-    <link href="/css/theme.css?1757247351" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1757247351" rel="stylesheet">
+    <link href="/css/nucleus.css?1757251332" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1757251332" rel="stylesheet">
+    <link href="/css/hybrid.css?1757251332" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1757251332" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1757251332" rel="stylesheet">
+    <link href="/css/auto-complete.css?1757251332" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1757251332" rel="stylesheet">
+    <link href="/css/theme.css?1757251332" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1757251332" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1757247351" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1757251332" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1757247351"></script>
+    <script src="/js/jquery-3.3.1.min.js?1757251332"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,12 +57,12 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1757247351"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1757247351"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1757251332"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1757251332"></script>
 <script type="text/javascript">
     var baseurl = "http:\/\/localhost:1313\/en";
 </script>
-<script type="text/javascript" src="/js/search.js?1757247351"></script>
+<script type="text/javascript" src="/js/search.js?1757251332"></script>
 
     
   </div>
@@ -80,13 +80,13 @@
  
   
     
-    <li data-nav-id="/1-introduce/" title="Introduction and Architecture Overview" class="dd-item 
+    <li data-nav-id="/1-introduce/" title="Introduction and Architectural Overview" class="dd-item 
         
         
         
         ">
       <a href="/1-introduce/">
-           <b> 1. </b> Introduction and Architecture Overview
+           <b> 1. </b> Introduction and Architectural Overview
           
             <i class="fas fa-check read-icon"></i>
           
@@ -106,13 +106,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/" title="Preparation Steps" class="dd-item 
+    <li data-nav-id="/2-prerequiste/" title="Prerequisites and Infrastructure Setup" class="dd-item 
         parent
         
         
         ">
       <a href="/2-prerequiste/">
-           <b> 2. </b> Preparation Steps
+           <b> 2. </b> Prerequisites and Infrastructure Setup
           
             <i class="fas fa-check read-icon"></i>
           
@@ -137,13 +137,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.1-createvpc/" title="Create VPC" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.1-createvpc/" title="Create VPC and Subnets" class="dd-item 
         
         
         
         ">
       <a href="/2-prerequiste/2.1-createvpc/">
-           <b> 2.1 </b> Create VPC
+           <b> 2.1 </b> Create VPC and Subnets
           
             <i class="fas fa-check read-icon"></i>
           
@@ -165,13 +165,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.2-modifysubnet/" title="Edit Subnets" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.2-modifysubnet/" title="Modify Public Subnet" class="dd-item 
         
         
         
         ">
       <a href="/2-prerequiste/2.2-modifysubnet/">
-           <b> 2.2 </b> Edit Subnets
+           <b> 2.2 </b> Modify Public Subnet
           
             <i class="fas fa-check read-icon"></i>
           
@@ -193,13 +193,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.3-createsg/" title="Create Security Groups for Components" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.3-createsg/" title="Create Security Groups" class="dd-item 
         
         
         
         ">
       <a href="/2-prerequiste/2.3-createsg/">
-           <b> 2.3 </b> Create Security Groups for Components
+           <b> 2.3 </b> Create Security Groups
           
             <i class="fas fa-check read-icon"></i>
           
@@ -221,13 +221,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.4-createec2/" title="Create EC2 Instances for Bastion Host and Backend" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.4-createec2/" title="Create the Initial EC2 Instance" class="dd-item 
         
         
         
         ">
       <a href="/2-prerequiste/2.4-createec2/">
-           <b> 2.4 </b> Create EC2 Instances for Bastion Host and Backend
+           <b> 2.4 </b> Create the Initial EC2 Instance
           
             <i class="fas fa-check read-icon"></i>
           
@@ -249,13 +249,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.5-createrds/" title="Create EC2 Instances for Bastion Host and Backend" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.5-createrds/" title="Create RDS MySQL Database" class="dd-item 
         
         active
         
         ">
       <a href="/2-prerequiste/2.5-createrds/">
-           <b> 2.4 </b> Create EC2 Instances for Bastion Host and Backend
+           <b> 2.5 </b> Create RDS MySQL Database
           
             <i class="fas fa-check read-icon"></i>
           
@@ -283,7 +283,7 @@
         
         ">
       <a href="/2-prerequiste/2.6-createami/">
-           <b> 2.5 </b> Create Amazon Machine Image (AMI)
+           <b> 2.6 </b> Create Amazon Machine Image (AMI)
           
             <i class="fas fa-check read-icon"></i>
           
@@ -305,13 +305,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.7-createlaunchtemplate/" title="Create Launch Template for Auto Scaling" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.7-createlaunchtemplate/" title="Create Launch Template" class="dd-item 
         
         
         
         ">
       <a href="/2-prerequiste/2.7-createlaunchtemplate/">
-           <b> 2.6 </b> Create Launch Template for Auto Scaling
+           <b> 2.7 </b> Create Launch Template
           
             <i class="fas fa-check read-icon"></i>
           
@@ -339,7 +339,7 @@
         
         ">
       <a href="/2-prerequiste/2.8-createtargetgroup/">
-           <b> 2.7 </b> Create Target Group
+           <b> 2.8 </b> Create Target Group
           
             <i class="fas fa-check read-icon"></i>
           
@@ -367,7 +367,7 @@
         
         ">
       <a href="/2-prerequiste/2.9-createalb/">
-           <b> 2.8 </b> Create Application Load Balancer (ALB)
+           <b> 2.9 </b> Create Application Load Balancer (ALB)
           
             <i class="fas fa-check read-icon"></i>
           
@@ -389,13 +389,41 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.10-createasg/" title="Create Auto Scaling Group" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.10-createasg/" title="Create Auto Scaling Group (ASG)" class="dd-item 
         
         
         
         ">
       <a href="/2-prerequiste/2.10-createasg/">
-           <b> 2.9 </b> Create Auto Scaling Group
+           <b> 2.10 </b> Create Auto Scaling Group (ASG)
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-prerequiste/2.11-creates3/" title="Create S3 Bucket for Frontend" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-prerequiste/2.11-creates3/">
+           <b> 2.11 </b> Create S3 Bucket for Frontend
           
             <i class="fas fa-check read-icon"></i>
           
@@ -423,35 +451,7 @@
         
         ">
       <a href="/2-prerequiste/2.12-createcloudfrontbe/">
-           <b> 2.10 </b> Create CloudFront for Backend (ALB)
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.11-creates3/" title="Create S3 Bucket and Configure Static Website Hosting" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.11-creates3/">
-           <b> 2.11 </b> Create S3 Bucket and Configure Static Website Hosting
+           <b> 2.12 </b> Create CloudFront for Backend (ALB)
           
             <i class="fas fa-check read-icon"></i>
           
@@ -479,7 +479,7 @@
         
         ">
       <a href="/2-prerequiste/2.13-createcloudfrontfe/">
-           <b> 2.12 </b> Create CloudFront for Frontend (S3)
+           <b> 2.13 </b> Create CloudFront for Frontend (S3)
           
             <i class="fas fa-check read-icon"></i>
           
@@ -508,13 +508,13 @@
  
   
     
-    <li data-nav-id="/3-accessibilitytoinstances/" title="Connecting to the EC2 Instance" class="dd-item 
+    <li data-nav-id="/3-accessibilitytoinstances/" title="Connecting and Deploying the Application" class="dd-item 
         
         
         
         ">
       <a href="/3-accessibilitytoinstances/">
-           <b> 3. </b> Connecting to the EC2 Instance
+           <b> 3. </b> Connecting and Deploying the Application
           
             <i class="fas fa-check read-icon"></i>
           
@@ -539,13 +539,13 @@
  
   
     
-    <li data-nav-id="/3-accessibilitytoinstances/3.1-public-instance/" title="Connecting to the Server" class="dd-item 
+    <li data-nav-id="/3-accessibilitytoinstances/3.1-public-instance/" title="Connect, Install, and Deploy" class="dd-item 
         
         
         
         ">
       <a href="/3-accessibilitytoinstances/3.1-public-instance/">
-           <b> 3.1. </b> Connecting to the Server
+           <b> 3.1. </b> Connect, Install, and Deploy
           
             <i class="fas fa-check read-icon"></i>
           
@@ -574,13 +574,13 @@
  
   
     
-    <li data-nav-id="/4-cleanup/" title="Cleaning Up Resources" class="dd-item 
+    <li data-nav-id="/4-cleanup/" title="Clean Up Resources" class="dd-item 
         
         
         
         ">
       <a href="/4-cleanup/">
-           <b> 4. </b> Cleaning Up Resources
+           <b> 4. </b> Clean Up Resources
           
             <i class="fas fa-check read-icon"></i>
           
@@ -759,7 +759,7 @@
             
           
           
-            <a href='/'>Weather Application Project</a> > <a href='/2-prerequiste/'>Preparation Steps</a> > Create EC2 Instances for Bastion Host and Backend
+            <a href='/'>Deploying an Online Restaurant Project on AWS</a> > <a href='/2-prerequiste/'>Prerequisites and Infrastructure Setup</a> > Create RDS MySQL Database
           
         
           
@@ -776,7 +776,7 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#initialize-ec2-instances">Initialize EC2 Instances</a></li>
+        <li><a href="#initialize-the-database-with-amazon-rds">Initialize the Database with Amazon RDS</a></li>
       </ul>
     </li>
   </ul>
@@ -796,7 +796,7 @@
           
             <h1>
               
-              Create EC2 Instances for Bastion Host and Backend
+              Create RDS MySQL Database
             </h1>
           
 
@@ -804,154 +804,101 @@
 
 
 
-	<h3 id="initialize-ec2-instances">Initialize EC2 Instances</h3>
+	<h3 id="initialize-the-database-with-amazon-rds">Initialize the Database with Amazon RDS</h3>
 <p>ℹ️ <strong>Objective</strong></p>
 <ul>
-<li>Initialize two separate virtual servers (EC2 Instances):
-<ol>
-<li><strong>Bastion Host:</strong> Placed in the Public Subnet to act as a &ldquo;jump box,&rdquo; helping us securely connect to resources in the Private Subnet.</li>
-<li><strong>Backend Instance:</strong> Placed in the Private Subnet to run the application, protected from direct access from the Internet.</li>
-</ol>
-</li>
+<li>Create a managed <strong>MySQL</strong> database using the <strong>Amazon RDS</strong> service.</li>
+<li>Place this database within the created <strong>VPC (<code>ors-vpc</code>)</strong> network environment and protect it with a <strong>Security Group (<code>ors-db-sg</code>)</strong>.</li>
+<li>Use the <strong>Free Tier</strong> to save costs during this hands-on workshop.</li>
 </ul>
 <hr>
-<p>🔒 <strong>Execution Steps</strong></p>
-<p>First, we will initialize the EC2 Instance for the <strong>Bastion Host</strong>.</p>
-<h4 id="1-create-ec2-instance-for-bastion-host-"><strong>1. Create EC2 Instance for Bastion Host (<code>project-bastion-host-ec2</code>)</strong></h4>
+<p>🔒 <strong>Steps to Follow</strong></p>
+<h4 id="1-access-the-rds-service"><strong>1. Access the RDS Service</strong></h4>
 <ul>
-<li>
-<p><strong>Step 1: Start Launching the Instance</strong></p>
-<ul>
-<li>In the <strong>AWS Management Console</strong>, find and select the <strong>EC2</strong> service.</li>
-<li>From the <strong>EC2 Dashboard</strong>, click on <strong>Launch instance</strong>.</li>
+<li>From the <strong>AWS Management Console</strong> interface, search for and select the <strong>RDS</strong> service.</li>
 </ul>
-<figure><img src="/images/2.prerequisite/2.4-createec2/launch-instance-dashboard.png"><figcaption>
-          <h4>Start Launching Instance</h4>
-        </figcaption>
-    </figure>
+<figure><img src="/images/2.prerequisite/2.5-createrds/rds-search.png"><figcaption>
+      <h4>Search for the RDS service</h4>
+    </figcaption>
+</figure>
 
-</li>
-<li>
-<p><strong>Step 2: Set Name and Choose AMI</strong></p>
+<h4 id="2-start-creating-the-database"><strong>2. Start Creating the Database</strong></h4>
 <ul>
-<li><strong>Name:</strong> <code>project-bastion-host-ec2</code></li>
-<li><strong>Application and OS Images (Amazon Machine Image):</strong> Select <strong>Amazon Linux</strong>.</li>
+<li>In the <strong>RDS Dashboard</strong>, click the <strong>Create database</strong> button.</li>
 </ul>
-<figure><img src="/images/2.prerequisite/2.4-createec2/bastion-name-ami.png"><figcaption>
-          <h4>Setting the name and choosing the Amazon Machine Image</h4>
-        </figcaption>
-    </figure>
+<figure><img src="/images/2.prerequisite/2.5-createrds/rds-dashboard.png"><figcaption>
+      <h4>Click Create database</h4>
+    </figcaption>
+</figure>
 
-</li>
-<li>
-<p><strong>Step 3: Choose Instance Type</strong></p>
+<h4 id="3-configure-engine-and-template"><strong>3. Configure Engine and Template</strong></h4>
 <ul>
-<li><strong>Instance type:</strong> Select <code>t2.micro</code> (part of the Free Tier).</li>
-</ul>
-</li>
-<li>
-<p><strong>Step 4: Create a Key Pair for Access</strong></p>
-<ul>
-<li>This is a crucial step to be able to SSH into the instance.</li>
-<li>Click on <strong>Create new key pair</strong>.</li>
-<li><strong>Key pair name:</strong> <code>project-keypair</code></li>
-<li><strong>Key pair type:</strong> <code>RSA</code></li>
-<li><strong>Private key file format:</strong> <code>.pem</code></li>
-<li>Click <strong>Create key pair</strong>, and the browser will automatically download the <code>.pem</code> file.</li>
+<li><strong>Choose a database creation method:</strong> Select <strong>Standard create</strong>.</li>
+<li><strong>Engine options:</strong> Select <strong>MySQL</strong>.</li>
+<li><strong>Templates:</strong> Select <strong>Production</strong>.</li>
 </ul>
 
-<div class="notices warning" ><pre><code>**IMPORTANT:** Store this `.pem` file in a safe place. You will not be able to download it a second time. If you lose it, you will lose access to your EC2 instance.
-</code></pre>
+<div class="notices info" ><p>Choosing <strong>Free tier</strong> will automatically limit the configuration options (e.g., you can only select a Single DB instance) to ensure you do not incur unexpected costs.</p>
 </div>
 
-<figure><img src="/images/2.prerequisite/2.4-createec2/create-key-pair.png"><figcaption>
-          <h4>Creating a new Key Pair</h4>
-        </figcaption>
-    </figure>
+<figure><img src="/images/2.prerequisite/2.5-createrds/rds-engine-template.png"><figcaption>
+      <h4>Select Standard create, MySQL, and Free Tier</h4>
+    </figcaption>
+</figure>
 
-</li>
-<li>
-<p><strong>Step 5: Configure Network Settings</strong></p>
+<h4 id="4-configure-settings"><strong>4. Configure Settings</strong></h4>
 <ul>
-<li>Click on <strong>Edit</strong> in the <strong>Network settings</strong> section.</li>
-<li><strong>VPC:</strong> Select the <code>project-vpc</code> you created.</li>
-<li><strong>Subnet:</strong> Select one of the two <strong>Public Subnets</strong> (e.g., <code>...public-subnet-ap-southeast-1a</code>).</li>
-<li><strong>Auto-assign public IP:</strong> <code>Enable</code>.</li>
-<li><strong>Firewall (security groups):</strong> Select <strong>Select existing security group</strong> and choose <code>project-bastion-host-sg</code>.</li>
+<li><strong>DB instance identifier:</strong> <code>ors-db</code></li>
+<li><strong>Master username:</strong> <code>admin</code></li>
+<li><strong>Master password:</strong> Enter your password (e.g., <code>0812-haminhtri</code>).</li>
+<li><strong>Confirm password:</strong> Re-enter your password.</li>
 </ul>
-<figure><img src="/images/2.prerequisite/2.4-createec2/bastion-network-settings.png"><figcaption>
-          <h4>Configuring network settings for the Bastion Host</h4>
-        </figcaption>
-    </figure>
+<figure><img src="/images/2.prerequisite/2.5-createrds/rds-settings.png"><figcaption>
+      <h4>Configure login credentials for the Database</h4>
+    </figcaption>
+</figure>
 
-</li>
-<li>
-<p><strong>Step 6: Launch the Instance</strong></p>
+<h4 id="5-configure-connectivity"><strong>5. Configure Connectivity</strong></h4>
+<p>This is a crucial step to place the database in the correct network environment.</p>
 <ul>
-<li>Review the information in the <strong>Summary</strong> panel.</li>
-<li>Click <strong>Launch instance</strong>.</li>
+<li><strong>Virtual private cloud (VPC):</strong> Select <code>ors-vpc</code>.</li>
+<li><strong>DB Subnet Group:</strong> Leave the default; AWS will automatically create a new Subnet Group suitable for your VPC.</li>
+<li><strong>Public access:</strong> Select <strong>Yes</strong>.</li>
+<li><strong>VPC security group (firewall):</strong> Select <strong>Choose existing</strong>.</li>
+<li><strong>Existing VPC security groups:</strong> Keep the <code>default</code> Security Group and select <code>ors-db-sg</code>.</li>
 </ul>
-</li>
-</ul>
-<hr>
-<h4 id="2-create-ec2-instance-for-backend-"><strong>2. Create EC2 Instance for Backend (<code>project-backend-ec2</code>)</strong></h4>
-<p>Next, we will repeat the process to create the Backend instance, with a few important changes in the Network Settings.</p>
-<ul>
-<li>
-<p><strong>Step 1: Start Launching the Instance</strong></p>
-<ul>
-<li>From the <strong>EC2 Dashboard</strong>, click <strong>Launch instance</strong> again.</li>
-</ul>
-</li>
-<li>
-<p><strong>Step 2: Set Name and Choose AMI</strong></p>
-<ul>
-<li><strong>Name:</strong> <code>project-backend-ec2</code></li>
-<li><strong>AMI:</strong> Select <strong>Amazon Linux</strong>.</li>
-</ul>
-</li>
-<li>
-<p><strong>Step 3: Choose Instance Type</strong></p>
-<ul>
-<li><strong>Instance type:</strong> Select <code>t2.micro</code>.</li>
-</ul>
-</li>
-<li>
-<p><strong>Step 4: Select the Existing Key Pair</strong></p>
-<ul>
-<li>In the <strong>Key pair (login)</strong> section, select the <code>project-keypair</code> created earlier.</li>
-</ul>
-<figure><img src="/images/2.prerequisite/2.4-createec2/backend-select-key-pair.png"><figcaption>
-          <h4>Selecting the existing Key Pair</h4>
-        </figcaption>
-    </figure>
+<figure><img src="/images/2.prerequisite/2.5-createrds/rds-connectivity.png"><figcaption>
+      <h4>Configure network connectivity for RDS</h4>
+    </figcaption>
+</figure>
 
-</li>
-<li>
-<p><strong>Step 5: Configure Network Settings</strong></p>
+<h4 id="6-configure-additional-configuration"><strong>6. Configure Additional Configuration</strong></h4>
 <ul>
-<li>Click on <strong>Edit</strong> in the <strong>Network settings</strong> section.</li>
-<li><strong>VPC:</strong> Select <code>project-vpc</code>.</li>
-<li><strong>Subnet:</strong> Select one of the two <strong>Private Subnets</strong> (e.g., <code>...private-subnet-ap-southeast-1b</code>).</li>
-<li><strong>Auto-assign public IP:</strong> <code>Disable</code>. This is a key difference to protect the backend server.</li>
-<li><strong>Firewall (security groups):</strong> Select <strong>Select existing security group</strong> and choose <code>project-backend-sg</code>.</li>
+<li>Expand the <strong>Additional configuration</strong> section.</li>
+<li><strong>Initial database name:</strong> <code>ors</code></li>
+<li>This is the initial schema name that the application will use.</li>
 </ul>
-<figure><img src="/images/2.prerequisite/2.4-createec2/backend-network-settings.png"><figcaption>
-          <h4>Configuring network settings for the Backend Instance</h4>
-        </figcaption>
-    </figure>
+<figure><img src="/images/2.prerequisite/2.5-createrds/rds-additional-config.png"><figcaption>
+      <h4>Set the initial schema name</h4>
+    </figcaption>
+</figure>
 
-</li>
-<li>
-<p><strong>Step 6: Launch the Instance</strong></p>
+<h4 id="7-finalize-create-and-check"><strong>7. Finalize, Create, and Check</strong></h4>
 <ul>
-<li>Review the information and click <strong>Launch instance</strong>.</li>
+<li>Scroll to the bottom and click <strong>Create database</strong>.</li>
+<li>The database initialization process can take 5 to 10 minutes. Please wait until the <strong>Status</strong> column changes to <strong>Available</strong>.</li>
 </ul>
-</li>
+<figure><img src="/images/2.prerequisite/2.5-createrds/rds-creating.png"><figcaption>
+      <h4>Wait for the Database to be created</h4>
+    </figcaption>
+</figure>
+
+<ul>
+<li>Once completed, click on the newly created <code>ors-db</code> instance.</li>
+<li>In the <strong>Connectivity &amp; security</strong> tab, find and copy the <strong>Endpoint</strong> value. This is the address used to connect to your database.</li>
 </ul>
-<p>After completing, you can click <strong>View all instances</strong> to see both newly created servers in the <code>Running</code> state.</p>
-<figure><img src="/images/2.prerequisite/2.4-createec2/view-all-instances.png"><figcaption>
-      <h4>List of created EC2 Instances</h4>
+<figure><img src="/images/2.prerequisite/2.5-createrds/rds-endpoint.png"><figcaption>
+      <h4>Get the Endpoint information for connection</h4>
     </figcaption>
 </figure>
 
@@ -1318,7 +1265,7 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/2-prerequiste/2.4-createec2/" title="Create EC2 Instances for Bastion Host and Backend"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/2-prerequiste/2.4-createec2/" title="Create the Initial EC2 Instance"> <i class="fa fa-chevron-left"></i></a>
 		
 		
 			<a class="nav nav-next" href="/2-prerequiste/2.6-createami/" title="Create Amazon Machine Image (AMI)" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
@@ -1331,19 +1278,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1757247351"></script>
-    <script src="/js/perfect-scrollbar.min.js?1757247351"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1757247351"></script>
-    <script src="/js/jquery.sticky.js?1757247351"></script>
-    <script src="/js/featherlight.min.js?1757247351"></script>
-    <script src="/js/highlight.pack.js?1757247351"></script>
+    <script src="/js/clipboard.min.js?1757251332"></script>
+    <script src="/js/perfect-scrollbar.min.js?1757251332"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1757251332"></script>
+    <script src="/js/jquery.sticky.js?1757251332"></script>
+    <script src="/js/featherlight.min.js?1757251332"></script>
+    <script src="/js/highlight.pack.js?1757251332"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1757247351"></script>
-    <script src="/js/learn.js?1757247351"></script>
-    <script src="/js/hugo-learn.js?1757247351"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1757251332"></script>
+    <script src="/js/learn.js?1757251332"></script>
+    <script src="/js/hugo-learn.js?1757251332"></script>
 
-    <link href="/mermaid/mermaid.css?1757247351" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1757247351"></script>
+    <link href="/mermaid/mermaid.css?1757251332" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1757251332"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

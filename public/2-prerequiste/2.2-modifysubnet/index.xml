@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Edit Subnets on AWS System Manager</title>
+    <title>Modify Public Subnet on AWS System Manager</title>
     <link>http://localhost:1313/2-prerequiste/2.2-modifysubnet/</link>
-    <description>Recent content in Edit Subnets on AWS System Manager</description>
+    <description>Recent content in Modify Public Subnet on AWS System Manager</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate></lastBuildDate>

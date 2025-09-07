@@ -1,43 +1,43 @@
 ---
-title : "Preparation Steps"
-date : "2025-09-04"
+title : "Prerequisites and Infrastructure Setup"
+date : "2025-09-06"
 weight : 2
 chapter : false
 pre : " <b> 2. </b> "
 ---
 
-This page provides an overview of the necessary steps to deploy the weather application project onto the AWS environment. Each section in the list below will lead you to a detailed instruction page.
+This page provides an overview of the necessary steps to set up the complete infrastructure for the restaurant project on AWS. Each section in the list below will link to a detailed guide.
 
 {{% notice info %}}
-Please follow the steps sequentially to ensure the infrastructure is set up correctly.
+Please follow the steps below sequentially. Setting them up in the wrong order can lead to configuration errors and prevent components from communicating with each other.
 {{% /notice %}}
 
-### Main Workshop Content
+### Main Content of This Chapter
 
 1.  **Configure the Network Environment (VPC)**
-    *   [Create VPC](2.1-createvpc/)
-    *   [Edit Public Subnets](2.2-modifysubnet/)
+    *   [Create VPC and Subnets](2.1-createvpc/)
+    *   [Modify Public Subnet](2.2-modifysubnet/)
 
-2.  **Set up Security Layers (Security Group)**
-    *   [Create Security Groups for Components](2.3-createsg/)
+2.  **Set Up Security Layers (Security Group)**
+    *   [Create Security Groups for Web Server and Database](2.3-createsg/)
 
-3.  **Initialize Virtual Servers (EC2)**
-    *   [Create EC2 Instances for Bastion Host and Backend](2.4-createec2/)
+3.  **Initialize Server and Database**
+    *   [Create an initial EC2 Instance for configuration](2.4-createec2/)
+    *   [Create an RDS MySQL Database](2.5-createrds/)
+    *(Note: The RDS creation step has been added here to ensure a seamless workshop flow)*
 
-4.  **Prepare for Scaling (AMI & Launch Template)**
-    *   [Create Amazon Machine Image (AMI)](2.5-createami/)
-    *   [Create Launch Template for Auto Scaling](2.6-createlaunchtemplate/)
+4.  **Prepare for Automatic Scaling (Automation)**
+    *   [Create an Amazon Machine Image (AMI) from the configured EC2](2.6-createami/)
+    *   [Create a Launch Template for the Auto Scaling Group](2.7-createlaunchtemplate/)
 
-5.  **Set up Load Balancing (Load Balancer & Target Group)**
-    *   [Create Target Group](2.7-createtargetgroup/)
-    *   [Create Application Load Balancer (ALB)](2.8-createalb/)
+5.  **Set Up Load Balancing**
+    *   [Create a Target Group](2.8-createtargetgroup/)
+    *   [Create an Application Load Balancer (ALB)](2.9-createalb/)
 
-6.  **Configure Auto Scaling (Auto Scaling Group)**
-    *   [Create Auto Scaling Group](2.9-createasg/)
+6.  **Configure Auto Scaling**
+    *   [Create an Auto Scaling Group (ASG)](2.10-createasg/)
 
-7.  **Store Frontend on S3**
-    *   [Create S3 Bucket and Configure Static Website Hosting](2.11-creates3/)
-
-8.  **Accelerate and Distribute Content (CloudFront)**
-    *   [Create CloudFront for Backend (ALB)](2.10-createcloudfrontbe/)
-    *   [Create CloudFront for Frontend (S3)](2.12-createcloudfrontfe/)
+7.  **Storage and Content Delivery (CDN)**
+    *   [Create an S3 Bucket for the Frontend](2.11-creates3/)
+    *   [Create CloudFront for the Backend (pointing to ALB)](2.12-createcloudfrontbe/)
+    *   [Create CloudFront for the Frontend (pointing to S3)](2.13-createcloudfrontfe/)

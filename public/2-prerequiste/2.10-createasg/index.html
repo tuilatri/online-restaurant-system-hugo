@@ -9,24 +9,24 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Create Auto Scaling Group :: AWS System Manager</title>
+    <title>Create Auto Scaling Group (ASG) :: AWS System Manager</title>
 
     
-    <link href="/css/nucleus.css?1757247351" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1757247351" rel="stylesheet">
-    <link href="/css/hybrid.css?1757247351" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1757247351" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1757247351" rel="stylesheet">
-    <link href="/css/auto-complete.css?1757247351" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1757247351" rel="stylesheet">
-    <link href="/css/theme.css?1757247351" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1757247351" rel="stylesheet">
+    <link href="/css/nucleus.css?1757251332" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1757251332" rel="stylesheet">
+    <link href="/css/hybrid.css?1757251332" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1757251332" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1757251332" rel="stylesheet">
+    <link href="/css/auto-complete.css?1757251332" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1757251332" rel="stylesheet">
+    <link href="/css/theme.css?1757251332" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1757251332" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1757247351" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1757251332" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1757247351"></script>
+    <script src="/js/jquery-3.3.1.min.js?1757251332"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,12 +57,12 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1757247351"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1757247351"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1757251332"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1757251332"></script>
 <script type="text/javascript">
     var baseurl = "http:\/\/localhost:1313\/en";
 </script>
-<script type="text/javascript" src="/js/search.js?1757247351"></script>
+<script type="text/javascript" src="/js/search.js?1757251332"></script>
 
     
   </div>
@@ -80,13 +80,13 @@
  
   
     
-    <li data-nav-id="/1-introduce/" title="Introduction and Architecture Overview" class="dd-item 
+    <li data-nav-id="/1-introduce/" title="Introduction and Architectural Overview" class="dd-item 
         
         
         
         ">
       <a href="/1-introduce/">
-           <b> 1. </b> Introduction and Architecture Overview
+           <b> 1. </b> Introduction and Architectural Overview
           
             <i class="fas fa-check read-icon"></i>
           
@@ -106,13 +106,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/" title="Preparation Steps" class="dd-item 
+    <li data-nav-id="/2-prerequiste/" title="Prerequisites and Infrastructure Setup" class="dd-item 
         parent
         
         
         ">
       <a href="/2-prerequiste/">
-           <b> 2. </b> Preparation Steps
+           <b> 2. </b> Prerequisites and Infrastructure Setup
           
             <i class="fas fa-check read-icon"></i>
           
@@ -137,13 +137,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.1-createvpc/" title="Create VPC" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.1-createvpc/" title="Create VPC and Subnets" class="dd-item 
         
         
         
         ">
       <a href="/2-prerequiste/2.1-createvpc/">
-           <b> 2.1 </b> Create VPC
+           <b> 2.1 </b> Create VPC and Subnets
           
             <i class="fas fa-check read-icon"></i>
           
@@ -165,13 +165,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.2-modifysubnet/" title="Edit Subnets" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.2-modifysubnet/" title="Modify Public Subnet" class="dd-item 
         
         
         
         ">
       <a href="/2-prerequiste/2.2-modifysubnet/">
-           <b> 2.2 </b> Edit Subnets
+           <b> 2.2 </b> Modify Public Subnet
           
             <i class="fas fa-check read-icon"></i>
           
@@ -193,13 +193,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.3-createsg/" title="Create Security Groups for Components" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.3-createsg/" title="Create Security Groups" class="dd-item 
         
         
         
         ">
       <a href="/2-prerequiste/2.3-createsg/">
-           <b> 2.3 </b> Create Security Groups for Components
+           <b> 2.3 </b> Create Security Groups
           
             <i class="fas fa-check read-icon"></i>
           
@@ -221,13 +221,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.4-createec2/" title="Create EC2 Instances for Bastion Host and Backend" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.4-createec2/" title="Create the Initial EC2 Instance" class="dd-item 
         
         
         
         ">
       <a href="/2-prerequiste/2.4-createec2/">
-           <b> 2.4 </b> Create EC2 Instances for Bastion Host and Backend
+           <b> 2.4 </b> Create the Initial EC2 Instance
           
             <i class="fas fa-check read-icon"></i>
           
@@ -249,13 +249,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.5-createrds/" title="Create EC2 Instances for Bastion Host and Backend" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.5-createrds/" title="Create RDS MySQL Database" class="dd-item 
         
         
         
         ">
       <a href="/2-prerequiste/2.5-createrds/">
-           <b> 2.4 </b> Create EC2 Instances for Bastion Host and Backend
+           <b> 2.5 </b> Create RDS MySQL Database
           
             <i class="fas fa-check read-icon"></i>
           
@@ -283,7 +283,7 @@
         
         ">
       <a href="/2-prerequiste/2.6-createami/">
-           <b> 2.5 </b> Create Amazon Machine Image (AMI)
+           <b> 2.6 </b> Create Amazon Machine Image (AMI)
           
             <i class="fas fa-check read-icon"></i>
           
@@ -305,13 +305,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.7-createlaunchtemplate/" title="Create Launch Template for Auto Scaling" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.7-createlaunchtemplate/" title="Create Launch Template" class="dd-item 
         
         
         
         ">
       <a href="/2-prerequiste/2.7-createlaunchtemplate/">
-           <b> 2.6 </b> Create Launch Template for Auto Scaling
+           <b> 2.7 </b> Create Launch Template
           
             <i class="fas fa-check read-icon"></i>
           
@@ -339,7 +339,7 @@
         
         ">
       <a href="/2-prerequiste/2.8-createtargetgroup/">
-           <b> 2.7 </b> Create Target Group
+           <b> 2.8 </b> Create Target Group
           
             <i class="fas fa-check read-icon"></i>
           
@@ -367,7 +367,7 @@
         
         ">
       <a href="/2-prerequiste/2.9-createalb/">
-           <b> 2.8 </b> Create Application Load Balancer (ALB)
+           <b> 2.9 </b> Create Application Load Balancer (ALB)
           
             <i class="fas fa-check read-icon"></i>
           
@@ -389,13 +389,41 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.10-createasg/" title="Create Auto Scaling Group" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.10-createasg/" title="Create Auto Scaling Group (ASG)" class="dd-item 
         
         active
         
         ">
       <a href="/2-prerequiste/2.10-createasg/">
-           <b> 2.9 </b> Create Auto Scaling Group
+           <b> 2.10 </b> Create Auto Scaling Group (ASG)
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-prerequiste/2.11-creates3/" title="Create S3 Bucket for Frontend" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-prerequiste/2.11-creates3/">
+           <b> 2.11 </b> Create S3 Bucket for Frontend
           
             <i class="fas fa-check read-icon"></i>
           
@@ -423,35 +451,7 @@
         
         ">
       <a href="/2-prerequiste/2.12-createcloudfrontbe/">
-           <b> 2.10 </b> Create CloudFront for Backend (ALB)
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.11-creates3/" title="Create S3 Bucket and Configure Static Website Hosting" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.11-creates3/">
-           <b> 2.11 </b> Create S3 Bucket and Configure Static Website Hosting
+           <b> 2.12 </b> Create CloudFront for Backend (ALB)
           
             <i class="fas fa-check read-icon"></i>
           
@@ -479,7 +479,7 @@
         
         ">
       <a href="/2-prerequiste/2.13-createcloudfrontfe/">
-           <b> 2.12 </b> Create CloudFront for Frontend (S3)
+           <b> 2.13 </b> Create CloudFront for Frontend (S3)
           
             <i class="fas fa-check read-icon"></i>
           
@@ -508,13 +508,13 @@
  
   
     
-    <li data-nav-id="/3-accessibilitytoinstances/" title="Connecting to the EC2 Instance" class="dd-item 
+    <li data-nav-id="/3-accessibilitytoinstances/" title="Connecting and Deploying the Application" class="dd-item 
         
         
         
         ">
       <a href="/3-accessibilitytoinstances/">
-           <b> 3. </b> Connecting to the EC2 Instance
+           <b> 3. </b> Connecting and Deploying the Application
           
             <i class="fas fa-check read-icon"></i>
           
@@ -539,13 +539,13 @@
  
   
     
-    <li data-nav-id="/3-accessibilitytoinstances/3.1-public-instance/" title="Connecting to the Server" class="dd-item 
+    <li data-nav-id="/3-accessibilitytoinstances/3.1-public-instance/" title="Connect, Install, and Deploy" class="dd-item 
         
         
         
         ">
       <a href="/3-accessibilitytoinstances/3.1-public-instance/">
-           <b> 3.1. </b> Connecting to the Server
+           <b> 3.1. </b> Connect, Install, and Deploy
           
             <i class="fas fa-check read-icon"></i>
           
@@ -574,13 +574,13 @@
  
   
     
-    <li data-nav-id="/4-cleanup/" title="Cleaning Up Resources" class="dd-item 
+    <li data-nav-id="/4-cleanup/" title="Clean Up Resources" class="dd-item 
         
         
         
         ">
       <a href="/4-cleanup/">
-           <b> 4. </b> Cleaning Up Resources
+           <b> 4. </b> Clean Up Resources
           
             <i class="fas fa-check read-icon"></i>
           
@@ -759,7 +759,7 @@
             
           
           
-            <a href='/'>Weather Application Project</a> > <a href='/2-prerequiste/'>Preparation Steps</a> > Create Auto Scaling Group
+            <a href='/'>Deploying an Online Restaurant Project on AWS</a> > <a href='/2-prerequiste/'>Prerequisites and Infrastructure Setup</a> > Create Auto Scaling Group (ASG)
           
         
           
@@ -776,7 +776,7 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#initialize-auto-scaling-group-asg">Initialize Auto Scaling Group (ASG)</a></li>
+        <li><a href="#create-an-auto-scaling-group-asg">Create an Auto Scaling Group (ASG)</a></li>
       </ul>
     </li>
   </ul>
@@ -796,7 +796,7 @@
           
             <h1>
               
-              Create Auto Scaling Group
+              Create Auto Scaling Group (ASG)
             </h1>
           
 
@@ -804,56 +804,56 @@
 
 
 
-	<h3 id="initialize-auto-scaling-group-asg">Initialize Auto Scaling Group (ASG)</h3>
+	<h3 id="create-an-auto-scaling-group-asg">Create an Auto Scaling Group (ASG)</h3>
 <p>ℹ️ <strong>Objective</strong></p>
 <ul>
-<li>The <strong>Auto Scaling Group (ASG)</strong> is the heart of a flexible and scalable architecture on AWS.</li>
-<li>Its job is to automatically adjust the number of running EC2 instances to meet current traffic demands. When traffic increases, the ASG will automatically add new instances (Scale Out). When traffic decreases, it will automatically remove unnecessary instances (Scale In) to save costs.</li>
-<li>We will configure an ASG that uses the created <strong>Launch Template</strong> to know <em>how</em> to create instances, and attach it to the <strong>Load Balancer</strong> to know <em>when</em> to create them.</li>
+<li>An <strong>Auto Scaling Group (ASG)</strong> is the heart of a flexible architecture on AWS. Its job is to automatically adjust the number of EC2 instances to meet traffic demands.</li>
+<li>When traffic increases, the ASG will automatically add new instances (<strong>Scale Out</strong>). When traffic decreases, it will remove unneeded instances (<strong>Scale In</strong>) to save costs.</li>
+<li>We will configure an ASG to use the <strong>Launch Template</strong> (<code>ors-launch-template</code>) to know <em>how</em> to create an instance, and attach it to the <strong>Load Balancer</strong> (via the Target Group) to know <em>when</em> to take action.</li>
 </ul>
 <hr>
-<p>🔒 <strong>Execution Steps</strong></p>
+<p>🔒 <strong>Steps to Follow</strong></p>
 <h4 id="1-start-creating-the-auto-scaling-group"><strong>1. Start Creating the Auto Scaling Group</strong></h4>
 <ul>
-<li>From the <strong>EC2 Dashboard</strong>, in the left menu, scroll to the bottom and select <strong>Auto Scaling Groups</strong>.</li>
+<li>From the <strong>EC2 Dashboard</strong>, on the left menu, scroll to the bottom and select <strong>Auto Scaling Groups</strong>.</li>
 <li>Click on <strong>Create Auto Scaling group</strong>.</li>
 </ul>
-<figure><img src="/images/2.prerequisite/2.9-createasg/create-asg-button.png"><figcaption>
-      <h4>Starting to create an Auto Scaling Group</h4>
+<figure><img src="/images/2.prerequisite/2.10-createasg/asg-dashboard.png"><figcaption>
+      <h4>Start creating an Auto Scaling Group</h4>
     </figcaption>
 </figure>
 
-<h4 id="2-set-the-name-and-choose-the-launch-template"><strong>2. Set the Name and Choose the Launch Template</strong></h4>
+<h4 id="2-choose-launch-template-and-name-the-group"><strong>2. Choose Launch Template and Name the Group</strong></h4>
 <ul>
-<li><strong>Auto Scaling group name:</strong> <code>project-backend-asg</code></li>
-<li><strong>Launch template:</strong> Select <code>project-backend-lauch-template</code> from the list.</li>
+<li><strong>Auto Scaling group name:</strong> <code>ors-asg</code></li>
+<li><strong>Launch template:</strong> Select <code>ors-launch-template</code> from the list.</li>
 <li>After selecting, click <strong>Next</strong>.</li>
 </ul>
-<figure><img src="/images/2.prerequisite/2.9-createasg/asg-name-template.png"><figcaption>
-      <h4>Choosing the name and Launch Template</h4>
+<figure><img src="/images/2.prerequisite/2.10-createasg/asg-name-template.png"><figcaption>
+      <h4>Name the group and select the Launch Template</h4>
     </figcaption>
 </figure>
 
-<h4 id="3-configure-the-network"><strong>3. Configure the Network</strong></h4>
+<h4 id="3-configure-network"><strong>3. Configure Network</strong></h4>
 <ul>
-<li><strong>VPC:</strong> Select <code>project-vpc</code>.</li>
-<li><strong>Availability Zones and subnets:</strong> Select both <strong>Private Subnets</strong> we have. The ASG will use these subnets to launch new instances, ensuring they are protected and highly available.</li>
+<li><strong>VPC:</strong> Select <code>ors-vpc</code>.</li>
+<li><strong>Availability Zones and subnets:</strong> Select both <strong>Public Subnets</strong> that we have. The ASG will use these subnets to launch new instances, ensuring they are evenly distributed across two AZs for high availability.</li>
 <li>Click <strong>Next</strong>.</li>
 </ul>
-<figure><img src="/images/2.prerequisite/2.9-createasg/asg-network-config.png"><figcaption>
-      <h4>Configuring the VPC and Private Subnets</h4>
+<figure><img src="/images/2.prerequisite/2.10-createasg/asg-network-config.png"><figcaption>
+      <h4>Configure the VPC and Public Subnets</h4>
     </figcaption>
 </figure>
 
 <h4 id="4-integrate-with-the-load-balancer"><strong>4. Integrate with the Load Balancer</strong></h4>
 <ul>
 <li>Select <strong>Attach to an existing load balancer</strong>.</li>
-<li>Select <strong>Choose from your load balancer target groups</strong>.</li>
-<li>From the dropdown list, select <code>project-backend-target-group</code>.</li>
+<li>Choose <strong>Choose from your load balancer target groups</strong>.</li>
+<li>From the dropdown list, select <code>ors-target-group</code>.</li>
 <li>Click <strong>Next</strong>.</li>
 </ul>
-<figure><img src="/images/2.prerequisite/2.9-createasg/asg-load-balancing.png"><figcaption>
-      <h4>Attaching the ASG to the existing Target Group</h4>
+<figure><img src="/images/2.prerequisite/2.10-createasg/asg-load-balancing.png"><figcaption>
+      <h4>Attach the ASG to the existing Target Group</h4>
     </figcaption>
 </figure>
 
@@ -863,8 +863,8 @@
 <p><strong>Group size:</strong></p>
 <ul>
 <li><strong>Desired capacity:</strong> <code>1</code> (The desired number of instances when the ASG is created).</li>
-<li><strong>Minimum capacity:</strong> <code>1</code> (The minimum number of instances that must be running).</li>
-<li><strong>Maximum capacity:</strong> <code>2</code> (The maximum number of instances allowed).</li>
+<li><strong>Minimum capacity:</strong> <code>1</code> (Always maintain at least 1 instance).</li>
+<li><strong>Maximum capacity:</strong> <code>2</code> (Allow a maximum of 2 instances to be created).</li>
 </ul>
 </li>
 <li>
@@ -873,44 +873,39 @@
 <li>Select <strong>Target tracking scaling policy</strong>.</li>
 <li><strong>Scaling policy name:</strong> <code>Target Tracking Policy</code></li>
 <li><strong>Metric type:</strong> <code>Application Load Balancer request count per target</code>.</li>
-<li><strong>Target value:</strong> <code>30</code>. (This means: if each instance has to handle an average of more than 30 requests per minute, add a new instance).</li>
+<li><strong>Target value:</strong> <code>30</code>.</li>
 </ul>
 </li>
-<li>
-<p>Click <strong>Next</strong>.</p>
-</li>
 </ul>
-<p><figure><img src="/images/2.prerequisite/2.9-createasg/asg-size-and-scaling-01.png">
+
+<div class="notices info" ><p><strong>How does this policy work?</strong>
+You are instructing the ASG: &ldquo;Monitor the average number of requests that each EC2 instance is handling. If this number <strong>exceeds 30 requests/minute</strong>, automatically create a new instance (up to a maximum of 2) to share the load. Conversely, if it is lower than 30, reduce the number of instances (down to a minimum of 1) to save money.&rdquo;</p>
+</div>
+
+<p><figure><img src="/images/2.prerequisite/2.10-createasg/asg-size-scaling-01.png">
 </figure>
 
-<figure><img src="/images/2.prerequisite/2.9-createasg/asg-size-and-scaling-02.png"><figcaption>
-      <h4>Configuring group size and scaling policies</h4>
+<figure><img src="/images/2.prerequisite/2.10-createasg/asg-size-scaling-02.png"><figcaption>
+      <h4>Configure group size and Scaling policies</h4>
     </figcaption>
 </figure>
 </p>
-<h4 id="6-skip-optional-steps"><strong>6. Skip Optional Steps</strong></h4>
 <ul>
-<li>You will be taken to the <strong>Add notifications</strong> and <strong>Add tags</strong> pages. We do not need to configure them in this workshop.</li>
-<li>Click <strong>Next</strong> on both pages to skip them.</li>
+<li>Click <strong>Next</strong> until you reach the <strong>Review</strong> page.</li>
 </ul>
-<h4 id="7-review-and-complete"><strong>7. Review and Complete</strong></h4>
+<h4 id="6-review-and-finalize"><strong>6. Review and Finalize</strong></h4>
 <ul>
 <li>Review all the configured information on the <strong>Review</strong> page.</li>
-<li>Scroll down and click <strong>Create Auto Scaling group</strong>.</li>
+<li>Scroll to the bottom and click <strong>Create Auto Scaling group</strong>.</li>
 </ul>
-<figure><img src="/images/2.prerequisite/2.9-createasg/asg-review-and-create.png"><figcaption>
-      <h4>Reviewing and creating the Auto Scaling Group</h4>
-    </figcaption>
-</figure>
-
-<h4 id="8-check-the-status"><strong>8. Check the Status</strong></h4>
+<h4 id="7-check-the-result"><strong>7. Check the Result</strong></h4>
 <ul>
 <li>After creation, the ASG will appear in the list.</li>
-<li>Select <code>project-backend-asg</code> and switch to the <strong>Instance management</strong> tab.</li>
-<li>You will see the ASG is in the process of launching a new instance to meet the <strong>Desired capacity</strong> of <code>1</code>. Wait until the instance&rsquo;s <strong>Lifecycle</strong> is <code>InService</code>. This indicates the instance is ready and has been registered with the Target Group.</li>
+<li>Select <code>ors-asg</code> and switch to the <strong>Instance management</strong> tab.</li>
+<li>You will see the ASG is in the process of launching a new instance to meet the <strong>Desired capacity</strong> of <code>1</code>. Please wait until the instance&rsquo;s <strong>Lifecycle</strong> is <code>InService</code>. This indicates that the instance is ready and has been successfully registered with the Target Group.</li>
 </ul>
-<figure><img src="/images/2.prerequisite/2.9-createasg/asg-instance-management.png"><figcaption>
-      <h4>Checking the instance managed by the ASG</h4>
+<figure><img src="/images/2.prerequisite/2.10-createasg/asg-instance-management.png"><figcaption>
+      <h4>Check the instance managed by the ASG</h4>
     </figcaption>
 </figure>
 
@@ -1280,7 +1275,7 @@
 			<a class="nav nav-prev" href="/2-prerequiste/2.9-createalb/" title="Create Application Load Balancer (ALB)"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/2-prerequiste/2.12-createcloudfrontbe/" title="Create CloudFront for Backend (ALB)" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/2-prerequiste/2.11-creates3/" title="Create S3 Bucket for Frontend" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1290,19 +1285,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1757247351"></script>
-    <script src="/js/perfect-scrollbar.min.js?1757247351"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1757247351"></script>
-    <script src="/js/jquery.sticky.js?1757247351"></script>
-    <script src="/js/featherlight.min.js?1757247351"></script>
-    <script src="/js/highlight.pack.js?1757247351"></script>
+    <script src="/js/clipboard.min.js?1757251332"></script>
+    <script src="/js/perfect-scrollbar.min.js?1757251332"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1757251332"></script>
+    <script src="/js/jquery.sticky.js?1757251332"></script>
+    <script src="/js/featherlight.min.js?1757251332"></script>
+    <script src="/js/highlight.pack.js?1757251332"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1757247351"></script>
-    <script src="/js/learn.js?1757247351"></script>
-    <script src="/js/hugo-learn.js?1757247351"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1757251332"></script>
+    <script src="/js/learn.js?1757251332"></script>
+    <script src="/js/hugo-learn.js?1757251332"></script>
 
-    <link href="/mermaid/mermaid.css?1757247351" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1757247351"></script>
+    <link href="/mermaid/mermaid.css?1757251332" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1757251332"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

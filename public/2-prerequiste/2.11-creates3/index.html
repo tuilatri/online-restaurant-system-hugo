@@ -9,24 +9,24 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Create S3 Bucket and Configure Static Website Hosting :: AWS System Manager</title>
+    <title>Create S3 Bucket for Frontend :: AWS System Manager</title>
 
     
-    <link href="/css/nucleus.css?1757247351" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1757247351" rel="stylesheet">
-    <link href="/css/hybrid.css?1757247351" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1757247351" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1757247351" rel="stylesheet">
-    <link href="/css/auto-complete.css?1757247351" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1757247351" rel="stylesheet">
-    <link href="/css/theme.css?1757247351" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1757247351" rel="stylesheet">
+    <link href="/css/nucleus.css?1757251332" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1757251332" rel="stylesheet">
+    <link href="/css/hybrid.css?1757251332" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1757251332" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1757251332" rel="stylesheet">
+    <link href="/css/auto-complete.css?1757251332" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1757251332" rel="stylesheet">
+    <link href="/css/theme.css?1757251332" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1757251332" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1757247351" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1757251332" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1757247351"></script>
+    <script src="/js/jquery-3.3.1.min.js?1757251332"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,12 +57,12 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1757247351"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1757247351"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1757251332"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1757251332"></script>
 <script type="text/javascript">
     var baseurl = "http:\/\/localhost:1313\/en";
 </script>
-<script type="text/javascript" src="/js/search.js?1757247351"></script>
+<script type="text/javascript" src="/js/search.js?1757251332"></script>
 
     
   </div>
@@ -80,13 +80,13 @@
  
   
     
-    <li data-nav-id="/1-introduce/" title="Introduction and Architecture Overview" class="dd-item 
+    <li data-nav-id="/1-introduce/" title="Introduction and Architectural Overview" class="dd-item 
         
         
         
         ">
       <a href="/1-introduce/">
-           <b> 1. </b> Introduction and Architecture Overview
+           <b> 1. </b> Introduction and Architectural Overview
           
             <i class="fas fa-check read-icon"></i>
           
@@ -106,13 +106,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/" title="Preparation Steps" class="dd-item 
+    <li data-nav-id="/2-prerequiste/" title="Prerequisites and Infrastructure Setup" class="dd-item 
         parent
         
         
         ">
       <a href="/2-prerequiste/">
-           <b> 2. </b> Preparation Steps
+           <b> 2. </b> Prerequisites and Infrastructure Setup
           
             <i class="fas fa-check read-icon"></i>
           
@@ -137,13 +137,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.1-createvpc/" title="Create VPC" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.1-createvpc/" title="Create VPC and Subnets" class="dd-item 
         
         
         
         ">
       <a href="/2-prerequiste/2.1-createvpc/">
-           <b> 2.1 </b> Create VPC
+           <b> 2.1 </b> Create VPC and Subnets
           
             <i class="fas fa-check read-icon"></i>
           
@@ -165,13 +165,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.2-modifysubnet/" title="Edit Subnets" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.2-modifysubnet/" title="Modify Public Subnet" class="dd-item 
         
         
         
         ">
       <a href="/2-prerequiste/2.2-modifysubnet/">
-           <b> 2.2 </b> Edit Subnets
+           <b> 2.2 </b> Modify Public Subnet
           
             <i class="fas fa-check read-icon"></i>
           
@@ -193,13 +193,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.3-createsg/" title="Create Security Groups for Components" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.3-createsg/" title="Create Security Groups" class="dd-item 
         
         
         
         ">
       <a href="/2-prerequiste/2.3-createsg/">
-           <b> 2.3 </b> Create Security Groups for Components
+           <b> 2.3 </b> Create Security Groups
           
             <i class="fas fa-check read-icon"></i>
           
@@ -221,13 +221,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.4-createec2/" title="Create EC2 Instances for Bastion Host and Backend" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.4-createec2/" title="Create the Initial EC2 Instance" class="dd-item 
         
         
         
         ">
       <a href="/2-prerequiste/2.4-createec2/">
-           <b> 2.4 </b> Create EC2 Instances for Bastion Host and Backend
+           <b> 2.4 </b> Create the Initial EC2 Instance
           
             <i class="fas fa-check read-icon"></i>
           
@@ -249,13 +249,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.5-createrds/" title="Create EC2 Instances for Bastion Host and Backend" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.5-createrds/" title="Create RDS MySQL Database" class="dd-item 
         
         
         
         ">
       <a href="/2-prerequiste/2.5-createrds/">
-           <b> 2.4 </b> Create EC2 Instances for Bastion Host and Backend
+           <b> 2.5 </b> Create RDS MySQL Database
           
             <i class="fas fa-check read-icon"></i>
           
@@ -283,7 +283,7 @@
         
         ">
       <a href="/2-prerequiste/2.6-createami/">
-           <b> 2.5 </b> Create Amazon Machine Image (AMI)
+           <b> 2.6 </b> Create Amazon Machine Image (AMI)
           
             <i class="fas fa-check read-icon"></i>
           
@@ -305,13 +305,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.7-createlaunchtemplate/" title="Create Launch Template for Auto Scaling" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.7-createlaunchtemplate/" title="Create Launch Template" class="dd-item 
         
         
         
         ">
       <a href="/2-prerequiste/2.7-createlaunchtemplate/">
-           <b> 2.6 </b> Create Launch Template for Auto Scaling
+           <b> 2.7 </b> Create Launch Template
           
             <i class="fas fa-check read-icon"></i>
           
@@ -339,7 +339,7 @@
         
         ">
       <a href="/2-prerequiste/2.8-createtargetgroup/">
-           <b> 2.7 </b> Create Target Group
+           <b> 2.8 </b> Create Target Group
           
             <i class="fas fa-check read-icon"></i>
           
@@ -367,7 +367,7 @@
         
         ">
       <a href="/2-prerequiste/2.9-createalb/">
-           <b> 2.8 </b> Create Application Load Balancer (ALB)
+           <b> 2.9 </b> Create Application Load Balancer (ALB)
           
             <i class="fas fa-check read-icon"></i>
           
@@ -389,13 +389,41 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.10-createasg/" title="Create Auto Scaling Group" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.10-createasg/" title="Create Auto Scaling Group (ASG)" class="dd-item 
         
         
         
         ">
       <a href="/2-prerequiste/2.10-createasg/">
-           <b> 2.9 </b> Create Auto Scaling Group
+           <b> 2.10 </b> Create Auto Scaling Group (ASG)
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-prerequiste/2.11-creates3/" title="Create S3 Bucket for Frontend" class="dd-item 
+        
+        active
+        
+        ">
+      <a href="/2-prerequiste/2.11-creates3/">
+           <b> 2.11 </b> Create S3 Bucket for Frontend
           
             <i class="fas fa-check read-icon"></i>
           
@@ -423,35 +451,7 @@
         
         ">
       <a href="/2-prerequiste/2.12-createcloudfrontbe/">
-           <b> 2.10 </b> Create CloudFront for Backend (ALB)
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.11-creates3/" title="Create S3 Bucket and Configure Static Website Hosting" class="dd-item 
-        
-        active
-        
-        ">
-      <a href="/2-prerequiste/2.11-creates3/">
-           <b> 2.11 </b> Create S3 Bucket and Configure Static Website Hosting
+           <b> 2.12 </b> Create CloudFront for Backend (ALB)
           
             <i class="fas fa-check read-icon"></i>
           
@@ -479,7 +479,7 @@
         
         ">
       <a href="/2-prerequiste/2.13-createcloudfrontfe/">
-           <b> 2.12 </b> Create CloudFront for Frontend (S3)
+           <b> 2.13 </b> Create CloudFront for Frontend (S3)
           
             <i class="fas fa-check read-icon"></i>
           
@@ -508,13 +508,13 @@
  
   
     
-    <li data-nav-id="/3-accessibilitytoinstances/" title="Connecting to the EC2 Instance" class="dd-item 
+    <li data-nav-id="/3-accessibilitytoinstances/" title="Connecting and Deploying the Application" class="dd-item 
         
         
         
         ">
       <a href="/3-accessibilitytoinstances/">
-           <b> 3. </b> Connecting to the EC2 Instance
+           <b> 3. </b> Connecting and Deploying the Application
           
             <i class="fas fa-check read-icon"></i>
           
@@ -539,13 +539,13 @@
  
   
     
-    <li data-nav-id="/3-accessibilitytoinstances/3.1-public-instance/" title="Connecting to the Server" class="dd-item 
+    <li data-nav-id="/3-accessibilitytoinstances/3.1-public-instance/" title="Connect, Install, and Deploy" class="dd-item 
         
         
         
         ">
       <a href="/3-accessibilitytoinstances/3.1-public-instance/">
-           <b> 3.1. </b> Connecting to the Server
+           <b> 3.1. </b> Connect, Install, and Deploy
           
             <i class="fas fa-check read-icon"></i>
           
@@ -574,13 +574,13 @@
  
   
     
-    <li data-nav-id="/4-cleanup/" title="Cleaning Up Resources" class="dd-item 
+    <li data-nav-id="/4-cleanup/" title="Clean Up Resources" class="dd-item 
         
         
         
         ">
       <a href="/4-cleanup/">
-           <b> 4. </b> Cleaning Up Resources
+           <b> 4. </b> Clean Up Resources
           
             <i class="fas fa-check read-icon"></i>
           
@@ -759,7 +759,7 @@
             
           
           
-            <a href='/'>Weather Application Project</a> > <a href='/2-prerequiste/'>Preparation Steps</a> > Create S3 Bucket and Configure Static Website Hosting
+            <a href='/'>Deploying an Online Restaurant Project on AWS</a> > <a href='/2-prerequiste/'>Prerequisites and Infrastructure Setup</a> > Create S3 Bucket for Frontend
           
         
           
@@ -776,7 +776,7 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#create-s3-bucket-to-store-the-frontend">Create S3 Bucket to Store the Frontend</a></li>
+        <li><a href="#create-an-s3-bucket-to-store-the-frontend">Create an S3 Bucket to Store the Frontend</a></li>
       </ul>
     </li>
   </ul>
@@ -796,7 +796,7 @@
           
             <h1>
               
-              Create S3 Bucket and Configure Static Website Hosting
+              Create S3 Bucket for Frontend
             </h1>
           
 
@@ -804,62 +804,47 @@
 
 
 
-	<h3 id="create-s3-bucket-to-store-the-frontend">Create S3 Bucket to Store the Frontend</h3>
+	<h3 id="create-an-s3-bucket-to-store-the-frontend">Create an S3 Bucket to Store the Frontend</h3>
 <p>ℹ️ <strong>Objective</strong></p>
 <ul>
-<li><strong>Amazon S3 (Simple Storage Service)</strong> is a highly scalable, durable, and low-cost object storage service.</li>
-<li>We will use S3 to store all the static files of the frontend application (HTML, CSS, JavaScript, images).</li>
-<li>Afterward, we will configure this bucket to act as a static web server (Static Website Hosting), allowing direct access to the website via an S3 URL.</li>
+<li><strong>Amazon S3 (Simple Storage Service)</strong> is an object storage service that offers scalability, high durability, and low cost.</li>
+<li>We will use S3 to store all the static files of our frontend application (HTML, CSS, JavaScript, images).</li>
+<li>Afterward, we will configure this bucket to function as a <strong>Static Website Hosting</strong> server.</li>
 </ul>
 <hr>
-<p>🔒 <strong>Execution Steps</strong></p>
+<p>🔒 <strong>Steps to Follow</strong></p>
 <h4 id="1-start-creating-the-s3-bucket"><strong>1. Start Creating the S3 Bucket</strong></h4>
 <ul>
 <li>In the <strong>AWS Management Console</strong>, search for and select the <strong>S3</strong> service.</li>
 <li>Click on <strong>Create bucket</strong>.</li>
 </ul>
-<figure><img src="/images/2.prerequisite/2.11-creates3/create-s3-button.png"><figcaption>
-      <h4>Starting to create an S3 Bucket</h4>
+<figure><img src="/images/2.prerequisite/2.11-creates3/s3-dashboard.png"><figcaption>
+      <h4>Start creating an S3 Bucket</h4>
     </figcaption>
 </figure>
 
-<h4 id="2-configure-basic-information"><strong>2. Configure Basic Information</strong></h4>
+<h4 id="2-configure-the-bucket"><strong>2. Configure the Bucket</strong></h4>
 <ul>
 <li>
-<p><strong>Bucket name:</strong> <code>project-frontend-030925</code>
+<p><strong>Bucket name:</strong> <code>ors-fe</code>
 
-<div class="notices warning" ><pre><code>S3 bucket names are globally unique. If this name already exists, you need to add characters or numbers to make it unique (e.g., `project-frontend-030925-yourname`).
+<div class="notices warning" ><pre><code>S3 bucket names are globally unique. If the name `ors-fe` is already in use, you will need to add characters or numbers to make it unique (e.g., `ors-fe-haminhtri-0309`).
 </code></pre>
 </div>
 </p>
 </li>
 <li>
-<p><strong>AWS Region:</strong> Select the Region you are working in.</p>
+<p><strong>AWS Region:</strong> Choose the region you are working in.</p>
 </li>
 <li>
-<p><strong>Object Ownership:</strong> Select <code>ACLs enabled</code>.
-
-<div class="notices info" ><pre><code>We select this option to be able to grant public access to individual files using Access Control Lists (ACL), a necessary method for the next configuration step.
-</code></pre>
-</div>
-</p>
+<p><strong>Block Public Access settings for this bucket:</strong></p>
+<ul>
+<li><strong>Check</strong> the box for <strong>Block all public access</strong>.</li>
+</ul>
 </li>
 </ul>
-<figure><img src="/images/2.prerequisite/2.11-creates3/s3-basic-config-acl.png"><figcaption>
-      <h4>Configuring name, Region, and enabling ACLs</h4>
-    </figcaption>
-</figure>
-
-<h4 id="3-configure-public-access-settings"><strong>3. Configure Public Access Settings</strong></h4>
-<ul>
-<li>Check the box for <strong>Block all public access</strong>.</li>
-</ul>
-
-<div class="notices warning" ><p>This step allows us to make objects in the bucket publicly accessible. In the following steps, CloudFront will be configured to protect this bucket more securely.</p>
-</div>
-
-<figure><img src="/images/2.prerequisite/2.11-creates3/s3-enable-block-public-access.png"><figcaption>
-      <h4>Enabling Block Public Access</h4>
+<figure><img src="/images/2.prerequisite/2.11-creates3/s3-unblock-public-access.png"><figcaption>
+      <h4>Block public access for the bucket</h4>
     </figcaption>
 </figure>
 
@@ -867,26 +852,26 @@
 <li><strong>Bucket Versioning:</strong> Select <code>Enable</code>.</li>
 <li>Scroll down and click <strong>Create bucket</strong>.</li>
 </ul>
-<h4 id="4-upload-frontend-files-to-the-bucket"><strong>4. Upload Frontend Files to the Bucket</strong></h4>
+<h4 id="3-upload-frontend-files-to-the-bucket"><strong>3. Upload Frontend Files to the Bucket</strong></h4>
 <ul>
-<li>After successfully creating the bucket, go into the <code>project-frontend-030925</code> bucket.</li>
-<li>Click <strong>Upload</strong> and upload all files and folders of your frontend project.</li>
+<li>After the bucket is created successfully, go into the <code>ors-fe</code> bucket.</li>
+<li>Click <strong>Upload</strong> and upload all the files and folders of your frontend project.</li>
 </ul>
 <figure><img src="/images/2.prerequisite/2.11-creates3/s3-upload-files.png"><figcaption>
-      <h4>Uploading Frontend files to S3</h4>
+      <h4>Upload Frontend files to S3</h4>
     </figcaption>
 </figure>
 
-<h4 id="5-configure-static-website-hosting"><strong>5. Configure Static Website Hosting</strong></h4>
+<h4 id="4-configure-static-website-hosting"><strong>4. Configure Static Website Hosting</strong></h4>
 <ul>
-<li>In the bucket, switch to the <strong>Properties</strong> tab.</li>
-<li>Scroll down to the bottom to the <strong>Static website hosting</strong> section and click <strong>Edit</strong>.</li>
+<li>In the <code>ors-fe</code> bucket, switch to the <strong>Properties</strong> tab.</li>
+<li>Scroll to the bottom to the <strong>Static website hosting</strong> section and click <strong>Edit</strong>.</li>
 <li>Select <strong>Enable</strong>.</li>
 <li><strong>Index document:</strong> <code>index.html</code></li>
 <li>Click <strong>Save changes</strong>.</li>
 </ul>
-<figure><img src="/images/2.prerequisite/2.11-creates3/s3-static-hosting.png"><figcaption>
-      <h4>Enabling and configuring Static Website Hosting</h4>
+<figure><img src="/images/2.prerequisite/2.11-creates3/s3-static-hosting-01.png"><figcaption>
+      <h4>Enable and configure Static Website Hosting</h4>
     </figcaption>
 </figure>
 
@@ -1128,22 +1113,6 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
                     
                 
                 
@@ -1163,6 +1132,22 @@
                     
                         
                         
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
                     
                 
                 
@@ -1253,10 +1238,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/2-prerequiste/2.12-createcloudfrontbe/" title="Create CloudFront for Backend (ALB)"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/2-prerequiste/2.10-createasg/" title="Create Auto Scaling Group (ASG)"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/2-prerequiste/2.13-createcloudfrontfe/" title="Create CloudFront for Frontend (S3)" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/2-prerequiste/2.12-createcloudfrontbe/" title="Create CloudFront for Backend (ALB)" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1266,19 +1251,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1757247351"></script>
-    <script src="/js/perfect-scrollbar.min.js?1757247351"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1757247351"></script>
-    <script src="/js/jquery.sticky.js?1757247351"></script>
-    <script src="/js/featherlight.min.js?1757247351"></script>
-    <script src="/js/highlight.pack.js?1757247351"></script>
+    <script src="/js/clipboard.min.js?1757251332"></script>
+    <script src="/js/perfect-scrollbar.min.js?1757251332"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1757251332"></script>
+    <script src="/js/jquery.sticky.js?1757251332"></script>
+    <script src="/js/featherlight.min.js?1757251332"></script>
+    <script src="/js/highlight.pack.js?1757251332"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1757247351"></script>
-    <script src="/js/learn.js?1757247351"></script>
-    <script src="/js/hugo-learn.js?1757247351"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1757251332"></script>
+    <script src="/js/learn.js?1757251332"></script>
+    <script src="/js/hugo-learn.js?1757251332"></script>
 
-    <link href="/mermaid/mermaid.css?1757247351" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1757247351"></script>
+    <link href="/mermaid/mermaid.css?1757251332" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1757251332"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

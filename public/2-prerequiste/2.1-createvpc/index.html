@@ -9,24 +9,24 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Create VPC :: AWS System Manager</title>
+    <title>Create VPC and Subnets :: AWS System Manager</title>
 
     
-    <link href="/css/nucleus.css?1757235471" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1757235471" rel="stylesheet">
-    <link href="/css/hybrid.css?1757235471" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1757235471" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1757235471" rel="stylesheet">
-    <link href="/css/auto-complete.css?1757235471" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1757235471" rel="stylesheet">
-    <link href="/css/theme.css?1757235471" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1757235471" rel="stylesheet">
+    <link href="/css/nucleus.css?1757251332" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1757251332" rel="stylesheet">
+    <link href="/css/hybrid.css?1757251332" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1757251332" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1757251332" rel="stylesheet">
+    <link href="/css/auto-complete.css?1757251332" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1757251332" rel="stylesheet">
+    <link href="/css/theme.css?1757251332" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1757251332" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1757235471" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1757251332" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1757235471"></script>
+    <script src="/js/jquery-3.3.1.min.js?1757251332"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,12 +57,12 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1757235471"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1757235471"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1757251332"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1757251332"></script>
 <script type="text/javascript">
     var baseurl = "http:\/\/localhost:1313\/en";
 </script>
-<script type="text/javascript" src="/js/search.js?1757235471"></script>
+<script type="text/javascript" src="/js/search.js?1757251332"></script>
 
     
   </div>
@@ -80,13 +80,13 @@
  
   
     
-    <li data-nav-id="/1-introduce/" title="Introduction and Architecture Overview" class="dd-item 
+    <li data-nav-id="/1-introduce/" title="Introduction and Architectural Overview" class="dd-item 
         
         
         
         ">
       <a href="/1-introduce/">
-           <b> 1. </b> Introduction and Architecture Overview
+           <b> 1. </b> Introduction and Architectural Overview
           
             <i class="fas fa-check read-icon"></i>
           
@@ -106,13 +106,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/" title="Preparation Steps" class="dd-item 
+    <li data-nav-id="/2-prerequiste/" title="Prerequisites and Infrastructure Setup" class="dd-item 
         parent
         
         
         ">
       <a href="/2-prerequiste/">
-           <b> 2. </b> Preparation Steps
+           <b> 2. </b> Prerequisites and Infrastructure Setup
           
             <i class="fas fa-check read-icon"></i>
           
@@ -137,13 +137,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.1-createvpc/" title="Create VPC" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.1-createvpc/" title="Create VPC and Subnets" class="dd-item 
         
         active
         
         ">
       <a href="/2-prerequiste/2.1-createvpc/">
-           <b> 2.1 </b> Create VPC
+           <b> 2.1 </b> Create VPC and Subnets
           
             <i class="fas fa-check read-icon"></i>
           
@@ -165,13 +165,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.2-modifysubnet/" title="Edit Subnets" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.2-modifysubnet/" title="Modify Public Subnet" class="dd-item 
         
         
         
         ">
       <a href="/2-prerequiste/2.2-modifysubnet/">
-           <b> 2.2 </b> Edit Subnets
+           <b> 2.2 </b> Modify Public Subnet
           
             <i class="fas fa-check read-icon"></i>
           
@@ -193,13 +193,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.3-createsg/" title="Create Security Groups for Components" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.3-createsg/" title="Create Security Groups" class="dd-item 
         
         
         
         ">
       <a href="/2-prerequiste/2.3-createsg/">
-           <b> 2.3 </b> Create Security Groups for Components
+           <b> 2.3 </b> Create Security Groups
           
             <i class="fas fa-check read-icon"></i>
           
@@ -221,13 +221,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.4-createec2/" title="Create EC2 Instances for Bastion Host and Backend" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.4-createec2/" title="Create the Initial EC2 Instance" class="dd-item 
         
         
         
         ">
       <a href="/2-prerequiste/2.4-createec2/">
-           <b> 2.4 </b> Create EC2 Instances for Bastion Host and Backend
+           <b> 2.4 </b> Create the Initial EC2 Instance
           
             <i class="fas fa-check read-icon"></i>
           
@@ -249,13 +249,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.5-createrds/" title="Create EC2 Instances for Bastion Host and Backend" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.5-createrds/" title="Create RDS MySQL Database" class="dd-item 
         
         
         
         ">
       <a href="/2-prerequiste/2.5-createrds/">
-           <b> 2.4 </b> Create EC2 Instances for Bastion Host and Backend
+           <b> 2.5 </b> Create RDS MySQL Database
           
             <i class="fas fa-check read-icon"></i>
           
@@ -283,7 +283,7 @@
         
         ">
       <a href="/2-prerequiste/2.6-createami/">
-           <b> 2.5 </b> Create Amazon Machine Image (AMI)
+           <b> 2.6 </b> Create Amazon Machine Image (AMI)
           
             <i class="fas fa-check read-icon"></i>
           
@@ -305,13 +305,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.7-createlaunchtemplate/" title="Create Launch Template for Auto Scaling" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.7-createlaunchtemplate/" title="Create Launch Template" class="dd-item 
         
         
         
         ">
       <a href="/2-prerequiste/2.7-createlaunchtemplate/">
-           <b> 2.6 </b> Create Launch Template for Auto Scaling
+           <b> 2.7 </b> Create Launch Template
           
             <i class="fas fa-check read-icon"></i>
           
@@ -339,7 +339,7 @@
         
         ">
       <a href="/2-prerequiste/2.8-createtargetgroup/">
-           <b> 2.7 </b> Create Target Group
+           <b> 2.8 </b> Create Target Group
           
             <i class="fas fa-check read-icon"></i>
           
@@ -367,7 +367,7 @@
         
         ">
       <a href="/2-prerequiste/2.9-createalb/">
-           <b> 2.8 </b> Create Application Load Balancer (ALB)
+           <b> 2.9 </b> Create Application Load Balancer (ALB)
           
             <i class="fas fa-check read-icon"></i>
           
@@ -389,13 +389,41 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.10-createasg/" title="Create Auto Scaling Group" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.10-createasg/" title="Create Auto Scaling Group (ASG)" class="dd-item 
         
         
         
         ">
       <a href="/2-prerequiste/2.10-createasg/">
-           <b> 2.9 </b> Create Auto Scaling Group
+           <b> 2.10 </b> Create Auto Scaling Group (ASG)
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-prerequiste/2.11-creates3/" title="Create S3 Bucket for Frontend" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-prerequiste/2.11-creates3/">
+           <b> 2.11 </b> Create S3 Bucket for Frontend
           
             <i class="fas fa-check read-icon"></i>
           
@@ -423,35 +451,7 @@
         
         ">
       <a href="/2-prerequiste/2.12-createcloudfrontbe/">
-           <b> 2.10 </b> Create CloudFront for Backend (ALB)
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.11-creates3/" title="Create S3 Bucket and Configure Static Website Hosting" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.11-creates3/">
-           <b> 2.11 </b> Create S3 Bucket and Configure Static Website Hosting
+           <b> 2.12 </b> Create CloudFront for Backend (ALB)
           
             <i class="fas fa-check read-icon"></i>
           
@@ -479,7 +479,7 @@
         
         ">
       <a href="/2-prerequiste/2.13-createcloudfrontfe/">
-           <b> 2.12 </b> Create CloudFront for Frontend (S3)
+           <b> 2.13 </b> Create CloudFront for Frontend (S3)
           
             <i class="fas fa-check read-icon"></i>
           
@@ -508,13 +508,13 @@
  
   
     
-    <li data-nav-id="/3-accessibilitytoinstances/" title="Connecting to the EC2 Instance" class="dd-item 
+    <li data-nav-id="/3-accessibilitytoinstances/" title="Connecting and Deploying the Application" class="dd-item 
         
         
         
         ">
       <a href="/3-accessibilitytoinstances/">
-           <b> 3. </b> Connecting to the EC2 Instance
+           <b> 3. </b> Connecting and Deploying the Application
           
             <i class="fas fa-check read-icon"></i>
           
@@ -539,13 +539,13 @@
  
   
     
-    <li data-nav-id="/3-accessibilitytoinstances/3.1-public-instance/" title="Connecting to the Server" class="dd-item 
+    <li data-nav-id="/3-accessibilitytoinstances/3.1-public-instance/" title="Connect, Install, and Deploy" class="dd-item 
         
         
         
         ">
       <a href="/3-accessibilitytoinstances/3.1-public-instance/">
-           <b> 3.1. </b> Connecting to the Server
+           <b> 3.1. </b> Connect, Install, and Deploy
           
             <i class="fas fa-check read-icon"></i>
           
@@ -574,13 +574,13 @@
  
   
     
-    <li data-nav-id="/4-cleanup/" title="Cleaning Up Resources" class="dd-item 
+    <li data-nav-id="/4-cleanup/" title="Clean Up Resources" class="dd-item 
         
         
         
         ">
       <a href="/4-cleanup/">
-           <b> 4. </b> Cleaning Up Resources
+           <b> 4. </b> Clean Up Resources
           
             <i class="fas fa-check read-icon"></i>
           
@@ -759,7 +759,7 @@
             
           
           
-            <a href='/'>Weather Application Project</a> > <a href='/2-prerequiste/'>Preparation Steps</a> > Create VPC
+            <a href='/'>Deploying an Online Restaurant Project on AWS</a> > <a href='/2-prerequiste/'>Prerequisites and Infrastructure Setup</a> > Create VPC and Subnets
           
         
           
@@ -776,7 +776,7 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#create-amazon-virtual-private-cloud-vpc">Create Amazon Virtual Private Cloud (VPC)</a></li>
+        <li><a href="#create-the-network-environment-vpc">Create the Network Environment (VPC)</a></li>
       </ul>
     </li>
   </ul>
@@ -796,7 +796,7 @@
           
             <h1>
               
-              Create VPC
+              Create VPC and Subnets
             </h1>
           
 
@@ -804,47 +804,48 @@
 
 
 
-	<h3 id="create-amazon-virtual-private-cloud-vpc">Create Amazon Virtual Private Cloud (VPC)</h3>
+	<h3 id="create-the-network-environment-vpc">Create the Network Environment (VPC)</h3>
 <p>ℹ️ <strong>Objective</strong></p>
 <ul>
-<li>Create a separate virtual private cloud (VPC) in AWS for the project.</li>
-<li>Automatically set up the necessary network components, including Subnets, an Internet Gateway, NAT Gateways, and Route Tables.</li>
+<li>Create an isolated virtual network environment (<strong>VPC</strong>) in AWS for the restaurant project.</li>
+<li>Use the <strong>&ldquo;VPC and more&rdquo;</strong> wizard to automatically set up the necessary network components, including <strong>Public Subnets</strong>, <strong>Private Subnets</strong>, an <strong>Internet Gateway</strong>, and <strong>Route Tables</strong>.</li>
 </ul>
 <hr>
-<p>🔒 <strong>Execution Steps</strong></p>
-<h4 id="1-access-the-vpc-service"><strong>1. Access the VPC service</strong></h4>
+<p>🔒 <strong>Steps to Follow</strong></p>
+<h4 id="1-access-the-vpc-service"><strong>1. Access the VPC Service</strong></h4>
 <ul>
 <li>From the <strong>AWS Management Console</strong>, search for the <strong>VPC</strong> service.</li>
-<li>Select <strong>VPC</strong> from the search results to access the VPC management dashboard.</li>
+<li>Select <strong>VPC</strong> from the search results to go to the VPC management page.</li>
 </ul>
 <figure><img src="/images/2.prerequisite/2.1-createvpc/vpc-search.png"><figcaption>
-      <h4>VPC management dashboard</h4>
+      <h4>Search for the VPC service</h4>
     </figcaption>
 </figure>
 
-<h4 id="2-start-creating-the-vpc"><strong>2. Start creating the VPC</strong></h4>
+<h4 id="2-start-creating-the-vpc"><strong>2. Start Creating the VPC</strong></h4>
 <ul>
-<li>In the VPC Dashboard, click the <strong>Create VPC</strong> button.</li>
+<li>In the VPC Dashboard, on the left menu, select <strong>Your VPCs</strong>.</li>
+<li>Click the <strong>Create VPC</strong> button in the upper right corner.</li>
 </ul>
 <figure><img src="/images/2.prerequisite/2.1-createvpc/vpc-choose.png"><figcaption>
       <h4>Click the Create VPC button</h4>
     </figcaption>
 </figure>
 
-<h4 id="3-configure-vpc-settings"><strong>3. Configure VPC settings</strong></h4>
+<h4 id="3-configure-vpc-parameters"><strong>3. Configure VPC Parameters</strong></h4>
 <ul>
 <li>
-<p>On the <strong>Create VPC</strong> page, in the <strong>Resources to create</strong> section, select <strong>VPC and more</strong> to use the automatic creation wizard.</p>
+<p>On the <strong>Create VPC</strong> page, under the <strong>Resources to create</strong> section, make sure you have selected <strong>VPC and more</strong> to use the automatic creation wizard.</p>
 </li>
 <li>
 <p><strong>Detailed configuration:</strong></p>
 <ul>
-<li><strong>Name tag auto-generation:</strong> <code>project-vpc</code></li>
+<li><strong>Name tag auto-generation:</strong> <code>ors-vpc</code></li>
 <li><strong>IPv4 CIDR block:</strong> Leave the default <code>10.0.0.0/16</code>.</li>
 <li><strong>Number of Availability Zones (AZs):</strong> <code>2</code></li>
 <li><strong>Number of Public subnets:</strong> <code>2</code></li>
 <li><strong>Number of Private subnets:</strong> <code>2</code></li>
-<li><strong>NAT gateways:</strong> <code>1 per AZ</code> (Or select <code>In 1 AZ</code> if you want to save costs)</li>
+<li><strong>NAT gateways:</strong> <code>None</code> (To save costs for this workshop).</li>
 <li><strong>VPC endpoints:</strong> <code>None</code></li>
 </ul>
 </li>
@@ -853,36 +854,41 @@
 </figure>
 
 <figure><img src="/images/2.prerequisite/2.1-createvpc/vpc-edit-02.png"><figcaption>
-      <h4>Configure VPC and more</h4>
+      <h4>Configure VPC and more for the project</h4>
     </figcaption>
 </figure>
 </p>
 
-<div class="notices warning" ><p><strong>Note:</strong> Creating NAT Gateways will incur costs. Please delete the resources after completing the workshop to avoid unwanted charges.</p>
+<div class="notices info" ><p><strong>Explanation:</strong> We are creating 2 Public Subnets to place resources that need internet access, like the Load Balancer, and 2 Private Subnets to protect sensitive resources like the EC2 backend and RDS database. Spanning across 2 AZs helps increase the system&rsquo;s High Availability.</p>
 </div>
 
-<h4 id="4-confirm-and-create-vpc"><strong>4. Confirm and create VPC</strong></h4>
+<h4 id="4-finalize-and-create-the-vpc"><strong>4. Finalize and Create the VPC</strong></h4>
 <ul>
-<li>After filling in all the information, click <strong>Create VPC</strong> at the bottom right corner to start the creation process.</li>
+<li>After filling in all the information, scroll down and click on <strong>Create VPC</strong>.</li>
 </ul>
 <figure><img src="/images/2.prerequisite/2.1-createvpc/vpc-edit-03.png"><figcaption>
-      <h4>Finalize and create VPC</h4>
+      <h4>Finalize and create the VPC</h4>
     </figcaption>
 </figure>
 
-<h4 id="5-check-vpc-status"><strong>5. Check VPC status</strong></h4>
+<h4 id="5-check-the-result"><strong>5. Check the Result</strong></h4>
 <ul>
-<li>The resource creation process may take a few minutes. Upon completion, you will see a success notification screen.</li>
-<li>Click <strong>View VPC</strong> to review the created resources.</li>
+<li>The process of creating the network resources may take a few minutes. Once completed, you will see a success message.</li>
+<li>Click on <strong>View VPC</strong> to review the resources that have been created.</li>
 </ul>
 <figure><img src="/images/2.prerequisite/2.1-createvpc/vpc-done.png"><figcaption>
-      <h4>VPC creation successful message</h4>
+      <h4>VPC creation success message</h4>
     </figcaption>
 </figure>
 
 <ul>
-<li>You will be redirected to the VPC list page, where the newly created <code>project-vpc</code> will have a status of <strong>Available</strong>.</li>
+<li>You will be redirected to the list of VPCs. Here, the newly created <code>ors-vpc</code> will have the status <strong>Available</strong>, ready for the next configuration steps.</li>
 </ul>
+<figure><img src="/images/2.prerequisite/2.1-createvpc/vpc-check-01.png"><figcaption>
+      <h4>Check the VPC in the list</h4>
+    </figcaption>
+</figure>
+
 
 
 
@@ -1243,10 +1249,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/2-prerequiste/" title="Preparation Steps"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/2-prerequiste/" title="Prerequisites and Infrastructure Setup"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/2-prerequiste/2.2-modifysubnet/" title="Edit Subnets" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/2-prerequiste/2.2-modifysubnet/" title="Modify Public Subnet" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1256,19 +1262,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1757235471"></script>
-    <script src="/js/perfect-scrollbar.min.js?1757235471"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1757235471"></script>
-    <script src="/js/jquery.sticky.js?1757235471"></script>
-    <script src="/js/featherlight.min.js?1757235471"></script>
-    <script src="/js/highlight.pack.js?1757235471"></script>
+    <script src="/js/clipboard.min.js?1757251332"></script>
+    <script src="/js/perfect-scrollbar.min.js?1757251332"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1757251332"></script>
+    <script src="/js/jquery.sticky.js?1757251332"></script>
+    <script src="/js/featherlight.min.js?1757251332"></script>
+    <script src="/js/highlight.pack.js?1757251332"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1757235471"></script>
-    <script src="/js/learn.js?1757235471"></script>
-    <script src="/js/hugo-learn.js?1757235471"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1757251332"></script>
+    <script src="/js/learn.js?1757251332"></script>
+    <script src="/js/hugo-learn.js?1757251332"></script>
 
-    <link href="/mermaid/mermaid.css?1757235471" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1757235471"></script>
+    <link href="/mermaid/mermaid.css?1757251332" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1757251332"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
