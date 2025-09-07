@@ -66,4 +66,4 @@ pre : " <b> 2.1 </b> "
 
 *   Bạn sẽ được chuyển đến trang danh sách các VPC. Tại đây, VPC `ors-vpc` vừa tạo đã ở trạng thái **Available**, sẵn sàng cho các bước cấu hình tiếp theo.
 
-{{< figure src="/images/2.prerequisite/2.1-createvpc/vpc-check.png" title="Kiểm tra VPC trong danh sách" >}}
+{{< figure src="/images/2.prerequisite/2.1-createvpc/vpc-check-01.png" title="Kiểm tra VPC trong danh sách" >}}

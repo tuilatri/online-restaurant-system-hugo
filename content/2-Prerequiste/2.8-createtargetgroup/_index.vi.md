@@ -46,7 +46,9 @@ pre : " <b> 2.8 </b> "
 Đây là một đường dẫn (endpoint) đặc biệt mà bạn cần tạo trong code backend của mình. Application Load Balancer sẽ liên tục gửi request đến đường dẫn `/health` này. Nếu nhận được phản hồi thành công (HTTP 200 OK), nó sẽ coi instance đó là "khỏe mạnh" và tiếp tục gửi traffic người dùng đến. Nếu không, nó sẽ tạm ngưng gửi traffic để chờ instance phục hồi.
 {{% /notice %}}
 
-{{< figure src="/images/2.prerequisite/2.8-createtargetgroup/tg-config.png" title="Điền thông tin cấu hình cho Target Group" >}}
+
+{{< figure src="/images/2.prerequisite/2.8-createtargetgroup/tg-config-01.png" >}}
+{{< figure src="/images/2.prerequisite/2.8-createtargetgroup/tg-config-02.png" title="Điền thông tin cấu hình cho Target Group" >}}
 
 #### **4. Đăng ký Target ban đầu**
 

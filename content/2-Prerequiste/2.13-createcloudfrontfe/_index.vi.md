@@ -34,11 +34,6 @@ pre : " <b> 2.13 </b> "
     *   Để tên mặc định và nhấn **Create**.
     *   **Bucket policy:** Chọn `Yes, update the bucket policy`. Thao tác này sẽ tự động thêm một chính sách vào S3 bucket của bạn, cho phép OAI vừa tạo có quyền đọc các đối tượng.
 
-{{% notice success %}}
-**Ma thuật đã xảy ra!**
-Khi bạn chọn "Yes, update the bucket policy", CloudFront đã tự động sửa đổi chính sách của S3 bucket `ors-fe`, từ chối tất cả các truy cập trực tiếp và chỉ cho phép duy nhất OAI mà nó vừa tạo được phép vào.
-{{% /notice %}}
-
 {{< figure src="/images/2.prerequisite/2.13-createcloudfrontfe/cf-s3-oai-config.png" title="Cấu hình Origin là S3 Bucket và tạo OAI" >}}
 
 #### **3. Cấu hình các mục còn lại**
@@ -62,5 +57,3 @@ Khi bạn chọn "Yes, update the bucket policy", CloudFront đã tự động s
 {{< figure src="/images/2.prerequisite/2.13-createcloudfrontfe/cf-s3-copy-domain.png" title="Sao chép Domain Name của Distribution Frontend" >}}
 
 *   Dán domain name này vào trình duyệt. Bạn sẽ thấy ứng dụng frontend của mình được tải lên thành công, nhanh chóng và an toàn thông qua mạng lưới của CloudFront!
-
-{{< figure src="/images/2.prerequisite/2.13-createcloudfrontfe/cf-s3-result.png" title="Giao diện người dùng được phân phối qua CloudFront" >}}

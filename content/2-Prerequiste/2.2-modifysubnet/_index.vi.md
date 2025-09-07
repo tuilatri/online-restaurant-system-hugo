@@ -21,14 +21,14 @@ pre : " <b> 2.2 </b> "
 
 *   Từ giao diện **VPC Dashboard**, chọn **Subnets** ở menu bên trái để xem danh sách tất cả các subnet thuộc VPC `ors-vpc` của bạn.
 
-{{< figure src="/images/2.prerequisite/2.2-modifysubnet/subnet-list.png" title="Danh sách các Subnet của vpc-ors" >}}
+{{< figure src="/images/2.prerequisite/2.2-modifysubnet/subnet-list-01.png" title="Danh sách các Subnet của vpc-ors" >}}
 
 #### **2. Chỉnh sửa Public Subnet đầu tiên**
 
 *   Xác định và chọn một trong hai **Public Subnet** đã tạo (ví dụ: `ors-vpc-subnet-public1-ap-southeast-1a`).
 *   Nhấn vào nút **Actions** và chọn **Edit subnet settings**.
 
-{{< figure src="/images/2.prerequisite/2.2-modifysubnet/subnet-action-01.png" title="Chọn Edit subnet settings" >}}
+{{< figure src="/images/2.prerequisite/2.2-modifysubnet/subnet-action-01-01.png" title="Chọn Edit subnet settings" >}}
 
 #### **3. Kích hoạt tính năng Auto-assign IP**
 
@@ -36,7 +36,7 @@ pre : " <b> 2.2 </b> "
 *   Tích vào ô **Enable auto-assign public IPv4 address**.
 *   Cuộn xuống dưới và nhấn **Save** để lưu lại thay đổi.
 
-{{< figure src="/images/2.prerequisite/2.2-modifysubnet/subnet-edit-01.png" title="Kích hoạt tính năng Auto-assign Public IP" >}}
+{{< figure src="/images/2.prerequisite/2.2-modifysubnet/subnet-edit-01-01.png" title="Kích hoạt tính năng Auto-assign Public IP" >}}
 
 {{% notice success %}}
 Khi tính năng này được bật, bất kỳ EC2 instance nào được khởi chạy trong subnet này sẽ tự động nhận được một địa chỉ IP công cộng, giúp nó có thể giao tiếp với Internet.
@@ -47,5 +47,5 @@ Khi tính năng này được bật, bất kỳ EC2 instance nào được khở
 *   Thực hiện lại các bước **2** và **3** cho **Public Subnet thứ hai** (ví dụ: `ors-vpc-subnet-public2-ap-southeast-1b`).
 *   Việc này đảm bảo rằng hệ thống của chúng ta có thể hoạt động đồng đều trên cả hai Availability Zone, duy trì tính sẵn sàng cao.
 
-{{< figure src="/images/2.prerequisite/2.2-modifysubnet/subnet-action-02.png" >}}
-{{< figure src="/images/2.prerequisite/2.2-modifysubnet/subnet-edit-02.png" title="Hoàn tất cấu hình cho cả hai Public Subnet" >}}
+{{< figure src="/images/2.prerequisite/2.2-modifysubnet/subnet-action-02-01.png" >}}
+{{< figure src="/images/2.prerequisite/2.2-modifysubnet/subnet-edit-02-01.png" title="Hoàn tất cấu hình cho cả hai Public Subnet" >}}

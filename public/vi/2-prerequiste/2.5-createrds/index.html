@@ -12,21 +12,21 @@
     <title>Tạo Cơ sở dữ liệu RDS MySQL :: AWS System Manager</title>
 
     
-    <link href="/css/nucleus.css?1757221146" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1757221146" rel="stylesheet">
-    <link href="/css/hybrid.css?1757221146" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1757221146" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1757221146" rel="stylesheet">
-    <link href="/css/auto-complete.css?1757221146" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1757221146" rel="stylesheet">
-    <link href="/css/theme.css?1757221146" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1757221146" rel="stylesheet">
+    <link href="/css/nucleus.css?1757247351" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1757247351" rel="stylesheet">
+    <link href="/css/hybrid.css?1757247351" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1757247351" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1757247351" rel="stylesheet">
+    <link href="/css/auto-complete.css?1757247351" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1757247351" rel="stylesheet">
+    <link href="/css/theme.css?1757247351" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1757247351" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1757221146" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1757247351" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1757221146"></script>
+    <script src="/js/jquery-3.3.1.min.js?1757247351"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,12 +57,12 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1757221146"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1757221146"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1757247351"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1757247351"></script>
 <script type="text/javascript">
     var baseurl = "http:\/\/localhost:1313\/vi";
 </script>
-<script type="text/javascript" src="/js/search.js?1757221146"></script>
+<script type="text/javascript" src="/js/search.js?1757247351"></script>
 
     
   </div>
@@ -835,7 +835,7 @@
 <ul>
 <li><strong>Choose a database creation method:</strong> Chọn <strong>Standard create</strong>.</li>
 <li><strong>Engine options:</strong> Chọn <strong>MySQL</strong>.</li>
-<li><strong>Templates:</strong> Chọn <strong>Free tier</strong>.</li>
+<li><strong>Templates:</strong> Chọn <strong>Production</strong>.</li>
 </ul>
 
 <div class="notices info" ><p>Việc chọn <strong>Free tier</strong> sẽ tự động giới hạn các tùy chọn cấu hình (ví dụ: chỉ có thể chọn Single DB instance) để đảm bảo bạn không phát sinh chi phí ngoài ý muốn.</p>
@@ -865,13 +865,8 @@
 <li><strong>DB Subnet Group:</strong> Để mặc định, AWS sẽ tự động tạo một Subnet Group mới phù hợp với VPC của bạn.</li>
 <li><strong>Public access:</strong> Chọn <strong>Yes</strong>.</li>
 <li><strong>VPC security group (firewall):</strong> Chọn <strong>Choose existing</strong>.</li>
-<li><strong>Existing VPC security groups:</strong> Xóa Security Group <code>default</code> và chọn <code>ors-db-sg</code>.</li>
+<li><strong>Existing VPC security groups:</strong> Giữ Security Group <code>default</code> và chọn <code>ors-db-sg</code>.</li>
 </ul>
-
-<div class="notices warning" ><p><strong>Lý do chọn Public access = Yes:</strong>
-Trong workshop này, chúng ta cần kết nối tới database từ máy tính cá nhân (sử dụng MySQL Workbench) để import dữ liệu ban đầu. Việc này được bảo mật bởi <strong>Security Group <code>ors-db-sg</code></strong>, vốn chỉ cho phép truy cập từ IP của bạn (quy tắc <strong>My IP</strong> đã tạo ở bước 2.3). Trong môi trường Production thực tế, bạn nên chọn <strong>No</strong> và truy cập thông qua một Bastion Host.</p>
-</div>
-
 <figure><img src="/images/2.prerequisite/2.5-createrds/rds-connectivity.png"><figcaption>
       <h4>Cấu hình kết nối mạng cho RDS</h4>
     </figcaption>
@@ -1283,19 +1278,19 @@ Trong workshop này, chúng ta cần kết nối tới database từ máy tính 
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1757221146"></script>
-    <script src="/js/perfect-scrollbar.min.js?1757221146"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1757221146"></script>
-    <script src="/js/jquery.sticky.js?1757221146"></script>
-    <script src="/js/featherlight.min.js?1757221146"></script>
-    <script src="/js/highlight.pack.js?1757221146"></script>
+    <script src="/js/clipboard.min.js?1757247351"></script>
+    <script src="/js/perfect-scrollbar.min.js?1757247351"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1757247351"></script>
+    <script src="/js/jquery.sticky.js?1757247351"></script>
+    <script src="/js/featherlight.min.js?1757247351"></script>
+    <script src="/js/highlight.pack.js?1757247351"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1757221146"></script>
-    <script src="/js/learn.js?1757221146"></script>
-    <script src="/js/hugo-learn.js?1757221146"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1757247351"></script>
+    <script src="/js/learn.js?1757247351"></script>
+    <script src="/js/hugo-learn.js?1757247351"></script>
 
-    <link href="/mermaid/mermaid.css?1757221146" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1757221146"></script>
+    <link href="/mermaid/mermaid.css?1757247351" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1757247351"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

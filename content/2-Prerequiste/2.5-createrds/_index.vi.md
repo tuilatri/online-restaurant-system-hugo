@@ -34,7 +34,7 @@ pre : " <b> 2.5 </b> "
 
 *   **Choose a database creation method:** Chọn **Standard create**.
 *   **Engine options:** Chọn **MySQL**.
-*   **Templates:** Chọn **Free tier**.
+*   **Templates:** Chọn **Production**.
 
 {{% notice info %}}
 Việc chọn **Free tier** sẽ tự động giới hạn các tùy chọn cấu hình (ví dụ: chỉ có thể chọn Single DB instance) để đảm bảo bạn không phát sinh chi phí ngoài ý muốn.
@@ -59,12 +59,12 @@ Việc chọn **Free tier** sẽ tự động giới hạn các tùy chọn cấ
 *   **DB Subnet Group:** Để mặc định, AWS sẽ tự động tạo một Subnet Group mới phù hợp với VPC của bạn.
 *   **Public access:** Chọn **Yes**.
 *   **VPC security group (firewall):** Chọn **Choose existing**.
-*   **Existing VPC security groups:** Xóa Security Group `default` và chọn `ors-db-sg`.
+*   **Existing VPC security groups:** Giữ Security Group `default` và chọn `ors-db-sg`.
 
-{{% notice warning %}}
+<!-- {{% notice warning %}}
 **Lý do chọn Public access = Yes:**
 Trong workshop này, chúng ta cần kết nối tới database từ máy tính cá nhân (sử dụng MySQL Workbench) để import dữ liệu ban đầu. Việc này được bảo mật bởi **Security Group `ors-db-sg`**, vốn chỉ cho phép truy cập từ IP của bạn (quy tắc **My IP** đã tạo ở bước 2.3). Trong môi trường Production thực tế, bạn nên chọn **No** và truy cập thông qua một Bastion Host.
-{{% /notice %}}
+{{% /notice %}} -->
 
 {{< figure src="/images/2.prerequisite/2.5-createrds/rds-connectivity.png" title="Cấu hình kết nối mạng cho RDS" >}}
 

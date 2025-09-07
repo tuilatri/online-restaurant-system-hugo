@@ -27,7 +27,7 @@ Trong phần này, bạn sẽ thực hiện các lệnh để kết nối vào m
     chmod 400 ors-keypair.pem
     ```
 
-{{< figure src="/images/3.connect/3.1-deploy/mobaxterm-connect.png" title="Thiết lập phiên SSH trong MobaXterm" >}}
+{{< figure src="/images/3.connect/3.1-deploy/mobaxterm-connect-01.png" title="Thiết lập phiên SSH trong MobaXterm" >}}
 
 #### **2. Cài đặt Môi trường trên Server**
 Khi đã kết nối thành công vào máy chủ, hãy cài đặt các công cụ cần thiết.
@@ -36,7 +36,7 @@ Khi đã kết nối thành công vào máy chủ, hãy cài đặt các công c
     ```bash
     sudo yum update -y
     ```
-    {{< figure src="/images/3.connect/3.1-deploy/yum-update.png" title="Cập nhật các gói hệ thống" >}}
+    {{< figure src="/images/3.connect/3.1-deploy/yum-update-01.png" title="Cập nhật các gói hệ thống" >}}
 
 *   **Cài đặt Git:**
     ```bash
@@ -47,7 +47,7 @@ Khi đã kết nối thành công vào máy chủ, hãy cài đặt các công c
     ```bash
     git clone https://github.com/tuilatri/online-restaurant-system.git
     ```
-    {{< figure src="/images/3.connect/3.1-deploy/git-clone.png" title="Sao chép dự án" >}}
+    {{< figure src="/images/3.connect/3.1-deploy/git-clone-01.png" title="Sao chép dự án" >}}
 
 *   **Di chuyển vào thư mục backend:**
     ```bash
@@ -58,7 +58,7 @@ Khi đã kết nối thành công vào máy chủ, hãy cài đặt các công c
     ```bash
     sudo dnf install -y nodejs
     ```
-    {{< figure src="/images/3.connect/3.1-deploy/install-nodejs.png" title="Cài đặt Node.js" >}}
+    {{< figure src="/images/3.connect/3.1-deploy/install-nodejs-01.png" title="Cài đặt Node.js" >}}
 
 *   **Kiểm tra phiên bản để xác nhận cài đặt thành công:**
     ```bash
@@ -72,7 +72,7 @@ Khi đã kết nối thành công vào máy chủ, hãy cài đặt các công c
     ```bash
     npm install
     ```
-    {{< figure src="/images/3.connect/3.1-deploy/npm-install.png" title="Cài đặt các gói npm" >}}
+    {{< figure src="/images/3.connect/3.1-deploy/npm-install-01.png" title="Cài đặt các gói npm" >}}
 
 *   **Di chuyển vào thư mục `src` và tạo file cấu hình biến môi trường:**
     ```bash
@@ -89,7 +89,8 @@ Khi đã kết nối thành công vào máy chủ, hãy cài đặt các công c
     DB_DATABASE='ors'
     DB_PORT=3306
     ```
-    {{< figure src="/images/3.connect/3.1-deploy/nano-env.png" title="Cấu hình file .env" >}}
+    {{< figure src="/images/3.connect/3.1-deploy/nano-env-01-01.png" >}}
+    {{< figure src="/images/3.connect/3.1-deploy/nano-env-02-01.png" title="Cấu hình file .env" >}}
 
 *   **Lưu và thoát khỏi `nano`:**
     1.  Nhấn `Ctrl + O`
@@ -98,16 +99,12 @@ Khi đã kết nối thành công vào máy chủ, hãy cài đặt các công c
 
 #### **4. Khởi chạy và Kiểm tra Backend**
 
-*   **Quay lại thư mục backend gốc:**
-    ```bash
-    cd ..
-    ```
-
 *   **Khởi chạy ứng dụng:**
     ```bash
-    npm run start
+    node createAdmin.js
+    node server.js
     ```
-    {{< figure src="/images/3.connect/3.1-deploy/npm-start.png" title="Ứng dụng backend đang chạy trên cổng 5000" >}}
+    {{< figure src="/images/3.connect/3.1-deploy/npm-start-01.png" title="Ứng dụng backend đang chạy trên cổng 5000" >}}
 
 *   **Kiểm tra hoạt động của ứng dụng ngay trên máy chủ:**
     Mở một cửa sổ terminal **mới** trên MobaXterm và kết nối lại vào cùng EC2 instance, sau đó dùng lệnh `curl` để kiểm tra.

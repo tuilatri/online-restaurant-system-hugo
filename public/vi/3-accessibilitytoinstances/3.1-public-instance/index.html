@@ -12,21 +12,21 @@
     <title>Kết nối, Cài đặt và Triển khai :: AWS System Manager</title>
 
     
-    <link href="/css/nucleus.css?1757221146" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1757221146" rel="stylesheet">
-    <link href="/css/hybrid.css?1757221146" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1757221146" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1757221146" rel="stylesheet">
-    <link href="/css/auto-complete.css?1757221146" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1757221146" rel="stylesheet">
-    <link href="/css/theme.css?1757221146" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1757221146" rel="stylesheet">
+    <link href="/css/nucleus.css?1757247351" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1757247351" rel="stylesheet">
+    <link href="/css/hybrid.css?1757247351" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1757247351" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1757247351" rel="stylesheet">
+    <link href="/css/auto-complete.css?1757247351" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1757247351" rel="stylesheet">
+    <link href="/css/theme.css?1757247351" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1757247351" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1757221146" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1757247351" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1757221146"></script>
+    <script src="/js/jquery-3.3.1.min.js?1757247351"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,12 +57,12 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1757221146"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1757221146"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1757247351"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1757247351"></script>
 <script type="text/javascript">
     var baseurl = "http:\/\/localhost:1313\/vi";
 </script>
-<script type="text/javascript" src="/js/search.js?1757221146"></script>
+<script type="text/javascript" src="/js/search.js?1757247351"></script>
 
     
   </div>
@@ -822,7 +822,7 @@ Trước khi kết nối, bạn cần chạy lệnh này trên máy tính cá nh
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chmod <span style="color:#ae81ff">400</span> ors-keypair.pem
 </span></span></code></pre></div></li>
 </ul>
-<figure><img src="/images/3.connect/3.1-deploy/mobaxterm-connect.png"><figcaption>
+<figure><img src="/images/3.connect/3.1-deploy/mobaxterm-connect-01.png"><figcaption>
       <h4>Thiết lập phiên SSH trong MobaXterm</h4>
     </figcaption>
 </figure>
@@ -833,7 +833,7 @@ Trước khi kết nối, bạn cần chạy lệnh này trên máy tính cá nh
 <li>
 <p><strong>Cập nhật hệ thống:</strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo yum update -y
-</span></span></code></pre></div><figure><img src="/images/3.connect/3.1-deploy/yum-update.png"><figcaption>
+</span></span></code></pre></div><figure><img src="/images/3.connect/3.1-deploy/yum-update-01.png"><figcaption>
           <h4>Cập nhật các gói hệ thống</h4>
         </figcaption>
     </figure>
@@ -846,7 +846,7 @@ Trước khi kết nối, bạn cần chạy lệnh này trên máy tính cá nh
 <li>
 <p><strong>Sao chép mã nguồn dự án từ GitHub:</strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/tuilatri/online-restaurant-system.git
-</span></span></code></pre></div><figure><img src="/images/3.connect/3.1-deploy/git-clone.png"><figcaption>
+</span></span></code></pre></div><figure><img src="/images/3.connect/3.1-deploy/git-clone-01.png"><figcaption>
           <h4>Sao chép dự án</h4>
         </figcaption>
     </figure>
@@ -859,7 +859,7 @@ Trước khi kết nối, bạn cần chạy lệnh này trên máy tính cá nh
 <li>
 <p><strong>Cài đặt Node.js và npm:</strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dnf install -y nodejs
-</span></span></code></pre></div><figure><img src="/images/3.connect/3.1-deploy/install-nodejs.png"><figcaption>
+</span></span></code></pre></div><figure><img src="/images/3.connect/3.1-deploy/install-nodejs-01.png"><figcaption>
           <h4>Cài đặt Node.js</h4>
         </figcaption>
     </figure>
@@ -876,7 +876,7 @@ Trước khi kết nối, bạn cần chạy lệnh này trên máy tính cá nh
 <li>
 <p><strong>Cài đặt các thư viện phụ thuộc của dự án:</strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm install
-</span></span></code></pre></div><figure><img src="/images/3.connect/3.1-deploy/npm-install.png"><figcaption>
+</span></span></code></pre></div><figure><img src="/images/3.connect/3.1-deploy/npm-install-01.png"><figcaption>
           <h4>Cài đặt các gói npm</h4>
         </figcaption>
     </figure>
@@ -895,11 +895,14 @@ Trong trình soạn thảo <code>nano</code>, dán nội dung sau và thay thế
 </span></span><span style="display:flex;"><span>DB_PASSWORD<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;your-db-password&#39;</span>
 </span></span><span style="display:flex;"><span>DB_DATABASE<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;ors&#39;</span>
 </span></span><span style="display:flex;"><span>DB_PORT<span style="color:#f92672">=</span><span style="color:#ae81ff">3306</span>
-</span></span></code></pre></div><figure><img src="/images/3.connect/3.1-deploy/nano-env.png"><figcaption>
+</span></span></code></pre></div><p><figure><img src="/images/3.connect/3.1-deploy/nano-env-01-01.png">
+    </figure>
+
+<figure><img src="/images/3.connect/3.1-deploy/nano-env-02-01.png"><figcaption>
           <h4>Cấu hình file .env</h4>
         </figcaption>
     </figure>
-
+</p>
 </li>
 <li>
 <p><strong>Lưu và thoát khỏi <code>nano</code>:</strong></p>
@@ -913,13 +916,10 @@ Trong trình soạn thảo <code>nano</code>, dán nội dung sau và thay thế
 <h4 id="4-khởi-chạy-và-kiểm-tra-backend"><strong>4. Khởi chạy và Kiểm tra Backend</strong></h4>
 <ul>
 <li>
-<p><strong>Quay lại thư mục backend gốc:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd ..
-</span></span></code></pre></div></li>
-<li>
 <p><strong>Khởi chạy ứng dụng:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm run start
-</span></span></code></pre></div><figure><img src="/images/3.connect/3.1-deploy/npm-start.png"><figcaption>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>node createAdmin.js
+</span></span><span style="display:flex;"><span>node server.js
+</span></span></code></pre></div><figure><img src="/images/3.connect/3.1-deploy/npm-start-01.png"><figcaption>
           <h4>Ứng dụng backend đang chạy trên cổng 5000</h4>
         </figcaption>
     </figure>
@@ -1334,19 +1334,19 @@ ec2-user    3117  0.0  6.6 1127836 64896 pts/1   Sl+   10:15   0:00 node server.
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1757221146"></script>
-    <script src="/js/perfect-scrollbar.min.js?1757221146"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1757221146"></script>
-    <script src="/js/jquery.sticky.js?1757221146"></script>
-    <script src="/js/featherlight.min.js?1757221146"></script>
-    <script src="/js/highlight.pack.js?1757221146"></script>
+    <script src="/js/clipboard.min.js?1757247351"></script>
+    <script src="/js/perfect-scrollbar.min.js?1757247351"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1757247351"></script>
+    <script src="/js/jquery.sticky.js?1757247351"></script>
+    <script src="/js/featherlight.min.js?1757247351"></script>
+    <script src="/js/highlight.pack.js?1757247351"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1757221146"></script>
-    <script src="/js/learn.js?1757221146"></script>
-    <script src="/js/hugo-learn.js?1757221146"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1757247351"></script>
+    <script src="/js/learn.js?1757247351"></script>
+    <script src="/js/hugo-learn.js?1757247351"></script>
 
-    <link href="/mermaid/mermaid.css?1757221146" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1757221146"></script>
+    <link href="/mermaid/mermaid.css?1757247351" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1757247351"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

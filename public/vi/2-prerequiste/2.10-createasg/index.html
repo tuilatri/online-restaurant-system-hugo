@@ -12,21 +12,21 @@
     <title>Tạo Auto Scaling Group (ASG) :: AWS System Manager</title>
 
     
-    <link href="/css/nucleus.css?1757221146" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1757221146" rel="stylesheet">
-    <link href="/css/hybrid.css?1757221146" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1757221146" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1757221146" rel="stylesheet">
-    <link href="/css/auto-complete.css?1757221146" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1757221146" rel="stylesheet">
-    <link href="/css/theme.css?1757221146" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1757221146" rel="stylesheet">
+    <link href="/css/nucleus.css?1757247351" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1757247351" rel="stylesheet">
+    <link href="/css/hybrid.css?1757247351" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1757247351" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1757247351" rel="stylesheet">
+    <link href="/css/auto-complete.css?1757247351" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1757247351" rel="stylesheet">
+    <link href="/css/theme.css?1757247351" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1757247351" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1757221146" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1757247351" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1757221146"></script>
+    <script src="/js/jquery-3.3.1.min.js?1757247351"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,12 +57,12 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1757221146"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1757221146"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1757247351"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1757247351"></script>
 <script type="text/javascript">
     var baseurl = "http:\/\/localhost:1313\/vi";
 </script>
-<script type="text/javascript" src="/js/search.js?1757221146"></script>
+<script type="text/javascript" src="/js/search.js?1757247351"></script>
 
     
   </div>
@@ -882,11 +882,14 @@
 Bạn đang ra lệnh cho ASG: &ldquo;Hãy theo dõi số lượng request trung bình mà mỗi EC2 instance phải xử lý. Nếu con số này <strong>vượt quá 30 request/phút</strong>, hãy tự động tạo thêm một instance mới (tối đa là 2) để san sẻ công việc. Ngược lại, nếu nó thấp hơn 30, hãy giảm bớt instance (tối thiểu là 1) để tiết kiệm tiền.&rdquo;</p>
 </div>
 
-<figure><img src="/images/2.prerequisite/2.10-createasg/asg-size-scaling.png"><figcaption>
+<p><figure><img src="/images/2.prerequisite/2.10-createasg/asg-size-scaling-01.png">
+</figure>
+
+<figure><img src="/images/2.prerequisite/2.10-createasg/asg-size-scaling-02.png"><figcaption>
       <h4>Cấu hình quy mô và chính sách Scaling</h4>
     </figcaption>
 </figure>
-
+</p>
 <ul>
 <li>Nhấn <strong>Next</strong> cho đến khi bạn đến trang <strong>Review</strong>.</li>
 </ul>
@@ -895,11 +898,6 @@ Bạn đang ra lệnh cho ASG: &ldquo;Hãy theo dõi số lượng request trung
 <li>Kiểm tra lại tất cả các thông tin đã cấu hình trên trang <strong>Review</strong>.</li>
 <li>Cuộn xuống dưới và nhấn <strong>Create Auto Scaling group</strong>.</li>
 </ul>
-<figure><img src="/images/2.prerequisite/2.10-createasg/asg-review-create.png"><figcaption>
-      <h4>Xem lại và tạo Auto Scaling Group</h4>
-    </figcaption>
-</figure>
-
 <h4 id="7-kiểm-tra-kết-quả"><strong>7. Kiểm tra kết quả</strong></h4>
 <ul>
 <li>Sau khi tạo xong, ASG sẽ xuất hiện trong danh sách.</li>
@@ -1287,19 +1285,19 @@ Bạn đang ra lệnh cho ASG: &ldquo;Hãy theo dõi số lượng request trung
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1757221146"></script>
-    <script src="/js/perfect-scrollbar.min.js?1757221146"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1757221146"></script>
-    <script src="/js/jquery.sticky.js?1757221146"></script>
-    <script src="/js/featherlight.min.js?1757221146"></script>
-    <script src="/js/highlight.pack.js?1757221146"></script>
+    <script src="/js/clipboard.min.js?1757247351"></script>
+    <script src="/js/perfect-scrollbar.min.js?1757247351"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1757247351"></script>
+    <script src="/js/jquery.sticky.js?1757247351"></script>
+    <script src="/js/featherlight.min.js?1757247351"></script>
+    <script src="/js/highlight.pack.js?1757247351"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1757221146"></script>
-    <script src="/js/learn.js?1757221146"></script>
-    <script src="/js/hugo-learn.js?1757221146"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1757247351"></script>
+    <script src="/js/learn.js?1757247351"></script>
+    <script src="/js/hugo-learn.js?1757247351"></script>
 
-    <link href="/mermaid/mermaid.css?1757221146" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1757221146"></script>
+    <link href="/mermaid/mermaid.css?1757247351" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1757247351"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

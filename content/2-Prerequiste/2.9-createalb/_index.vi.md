@@ -49,7 +49,7 @@ pre : " <b> 2.9 </b> "
 
 #### **5. Cấu hình Security Group**
 
-*   Trong mục **Security groups**, xóa Security Group `default` đang được chọn.
+*   Trong mục **Security groups**, giữ Security Group `default` đang được chọn.
 *   Trong danh sách thả xuống, chọn Security Group đã tạo riêng cho Web Server: `ors-sg`.
 
 {{< figure src="/images/2.prerequisite/2.9-createalb/alb-security-group.png" title="Chọn Security Group ors-sg cho ALB" >}}
@@ -71,12 +71,11 @@ pre : " <b> 2.9 </b> "
 **Lưu ý:** Quá trình khởi tạo Load Balancer sẽ mất khoảng vài phút. Trạng thái của nó sẽ chuyển từ `provisioning` sang `active`. Hãy kiên nhẫn chờ đợi.
 {{% /notice %}}
 
-{{< figure src="/images/2.prerequisite/2.9-createalb/alb-status-check.png" title="Chờ ALB chuyển sang trạng thái Active" >}}
+{{< figure src="/images/2.prerequisite/2.9-createalb/alb-status-check-01.png" title="Chờ ALB chuyển sang trạng thái Active" >}}
 
 *   Khi ALB đã `active`, chọn vào nó và sao chép **DNS name** trong tab **Details**.
 
 {{< figure src="/images/2.prerequisite/2.9-createalb/alb-copy-dns.png" title="Sao chép DNS name của ALB" >}}
 
+*   Sau khi bạn kết nối với Backend và đăng tải dự án lên thì sẽ thấy được thấy được kết quả của bước sau
 *   Dán DNS name này vào trình duyệt của bạn. Nếu mọi thứ được cấu hình chính xác và ứng dụng backend của bạn đang chạy trên instance `ors-ec2`, bạn sẽ thấy thông báo chào mừng từ API: `Welcome to Dining Verse Backend API!`
-
-{{< figure src="/images/2.prerequisite/2.9-createalb/alb-test-result.png" title="Kết quả truy cập thành công qua DNS của ALB" >}}

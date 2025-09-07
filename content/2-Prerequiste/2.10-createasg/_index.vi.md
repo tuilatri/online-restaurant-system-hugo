@@ -68,7 +68,8 @@ pre : " <b> 2.10 </b> "
 Bạn đang ra lệnh cho ASG: "Hãy theo dõi số lượng request trung bình mà mỗi EC2 instance phải xử lý. Nếu con số này **vượt quá 30 request/phút**, hãy tự động tạo thêm một instance mới (tối đa là 2) để san sẻ công việc. Ngược lại, nếu nó thấp hơn 30, hãy giảm bớt instance (tối thiểu là 1) để tiết kiệm tiền."
 {{% /notice %}}
 
-{{< figure src="/images/2.prerequisite/2.10-createasg/asg-size-scaling.png" title="Cấu hình quy mô và chính sách Scaling" >}}
+{{< figure src="/images/2.prerequisite/2.10-createasg/asg-size-scaling-01.png" >}}
+{{< figure src="/images/2.prerequisite/2.10-createasg/asg-size-scaling-02.png" title="Cấu hình quy mô và chính sách Scaling" >}}
 
 *   Nhấn **Next** cho đến khi bạn đến trang **Review**.
 
@@ -76,8 +77,6 @@ Bạn đang ra lệnh cho ASG: "Hãy theo dõi số lượng request trung bình
 
 *   Kiểm tra lại tất cả các thông tin đã cấu hình trên trang **Review**.
 *   Cuộn xuống dưới và nhấn **Create Auto Scaling group**.
-
-{{< figure src="/images/2.prerequisite/2.10-createasg/asg-review-create.png" title="Xem lại và tạo Auto Scaling Group" >}}
 
 #### **7. Kiểm tra kết quả**
 

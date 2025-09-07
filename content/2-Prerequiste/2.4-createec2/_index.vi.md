@@ -68,8 +68,6 @@ pre : " <b> 2.4 </b> "
 *   Nhấn **Launch instance**.
 *   Sau khi khởi tạo thành công, bạn có thể nhấn **View all instances** để xem máy chủ `ors-ec2` của mình.
 
-{{< figure src="/images/2.prerequisite/2.4-createec2/ec2-success.png" title="Thông báo khởi tạo Instance thành công" >}}
-
 *   Đợi một vài phút cho đến khi cột **Status check** chuyển thành **2/2 checks passed**. Lúc này, máy chủ của bạn đã sẵn sàng để kết nối.
 
 {{< figure src="/images/2.prerequisite/2.4-createec2/ec2-view-instance.png" title="Kiểm tra EC2 instance trong danh sách" >}}

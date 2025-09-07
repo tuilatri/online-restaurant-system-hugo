@@ -12,21 +12,21 @@
     <title>Tạo Target Group :: AWS System Manager</title>
 
     
-    <link href="/css/nucleus.css?1757221146" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1757221146" rel="stylesheet">
-    <link href="/css/hybrid.css?1757221146" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1757221146" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1757221146" rel="stylesheet">
-    <link href="/css/auto-complete.css?1757221146" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1757221146" rel="stylesheet">
-    <link href="/css/theme.css?1757221146" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1757221146" rel="stylesheet">
+    <link href="/css/nucleus.css?1757247351" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1757247351" rel="stylesheet">
+    <link href="/css/hybrid.css?1757247351" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1757247351" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1757247351" rel="stylesheet">
+    <link href="/css/auto-complete.css?1757247351" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1757247351" rel="stylesheet">
+    <link href="/css/theme.css?1757247351" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1757247351" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1757221146" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1757247351" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1757221146"></script>
+    <script src="/js/jquery-3.3.1.min.js?1757247351"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,12 +57,12 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1757221146"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1757221146"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1757247351"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1757247351"></script>
 <script type="text/javascript">
     var baseurl = "http:\/\/localhost:1313\/vi";
 </script>
-<script type="text/javascript" src="/js/search.js?1757221146"></script>
+<script type="text/javascript" src="/js/search.js?1757247351"></script>
 
     
   </div>
@@ -850,11 +850,14 @@
 Đây là một đường dẫn (endpoint) đặc biệt mà bạn cần tạo trong code backend của mình. Application Load Balancer sẽ liên tục gửi request đến đường dẫn <code>/health</code> này. Nếu nhận được phản hồi thành công (HTTP 200 OK), nó sẽ coi instance đó là &ldquo;khỏe mạnh&rdquo; và tiếp tục gửi traffic người dùng đến. Nếu không, nó sẽ tạm ngưng gửi traffic để chờ instance phục hồi.</p>
 </div>
 
-<figure><img src="/images/2.prerequisite/2.8-createtargetgroup/tg-config.png"><figcaption>
+<p><figure><img src="/images/2.prerequisite/2.8-createtargetgroup/tg-config-01.png">
+</figure>
+
+<figure><img src="/images/2.prerequisite/2.8-createtargetgroup/tg-config-02.png"><figcaption>
       <h4>Điền thông tin cấu hình cho Target Group</h4>
     </figcaption>
 </figure>
-
+</p>
 <h4 id="4-đăng-ký-target-ban-đầu"><strong>4. Đăng ký Target ban đầu</strong></h4>
 <ul>
 <li>Ở bước này, chúng ta sẽ đăng ký instance <code>ors-ec2</code> đã tạo thủ công vào Target Group.</li>
@@ -1258,19 +1261,19 @@ Việc này giúp chúng ta kiểm tra xem Load Balancer và Target Group có ho
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1757221146"></script>
-    <script src="/js/perfect-scrollbar.min.js?1757221146"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1757221146"></script>
-    <script src="/js/jquery.sticky.js?1757221146"></script>
-    <script src="/js/featherlight.min.js?1757221146"></script>
-    <script src="/js/highlight.pack.js?1757221146"></script>
+    <script src="/js/clipboard.min.js?1757247351"></script>
+    <script src="/js/perfect-scrollbar.min.js?1757247351"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1757247351"></script>
+    <script src="/js/jquery.sticky.js?1757247351"></script>
+    <script src="/js/featherlight.min.js?1757247351"></script>
+    <script src="/js/highlight.pack.js?1757247351"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1757221146"></script>
-    <script src="/js/learn.js?1757221146"></script>
-    <script src="/js/hugo-learn.js?1757221146"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1757247351"></script>
+    <script src="/js/learn.js?1757247351"></script>
+    <script src="/js/hugo-learn.js?1757247351"></script>
 
-    <link href="/mermaid/mermaid.css?1757221146" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1757221146"></script>
+    <link href="/mermaid/mermaid.css?1757247351" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1757247351"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

@@ -46,7 +46,6 @@ pre : " <b> 2.6 </b> "
 *   Cuộn xuống dưới và nhấn **Create image**.
 *   Bạn sẽ nhận được thông báo rằng yêu cầu tạo AMI đã được gửi đi thành công.
 
-{{< figure src="/images/2.prerequisite/2.6-createami/ami-success.png" title="Thông báo yêu cầu tạo AMI thành công" >}}
 
 *   Để theo dõi tiến trình:
     *   Ở menu bên trái, dưới mục **Images**, chọn **AMIs**.
