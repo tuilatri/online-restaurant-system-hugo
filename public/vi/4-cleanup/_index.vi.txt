@@ -1,0 +1,107 @@
+---
+title : "Dọn dẹp tài nguyên"
+date : "2025-09-06"
+weight : 4
+chapter = false
+pre : "<b> 4. </b>"
+---
+
+Để tránh phát sinh chi phí không mong muốn, điều quan trọng là phải xóa tất cả các tài nguyên AWS đã được tạo trong suốt workshop này.
+
+{{% notice warning %}}
+**Thứ tự xóa là rất quan trọng!**
+Hãy thực hiện các bước dưới đây một cách tuần tự. Việc xóa sai thứ tự (ví dụ: xóa VPC trước khi xóa ALB) sẽ gây ra lỗi do các tài nguyên vẫn còn phụ thuộc lẫn nhau.
+{{% /notice %}}
+
+#### **1. Xóa Auto Scaling Group (`ors-asg`)**
+
+Đây là bước **quan trọng nhất** cần làm đầu tiên. Nếu không, ASG sẽ tự động tạo lại EC2 instance sau khi bạn xóa chúng.
+
+*   Truy cập dịch vụ **EC2** -> **Auto Scaling Groups**.
+*   Chọn `ors-asg`.
+*   Nhấn **Delete**.
+*   Nhập `delete` vào ô xác nhận và nhấn **Delete**. Thao tác này sẽ tự động xóa cả EC2 instance mà ASG đang quản lý.
+
+{{< figure src="/images/4.cleanup/asg-delete.png" title="Xóa Auto Scaling Group trước tiên" >}}
+
+#### **2. Xóa Application Load Balancer (`ors-alb`)**
+
+*   Trong **EC2 Dashboard**, đi đến **Load Balancers**.
+*   Chọn `ors-alb`.
+*   Nhấn **Actions** -> **Delete load balancer**.
+*   Nhập `confirm` vào ô xác nhận và nhấn **Delete**.
+
+#### **3. Xóa Target Group (`ors-target-group`)**
+
+*   Trong **EC2 Dashboard**, đi đến **Target Groups**.
+*   Chọn `ors-target-group`.
+*   Nhấn **Actions** -> **Delete**.
+*   Xác nhận xóa.
+
+#### **4. Xóa EC2 Instance và các tài nguyên liên quan**
+
+*   **Terminate EC2 Instance thủ công:**
+    *   Đi đến **Instances**.
+    *   Chọn `ors-ec2` (instance bạn đã tạo ban đầu).
+    *   Nhấn **Instance state** -> **Terminate instance**.
+*   **Deregister AMI:**
+    *   Đi đến **AMIs** (dưới mục Images).
+    *   Chọn `ors-ami`.
+    *   Nhấn **Actions** -> **Deregister AMI**.
+*   **Xóa Launch Template:**
+    *   Đi đến **Launch Templates**.
+    *   Chọn `ors-launch-template`.
+    *   Nhấn **Actions** -> **Delete template**.
+*   **Xóa Key Pair:**
+    *   Đi đến **Key Pairs** (dưới mục Network & Security).
+    *   Chọn `ors-keypair`.
+    *   Nhấn **Actions** -> **Delete**.
+
+#### **5. Xóa RDS Database (`ors-db`)**
+
+*   Truy cập dịch vụ **RDS** -> **Databases**.
+*   Chọn `ors-db`.
+*   Nhấn **Actions** -> **Delete**.
+*   **Bỏ tích** ở ô `Create final snapshot?`.
+*   **Tích** vào ô `I acknowledge...`.
+*   Nhập `delete me` vào ô xác nhận và nhấn **Delete**.
+
+{{% notice info %}}
+Quá trình xóa RDS database có thể mất vài phút.
+{{% /notice %}}
+
+{{< figure src="/images/4.cleanup/rds-delete.png" title="Xóa RDS Database Instance" >}}
+
+#### **6. Xóa CloudFront Distributions**
+
+Bạn cần lặp lại quy trình này cho **cả hai** distribution đã tạo (một cho backend, một cho frontend).
+
+*   Truy cập dịch vụ **CloudFront**.
+*   Chọn một distribution.
+*   Nhấn **Disable**. Đợi vài phút cho đến khi trạng thái cập nhật (cột Last modified có giá trị).
+*   Sau khi đã Disable, chọn lại distribution đó và nhấn **Delete**.
+
+{{< figure src="/images/4.cleanup/cloudfront-disable-delete.png" title="Vô hiệu hóa rồi mới xóa CloudFront Distribution" >}}
+
+#### **7. Xóa S3 Bucket (`ors-fe`)**
+
+*   Truy cập dịch vụ **S3**.
+*   Chọn bucket `ors-fe`.
+*   Nhấn nút **Empty**.
+*   Nhập `permanently delete` vào ô xác nhận và nhấn **Empty**.
+*   Sau khi bucket đã trống, quay lại danh sách bucket, chọn `ors-fe` một lần nữa và nhấn **Delete**.
+*   Nhập tên bucket vào ô xác nhận và nhấn **Delete bucket**.
+
+{{< figure src="/images/4.cleanup/s3-empty-delete.png" title="Làm trống sau đó xóa S3 Bucket" >}}
+
+#### **8. Xóa VPC (`ors-vpc`)**
+
+Đây là bước cuối cùng, xóa toàn bộ môi trường mạng.
+
+*   Truy cập dịch vụ **VPC** -> **Your VPCs**.
+*   Chọn `ors-vpc`.
+*   Nhấn **Actions** -> **Delete VPC**.
+*   Một cửa sổ sẽ hiện ra, liệt kê tất cả các tài nguyên liên quan sẽ bị xóa cùng (Subnets, Route Tables, Security Groups, etc.).
+*   Nhập `delete vpc` vào ô xác nhận và nhấn **Delete**.
+
+{{< figure src="/images/4.cleanup/vpc-delete.png" title="Xóa VPC và tất cả tài nguyên liên quan" >}}

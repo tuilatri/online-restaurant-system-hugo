@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="vi" class="js csstransforms3d">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.149.0">
+    <meta name="description" content="">
+<meta name="author" content="trihaminh.working@gmail.com">
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>Kết nối, Cài đặt và Triển khai :: AWS System Manager</title>
+
+    
+    <link href="/css/nucleus.css?1757221146" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1757221146" rel="stylesheet">
+    <link href="/css/hybrid.css?1757221146" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1757221146" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1757221146" rel="stylesheet">
+    <link href="/css/auto-complete.css?1757221146" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1757221146" rel="stylesheet">
+    <link href="/css/theme.css?1757221146" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1757221146" rel="stylesheet">
+    
+    <link href="/css/theme-workshop.css?1757221146" rel="stylesheet">
+    
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1757221146"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/vi/3-accessibilitytoinstances/3.1-public-instance/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/">
+
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#f90;fill-rule:evenodd;}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"></path><path class="cls-2" d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"></path><path class="cls-2" d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"></path></svg>
+
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1757221146"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1757221146"></script>
+<script type="text/javascript">
+    var baseurl = "http:\/\/localhost:1313\/vi";
+</script>
+<script type="text/javascript" src="/js/search.js?1757221146"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/1-introduce/" title="Giới thiệu và Tổng quan kiến trúc" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/1-introduce/">
+           <b> 1. </b> Giới thiệu và Tổng quan kiến trúc
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-prerequiste/" title="Các bước chuẩn bị và dựng hạ tầng" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-prerequiste/">
+           <b> 2. </b> Các bước chuẩn bị và dựng hạ tầng
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-prerequiste/2.1-createvpc/" title="Tạo VPC và Subnets" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-prerequiste/2.1-createvpc/">
+           <b> 2.1 </b> Tạo VPC và Subnets
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-prerequiste/2.2-modifysubnet/" title="Chỉnh sửa Public Subnet" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-prerequiste/2.2-modifysubnet/">
+           <b> 2.2 </b> Chỉnh sửa Public Subnet
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-prerequiste/2.3-createsg/" title="Tạo Security Groups" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-prerequiste/2.3-createsg/">
+           <b> 2.3 </b> Tạo Security Groups
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-prerequiste/2.4-createec2/" title="Tạo EC2 Instance ban đầu" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-prerequiste/2.4-createec2/">
+           <b> 2.4 </b> Tạo EC2 Instance ban đầu
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-prerequiste/2.5-createrds/" title="Tạo Cơ sở dữ liệu RDS MySQL" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-prerequiste/2.5-createrds/">
+           <b> 2.5 </b> Tạo Cơ sở dữ liệu RDS MySQL
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-prerequiste/2.6-createami/" title="Tạo Amazon Machine Image (AMI)" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-prerequiste/2.6-createami/">
+           <b> 2.6 </b> Tạo Amazon Machine Image (AMI)
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-prerequiste/2.7-createlaunchtemplate/" title="Tạo Launch Template" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-prerequiste/2.7-createlaunchtemplate/">
+           <b> 2.7 </b> Tạo Launch Template
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-prerequiste/2.8-createtargetgroup/" title="Tạo Target Group" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-prerequiste/2.8-createtargetgroup/">
+           <b> 2.8 </b> Tạo Target Group
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-prerequiste/2.9-createalb/" title="Tạo Application Load Balancer (ALB)" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-prerequiste/2.9-createalb/">
+           <b> 2.9 </b> Tạo Application Load Balancer (ALB)
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-prerequiste/2.10-createasg/" title="Tạo Auto Scaling Group (ASG)" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-prerequiste/2.10-createasg/">
+           <b> 2.10 </b> Tạo Auto Scaling Group (ASG)
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-prerequiste/2.11-creates3/" title="Tạo S3 Bucket cho Frontend" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-prerequiste/2.11-creates3/">
+           <b> 2.11 </b> Tạo S3 Bucket cho Frontend
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-prerequiste/2.12-createcloudfrontbe/" title="Tạo CloudFront cho Backend (ALB)" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-prerequiste/2.12-createcloudfrontbe/">
+           <b> 2.12 </b> Tạo CloudFront cho Backend (ALB)
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-prerequiste/2.13-createcloudfrontfe/" title="Tạo CloudFront cho Frontend (S3)" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-prerequiste/2.13-createcloudfrontfe/">
+           <b> 2.13 </b> Tạo CloudFront cho Frontend (S3)
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-accessibilitytoinstances/" title="Kết nối và Triển khai Ứng dụng" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/vi/3-accessibilitytoinstances/">
+           <b> 3. </b> Kết nối và Triển khai Ứng dụng
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-accessibilitytoinstances/3.1-public-instance/" title="Kết nối, Cài đặt và Triển khai" class="dd-item 
+        
+        active
+        
+        ">
+      <a href="/vi/3-accessibilitytoinstances/3.1-public-instance/">
+           <b> 3.1. </b> Kết nối, Cài đặt và Triển khai
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/4-cleanup/" title="Dọn dẹp tài nguyên" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/4-cleanup/">
+           <b> 4. </b> Dọn dẹp tài nguyên
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-conclusion/" title="Kết Luận và Hướng phát triển" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/5-conclusion/">
+           <b> 5. </b> Kết Luận và Hướng phát triển
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="https://www.facebook.com/groups/awsstudygroupfcj/"><i class='fab fa-facebook'></i> AWS Study Group</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+          <div class="select-style">
+            <select id="select-language" onchange="location = this.value;">
+          
+          
+          
+              
+              
+                  
+                    
+                    
+                      <option id="en" value="http://localhost:1313/3-accessibilitytoinstances/3.1-public-instance/">English</option>
+                    
+                  
+              
+                  
+              
+          
+              
+              
+                  
+              
+                  
+                    
+                    
+                      <option id="vi" value="http://localhost:1313/vi/3-accessibilitytoinstances/3.1-public-instance/" selected>Tiếng Việt</option>
+                    
+                  
+              
+          
+        </select>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="255px" height="255px" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+          <g>
+            <g id="arrow-drop-down">
+              <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+            </g>
+          </g>
+        </svg>
+        </div>
+        </a>
+        </li>
+      
+      
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <left>
+    
+     <b> Workshop</b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7920860&style=0038&nbdigits=9&type=page&initCount=0" title="Migrate" Alt="web counter"   border="0" /></a>  <br>
+     <b> <a href="https://cloudjourney.awsstudygroup.com/">Cloud Journey</a></b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0" title="Total CLoud Journey" Alt="web counter"   border="0"   />
+     
+</left>
+<left>
+    <br>
+    <br>
+        <b> Last Updated </b> <br>
+        <i><font color=orange>05-09-2025</font></i>
+    </left>
+    <left>
+        <br>
+        <br>
+            <b> Team </b> <br>
+           
+            <i> <a href="https://www.linkedin.com/in/sutrinh/"  style="color:orange">Sử Trịnh  </a> <br>
+                <a href="https://www.linkedin.com/in/jotaguy"  style="color:orange">Gia Hưng </a> <br>
+                <a href="https://www.linkedin.com/in/hiepnguyendt"  style="color:orange">Thanh Hiệp </a>
+               
+        </i>
+        </left>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/vi/'>Triển khai dự án Nhà hàng Online trên AWS</a> > <a href='/vi/3-accessibilitytoinstances/'>Kết nối và Triển khai Ứng dụng</a> > Kết nối, Cài đặt và Triển khai
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#hướng-dẫn-chi-tiết-các-lệnh-trên-mobaxterm">Hướng dẫn chi tiết các lệnh trên MobaXterm</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Kết nối, Cài đặt và Triển khai
+            </h1>
+          
+
+        
+
+
+
+	<h3 id="hướng-dẫn-chi-tiết-các-lệnh-trên-mobaxterm">Hướng dẫn chi tiết các lệnh trên MobaXterm</h3>
+<p>Trong phần này, bạn sẽ thực hiện các lệnh để kết nối vào máy chủ <code>ors-ec2</code>, sau đó cài đặt môi trường và triển khai ứng dụng backend Node.js.</p>
+
+<div class="notices info" ><p><strong>Lưu ý:</strong> Các lệnh được thực hiện tuần tự. Hãy đảm bảo bạn đã hoàn thành bước trước rồi mới tiếp tục bước sau.</p>
+</div>
+
+<h4 id="1-kết-nối-vào-ec2-instance"><strong>1. Kết nối vào EC2 Instance</strong></h4>
+<p>Đây là bước đầu tiên, kết nối từ máy tính của bạn vào máy chủ <code>ors-ec2</code> trong Public Subnet.</p>
+<ul>
+<li>Mở MobaXterm và tạo một phiên <strong>SSH</strong> mới.</li>
+<li><strong>Remote host:</strong> Nhập địa chỉ <strong>Public IPv4</strong> của <code>ors-ec2</code> (bạn có thể lấy từ EC2 Dashboard).</li>
+<li><strong>Specify username:</strong> <code>ec2-user</code>.</li>
+<li><strong>Use private key:</strong> Chọn file <code>ors-keypair.pem</code> bạn đã tải về.</li>
+<li><strong>Phân quyền cho file key (nếu dùng Terminal trên macOS/Linux):</strong>
+Trước khi kết nối, bạn cần chạy lệnh này trên máy tính cá nhân để bảo mật file key:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chmod <span style="color:#ae81ff">400</span> ors-keypair.pem
+</span></span></code></pre></div></li>
+</ul>
+<figure><img src="/images/3.connect/3.1-deploy/mobaxterm-connect.png"><figcaption>
+      <h4>Thiết lập phiên SSH trong MobaXterm</h4>
+    </figcaption>
+</figure>
+
+<h4 id="2-cài-đặt-môi-trường-trên-server"><strong>2. Cài đặt Môi trường trên Server</strong></h4>
+<p>Khi đã kết nối thành công vào máy chủ, hãy cài đặt các công cụ cần thiết.</p>
+<ul>
+<li>
+<p><strong>Cập nhật hệ thống:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo yum update -y
+</span></span></code></pre></div><figure><img src="/images/3.connect/3.1-deploy/yum-update.png"><figcaption>
+          <h4>Cập nhật các gói hệ thống</h4>
+        </figcaption>
+    </figure>
+
+</li>
+<li>
+<p><strong>Cài đặt Git:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo yum install -y git
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Sao chép mã nguồn dự án từ GitHub:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/tuilatri/online-restaurant-system.git
+</span></span></code></pre></div><figure><img src="/images/3.connect/3.1-deploy/git-clone.png"><figcaption>
+          <h4>Sao chép dự án</h4>
+        </figcaption>
+    </figure>
+
+</li>
+<li>
+<p><strong>Di chuyển vào thư mục backend:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd online-restaurant-system/backend
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Cài đặt Node.js và npm:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dnf install -y nodejs
+</span></span></code></pre></div><figure><img src="/images/3.connect/3.1-deploy/install-nodejs.png"><figcaption>
+          <h4>Cài đặt Node.js</h4>
+        </figcaption>
+    </figure>
+
+</li>
+<li>
+<p><strong>Kiểm tra phiên bản để xác nhận cài đặt thành công:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>node -v
+</span></span><span style="display:flex;"><span>npm -v
+</span></span></code></pre></div></li>
+</ul>
+<h4 id="3-cài-đặt-và-cấu-hình-ứng-dụng"><strong>3. Cài đặt và Cấu hình Ứng dụng</strong></h4>
+<ul>
+<li>
+<p><strong>Cài đặt các thư viện phụ thuộc của dự án:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm install
+</span></span></code></pre></div><figure><img src="/images/3.connect/3.1-deploy/npm-install.png"><figcaption>
+          <h4>Cài đặt các gói npm</h4>
+        </figcaption>
+    </figure>
+
+</li>
+<li>
+<p><strong>Di chuyển vào thư mục <code>src</code> và tạo file cấu hình biến môi trường:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd src
+</span></span><span style="display:flex;"><span>nano .env
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Nhập thông tin kết nối cơ sở dữ liệu:</strong>
+Trong trình soạn thảo <code>nano</code>, dán nội dung sau và thay thế bằng thông tin của bạn.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-env" data-lang="env"><span style="display:flex;"><span>DB_HOST<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;your-rds-endpoint&#39;</span>
+</span></span><span style="display:flex;"><span>DB_USER<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;admin&#39;</span>
+</span></span><span style="display:flex;"><span>DB_PASSWORD<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;your-db-password&#39;</span>
+</span></span><span style="display:flex;"><span>DB_DATABASE<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;ors&#39;</span>
+</span></span><span style="display:flex;"><span>DB_PORT<span style="color:#f92672">=</span><span style="color:#ae81ff">3306</span>
+</span></span></code></pre></div><figure><img src="/images/3.connect/3.1-deploy/nano-env.png"><figcaption>
+          <h4>Cấu hình file .env</h4>
+        </figcaption>
+    </figure>
+
+</li>
+<li>
+<p><strong>Lưu và thoát khỏi <code>nano</code>:</strong></p>
+<ol>
+<li>Nhấn <code>Ctrl + O</code></li>
+<li>Nhấn <code>Enter</code> để xác nhận tên file.</li>
+<li>Nhấn <code>Ctrl + X</code> để thoát.</li>
+</ol>
+</li>
+</ul>
+<h4 id="4-khởi-chạy-và-kiểm-tra-backend"><strong>4. Khởi chạy và Kiểm tra Backend</strong></h4>
+<ul>
+<li>
+<p><strong>Quay lại thư mục backend gốc:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd ..
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Khởi chạy ứng dụng:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm run start
+</span></span></code></pre></div><figure><img src="/images/3.connect/3.1-deploy/npm-start.png"><figcaption>
+          <h4>Ứng dụng backend đang chạy trên cổng 5000</h4>
+        </figcaption>
+    </figure>
+
+</li>
+<li>
+<p><strong>Kiểm tra hoạt động của ứng dụng ngay trên máy chủ:</strong>
+Mở một cửa sổ terminal <strong>mới</strong> trên MobaXterm và kết nối lại vào cùng EC2 instance, sau đó dùng lệnh <code>curl</code> để kiểm tra.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl http://127.0.0.1:5000/api
+</span></span></code></pre></div><p>Nếu bạn nhận được phản hồi <code>Welcome to Dining Verse Backend API!</code>, nghĩa là ứng dụng đã chạy thành công!</p>
+</li>
+</ul>
+<h4 id="5-hướng-dẫn-xử-lý-sự-cố-troubleshooting"><strong>5. Hướng dẫn xử lý sự cố (Troubleshooting)</strong></h4>
+<p>Nếu bạn cập nhật code trên GitHub nhưng thay đổi không xuất hiện trên web, hãy làm theo các bước sau trên máy chủ:</p>
+<ul>
+<li>
+<p><strong>Di chuyển vào thư mục backend:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd online-restaurant-system/backend
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Kéo code mới nhất về:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git pull origin main
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Tìm tiến trình (process) Node.js đang chạy:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ps aux | grep node
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Dừng tiến trình cũ bằng PID của nó:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kill -9 &lt;PID&gt;
+</span></span></code></pre></div><p><em>Ví dụ thực tế:</em></p>
+<pre tabindex="0"><code>[ec2-user@ip-10-0-144-101 backend]$ ps aux | grep node
+ec2-user    3117  0.0  6.6 1127836 64896 pts/1   Sl+   10:15   0:00 node server.js
+
+[ec2-user@ip-10-0-144-101 backend]$ kill -9 3117
+</code></pre></li>
+<li>
+<p><strong>Khởi động lại ứng dụng:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm run start
+</span></span></code></pre></div></li>
+</ul>
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/vi/3-accessibilitytoinstances/" title="Kết nối và Triển khai Ứng dụng"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/vi/4-cleanup/" title="Dọn dẹp tài nguyên" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1757221146"></script>
+    <script src="/js/perfect-scrollbar.min.js?1757221146"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1757221146"></script>
+    <script src="/js/jquery.sticky.js?1757221146"></script>
+    <script src="/js/featherlight.min.js?1757221146"></script>
+    <script src="/js/highlight.pack.js?1757221146"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1757221146"></script>
+    <script src="/js/learn.js?1757221146"></script>
+    <script src="/js/hugo-learn.js?1757221146"></script>
+
+    <link href="/mermaid/mermaid.css?1757221146" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1757221146"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-158079754-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>

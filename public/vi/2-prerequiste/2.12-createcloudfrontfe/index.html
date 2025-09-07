@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="vi" class="js csstransforms3d">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.149.0">
+    <meta name="description" content="">
+<meta name="author" content="trihaminh.working@gmail.com">
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>Tạo CloudFront cho Frontend (S3) :: AWS System Manager</title>
+
+    
+    <link href="/css/nucleus.css?1757180750" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1757180750" rel="stylesheet">
+    <link href="/css/hybrid.css?1757180750" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1757180750" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1757180750" rel="stylesheet">
+    <link href="/css/auto-complete.css?1757180750" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1757180750" rel="stylesheet">
+    <link href="/css/theme.css?1757180750" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1757180750" rel="stylesheet">
+    
+    <link href="/css/theme-workshop.css?1757180750" rel="stylesheet">
+    
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1757180750"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/vi/2-prerequiste/2.12-createcloudfrontfe/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/">
+
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#f90;fill-rule:evenodd;}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"></path><path class="cls-2" d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"></path><path class="cls-2" d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"></path></svg>
+
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1757180750"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1757180750"></script>
+<script type="text/javascript">
+    var baseurl = "http:\/\/localhost:1313\/vi";
+</script>
+<script type="text/javascript" src="/js/search.js?1757180750"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/1-introduce/" title="Giới thiệu và Tổng quan kiến trúc" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/1-introduce/">
+           <b> 1. </b> Giới thiệu và Tổng quan kiến trúc
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-prerequiste/" title="Các bước chuẩn bị và dựng hạ tầng" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/vi/2-prerequiste/">
+           <b> 2. </b> Các bước chuẩn bị và dựng hạ tầng
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-prerequiste/2.1-createvpc/" title="Tạo VPC" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-prerequiste/2.1-createvpc/">
+           <b> 2.1 </b> Tạo VPC
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-prerequiste/2.2-modifysubnet/" title="Chỉnh sửa Subnet" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-prerequiste/2.2-modifysubnet/">
+           <b> 2.2 </b> Chỉnh sửa Subnet
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-prerequiste/2.3-createsg/" title="Tạo Security Group cho các thành phần" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-prerequiste/2.3-createsg/">
+           <b> 2.3 </b> Tạo Security Group cho các thành phần
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-prerequiste/2.4-createec2/" title="Tạo EC2 Instance cho Bastion Host và Backend" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-prerequiste/2.4-createec2/">
+           <b> 2.4 </b> Tạo EC2 Instance cho Bastion Host và Backend
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-prerequiste/2.11-creates3/" title="Tạo S3 Bucket và cấu hình Static Website Hosting" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-prerequiste/2.11-creates3/">
+           <b> 2.11 </b> Tạo S3 Bucket và cấu hình Static Website Hosting
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-prerequiste/2.12-createcloudfrontfe/" title="Tạo CloudFront cho Frontend (S3)" class="dd-item 
+        
+        active
+        
+        ">
+      <a href="/vi/2-prerequiste/2.12-createcloudfrontfe/">
+           <b> 2.12 </b> Tạo CloudFront cho Frontend (S3)
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-accessibilitytoinstances/" title="Tạo kết nối đến máy chủ EC2" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/3-accessibilitytoinstances/">
+           <b> 3. </b> Tạo kết nối đến máy chủ EC2
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-accessibilitytoinstances/3.1-public-instance/" title="Kết nối đến máy chủ" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/3-accessibilitytoinstances/3.1-public-instance/">
+           <b> 3.1. </b> Kết nối đến máy chủ
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/4-cleanup/" title="Dọn dẹp tài nguyên" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/4-cleanup/">
+           <b> 4. </b> Dọn dẹp tài nguyên
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/5-conclusion/" title="Kết Luận và Hướng phát triển" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/5-conclusion/">
+           <b> 5. </b> Kết Luận và Hướng phát triển
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="https://www.facebook.com/groups/awsstudygroupfcj/"><i class='fab fa-facebook'></i> AWS Study Group</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+          <div class="select-style">
+            <select id="select-language" onchange="location = this.value;">
+          
+          
+          
+              
+              
+                  
+                    
+                    
+                      <option id="en" value="http://localhost:1313/2-prerequiste/2.12-createcloudfrontfe/">English</option>
+                    
+                  
+              
+                  
+              
+          
+              
+              
+                  
+              
+                  
+                    
+                    
+                      <option id="vi" value="http://localhost:1313/vi/2-prerequiste/2.12-createcloudfrontfe/" selected>Tiếng Việt</option>
+                    
+                  
+              
+          
+        </select>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="255px" height="255px" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+          <g>
+            <g id="arrow-drop-down">
+              <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+            </g>
+          </g>
+        </svg>
+        </div>
+        </a>
+        </li>
+      
+      
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <left>
+    
+     <b> Workshop</b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7920860&style=0038&nbdigits=9&type=page&initCount=0" title="Migrate" Alt="web counter"   border="0" /></a>  <br>
+     <b> <a href="https://cloudjourney.awsstudygroup.com/">Cloud Journey</a></b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0" title="Total CLoud Journey" Alt="web counter"   border="0"   />
+     
+</left>
+<left>
+    <br>
+    <br>
+        <b> Last Updated </b> <br>
+        <i><font color=orange>05-09-2025</font></i>
+    </left>
+    <left>
+        <br>
+        <br>
+            <b> Team </b> <br>
+           
+            <i> <a href="https://www.linkedin.com/in/sutrinh/"  style="color:orange">Sử Trịnh  </a> <br>
+                <a href="https://www.linkedin.com/in/jotaguy"  style="color:orange">Gia Hưng </a> <br>
+                <a href="https://www.linkedin.com/in/hiepnguyendt"  style="color:orange">Thanh Hiệp </a>
+               
+        </i>
+        </left>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/vi/'>Triển khai dự án Nhà hàng Online trên AWS</a> > <a href='/vi/2-prerequiste/'>Các bước chuẩn bị và dựng hạ tầng</a> > Tạo CloudFront cho Frontend (S3)
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#khởi-tạo-cloudfront-distribution-cho-frontend-s3">Khởi tạo CloudFront Distribution cho Frontend (S3)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Tạo CloudFront cho Frontend (S3)
+            </h1>
+          
+
+        
+
+
+
+	<h3 id="khởi-tạo-cloudfront-distribution-cho-frontend-s3">Khởi tạo CloudFront Distribution cho Frontend (S3)</h3>
+<p>ℹ️ <strong>Mục tiêu</strong></p>
+<ul>
+<li>Tạo một CloudFront Distribution thứ hai, lần này dành riêng cho việc phân phối các tệp tĩnh của frontend từ S3 bucket.</li>
+<li><strong>Tăng tốc độ tải trang:</strong> CloudFront sẽ lưu trữ (cache) các tệp frontend tại các điểm biên (Edge Location) trên toàn cầu, giúp người dùng ở khắp nơi truy cập trang web với độ trễ thấp nhất.</li>
+<li><strong>Tăng cường bảo mật:</strong> Chúng ta sẽ cấu hình <strong>Origin Access Identity (OAI)</strong>, một tính năng đặc biệt của CloudFront. OAI sẽ khóa S3 bucket lại, chỉ cho phép một &ldquo;người dùng&rdquo; duy nhất là CloudFront được phép đọc các tệp. Người dùng cuối sẽ không thể truy cập trực tiếp vào S3 bucket nữa, đảm bảo mọi truy cập đều phải đi qua CloudFront.</li>
+</ul>
+<hr>
+<p>🔒 <strong>Các bước thực hiện</strong></p>
+<h4 id="1-bắt-đầu-tạo-distribution"><strong>1. Bắt đầu tạo Distribution</strong></h4>
+<ul>
+<li>Trong <strong>AWS Management Console</strong>, quay trở lại dịch vụ <strong>CloudFront</strong>.</li>
+<li>Nhấn vào <strong>Create distribution</strong>.</li>
+</ul>
+<figure><img src="/images/2.prerequisite/2.10-createcloudfrontbe/create-cf-button.png"><figcaption>
+      <h4>Bắt đầu tạo CloudFront Distribution mới</h4>
+    </figcaption>
+</figure>
+
+<h4 id="2-cấu-hình-origin-nguồn-gốc"><strong>2. Cấu hình Origin (Nguồn gốc)</strong></h4>
+<ul>
+<li><strong>Origin domain:</strong> Nhấn vào ô này và chọn S3 bucket của bạn từ danh sách, ví dụ: <code>project-frontend-030925.s3.ap-southeast-1.amazonaws.com</code>.</li>
+<li><strong>Origin access:</strong> Đây là bước cấu hình bảo mật quan trọng nhất.
+<ul>
+<li>Chọn <code>Legacy access identities</code>.</li>
+<li><strong>Origin access identity:</strong> Nhấn vào <strong>Create new OAI</strong>.</li>
+<li>Để tên mặc định và nhấn <strong>Create</strong>.</li>
+<li><strong>Bucket policy:</strong> Chọn <code>Yes, update the bucket policy</code>. Thao tác này sẽ tự động thêm một chính sách vào S3 bucket của bạn, cho phép OAI vừa tạo có quyền đọc các đối tượng.</li>
+</ul>
+</li>
+</ul>
+<figure><img src="/images/2.prerequisite/2.12-createcloudfrontfe/cf-s3-origin-oai.png"><figcaption>
+      <h4>Cấu hình Origin là S3 Bucket và tạo OAI</h4>
+    </figcaption>
+</figure>
+
+<h4 id="3-cấu-hình-các-mục-còn-lại"><strong>3. Cấu hình các mục còn lại</strong></h4>
+<ul>
+<li><strong>Web Application Firewall (WAF):</strong> Chọn <code>Do not enable security protections</code>.</li>
+<li><strong>Settings - Default root object:</strong>
+<ul>
+<li>Gõ <code>index.html</code>.
+
+<div class="notices info" ><pre><code>Đây là một thiết lập bắt buộc. Nó cho CloudFront biết phải trả về tệp nào khi người dùng truy cập vào tên miền gốc (ví dụ: `https://d...cloudfront.net/`) mà không chỉ định một tệp cụ thể.
+</code></pre>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+<figure><img src="/images/2.prerequisite/2.12-createcloudfrontfe/cf-s3-default-root-object.png"><figcaption>
+      <h4>Thiết lập Default Root Object</h4>
+    </figcaption>
+</figure>
+
+<h4 id="4-hoàn-tất-và-kiểm-tra"><strong>4. Hoàn tất và kiểm tra</strong></h4>
+<ul>
+<li>Cuộn xuống dưới cùng và nhấn <strong>Create distribution</strong>.</li>
+<li>Tương tự như trước, quá trình triển khai sẽ mất vài phút. Hãy chờ cho đến khi trạng thái không còn là <code>Deploying</code>.</li>
+<li>Sao chép giá trị <strong>Distribution domain name</strong>.</li>
+</ul>
+<figure><img src="/images/2.prerequisite/2.12-createcloudfrontfe/cf-s3-copy-domain.png"><figcaption>
+      <h4>Sao chép Domain Name của Distribution Frontend</h4>
+    </figcaption>
+</figure>
+
+<ul>
+<li>Dán domain name này vào trình duyệt. Bạn sẽ thấy ứng dụng frontend của mình được tải lên thành công.</li>
+</ul>
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/vi/2-prerequiste/2.11-creates3/" title="Tạo S3 Bucket và cấu hình Static Website Hosting"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/vi/3-accessibilitytoinstances/" title="Tạo kết nối đến máy chủ EC2" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1757180750"></script>
+    <script src="/js/perfect-scrollbar.min.js?1757180750"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1757180750"></script>
+    <script src="/js/jquery.sticky.js?1757180750"></script>
+    <script src="/js/featherlight.min.js?1757180750"></script>
+    <script src="/js/highlight.pack.js?1757180750"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1757180750"></script>
+    <script src="/js/learn.js?1757180750"></script>
+    <script src="/js/hugo-learn.js?1757180750"></script>
+
+    <link href="/mermaid/mermaid.css?1757180750" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1757180750"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-158079754-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>
